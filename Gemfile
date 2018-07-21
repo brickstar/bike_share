@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Page pagination
+gem 'kaminari'
 #CSS framework
 gem 'bulma-rails', "~> 0.7.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
