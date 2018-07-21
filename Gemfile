@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Page pagination
+gem 'kaminari'
 #CSS framework
 gem 'bulma-rails', "~> 0.7.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -28,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'friendly_id', '~> 5.1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
