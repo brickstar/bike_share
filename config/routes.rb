@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get "/:station_name", to: 'stations#show'
+  resources :trips, only: [:index]
+  get '/:station_name', to: 'stations#show'
 end
