@@ -12,7 +12,7 @@ describe 'visiting trips index' do
     end
 
     visit trips_path
-save_and_open_page
+
     expect(page).to have_content('All Trips')
     expect(page).to have_content("Duration: #{Trip.first.duration}s")
     expect(page).to have_content("Duration: #{Trip.find(30).duration}s")
