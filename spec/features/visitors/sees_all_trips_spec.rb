@@ -24,13 +24,15 @@ describe 'visiting trips index' do
   it 'can go forward and back in trips on second trips page' do
     visit trips_path
     click_on 'Next'
-    click_on 'Next'
-    click_on 'Prev'
 
     expect(page).to have_content('Next')
     expect(page).to have_content('Prev')
     expect(page).to_not have_content("Bike ID: #{Trip.first.bike_id}")
     expect(page).to have_content("Bike ID: #{Trip.last.bike_id}")
 
+    click_on 'Prev'
+    
+    expect(page).to have_content("Bike ID: #{Trip.first.bike_id}")
+    expect(page).to_not have_content("Bike ID: #{Trip.last.bike_id}")
   end
 end
