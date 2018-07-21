@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-=begin
-When I visit the trips index,
-I see the first 30 trips (duration, start date, start station, end date, end station, bike id, subscription type, zip code)
-=end
-
 describe 'visiting trips index' do
   it 'sees 30 trips per page' do
     45.times do |index|

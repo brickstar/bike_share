@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.order(:id).page params[:page]
+    @trips = Trip.order(:start_date).page params[:page]
   end
 end
