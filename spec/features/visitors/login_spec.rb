@@ -33,7 +33,7 @@ describe 'login workflow' do
     fill_in :street, with: '123 Main Street'
     fill_in :city, with: 'Denver'
     fill_in :state, with: 'Colorado'
-    fill_in :zipcode, with: '80403'
+    fill_in :zip_code, with: '80403'
     fill_in :email, with: 'Jeff@Turing.com'
     fill_in :password, with: 'password'
 
@@ -46,7 +46,7 @@ describe 'login workflow' do
     expect(page).to have_content('Street: 123 Main Street')
     expect(page).to have_content('City: Denver')
     expect(page).to have_content('State: Colorado')
-    expect(page).to have_content('ZipCode: 80403')
+    expect(page).to have_content('Zip Code: 80403')
     expect(page).to have_content('Logout')
     expect(page).to_not have_content('Login')
   end
