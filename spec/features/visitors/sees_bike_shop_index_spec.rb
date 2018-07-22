@@ -14,6 +14,7 @@ describe 'visits bike shop' do
     accessory10 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test10', description: 'this is a test', price: 4, status: 1)
     accessory11 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test11', description: 'this is a test', price: 4, status: 1)
     accessory12 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test12', description: 'this is a test', price: 4, status: 1)
+    accessory13 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test13', description: 'this is a test', price: 4, status: 1)
 
     visit accessories_path
 
@@ -35,5 +36,7 @@ describe 'visits bike shop' do
       expect(page).to have_content('Add to Cart')
     end
     expect(page).to have_content(accessory12.title)
+    expect(page).to_not have_content(accessory13.title)
+    expect(page).to have_content('Next')
   end
 end
