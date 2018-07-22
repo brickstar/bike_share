@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
+  enum role: ['default', 'admin']
 end
