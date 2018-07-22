@@ -25,19 +25,19 @@ describe Station, type: :model do
     end
 
     it 'calculate most bikes available' do
-      expect(Station.most_bikes_total).to eq(6)
+      expect(Station.highest_bike_total).to eq(6)
     end
 
     it 'calculate fewest bikes available' do
-      expect(Station.fewest_bikes_total).to eq(4)
+      expect(Station.lowest_bike_total).to eq(4)
     end
 
     it 'find station with highest bikes available' do
-      expect(Station.highest_bike_count).to eq(@station_1)
+      expect(Station.with_highest_bike_total).to eq(@station_1)
     end
 
     it 'find station with lowest bikes available' do
-      expect(Station.lowest_bike_count).to eq(@station_3)
+      expect(Station.with_lowest_bike_total).to eq(@station_3)
     end
 
     it 'find newest station' do

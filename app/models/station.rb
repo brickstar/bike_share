@@ -16,20 +16,20 @@ class Station < ApplicationRecord
     average(:dock_count)
   end
 
-  def self.most_bikes_total
+  def self.highest_bike_total
     maximum(:dock_count)
   end
 
-  def self.fewest_bikes_total
+  def self.lowest_bike_total
     minimum(:dock_count)
   end
 
-  def self.highest_bike_count
-    where(:dock_count == most_bikes_total).first
+  def self.with_highest_bike_total
+    where(:dock_count == highest_bike_total).first
   end
 
-  def self.lowest_bike_count
-    where(:dock_count == fewest_bikes_total).last
+  def self.with_lowest_bike_total
+    where(:dock_count == lowest_bike_total).last
   end
 
   def self.newest
