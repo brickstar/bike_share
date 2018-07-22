@@ -6,6 +6,7 @@ describe 'visiting the /stations-dashboard' do
     station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: '8/16/2014')
     station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 6, installation_date: '1/23/2016')
     visit stations_dashboard_path
+    save_and_open_page
   end
 
   it 'sees a total count of stations' do
@@ -13,30 +14,30 @@ describe 'visiting the /stations-dashboard' do
   end
 
   it 'sees average bikes available per station' do
-    expect(page).to have_content("Average Bikes Available per Station: #{Station.average_bikes_per_station}")
+    expect(page).to have_content("Average Bikes Available per Station: #{Station.average_bikes_per_station.round}")
   end
 
   it 'sees most bikes available at a station' do
-    expect(page).to have_content("Highest Bike Count: #{Station.highest_bike_total}")
+    expect(page).to have_content("Inventory Level (High): #{Station.highest_bike_total}")
   end
 
   it 'sees fewest bikes available at a station' do
-    expect(page).to have_content("Lowest Bike Count: #{Station.lowest_bike_total}")
+    expect(page).to have_content("Inventory Level (Low): #{Station.lowest_bike_total}")
   end
 
   it 'sees the station that has the most bikes available' do
-    expect(page).to have_content("Station with Most Bikes Available: #{@station_3}")
+    expect(page).to have_content("Highest Inventory: #{@station_3}")
   end
 
   it 'sees the station that has the fewest bikes available' do
-    expect(page).to have_content("Station with Least Bikes Available: #{@station_2}")
+    expect(page).to have_content("Lowest Inventory: #{@station_2}")
   end
 
   it 'sees the newest station' do
-    expect(page).to have_content("Newest Station: #{@station_3}")
+    expect(page).to have_content("Newest Stations: #{@station_3}")
   end
 
   it 'sees the oldest station' do
-    expect(page).to have_content("Oldest Station: #{@station_1}")
+    expect(page).to have_content("Oldest Stations: #{@station_1}")
   end
 end
