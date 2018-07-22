@@ -52,7 +52,7 @@ describe 'as an admin user' do
     expect(current_path).to eq('/admin/dashboard')
 
     within('nav') do
-      expect(page).to have_content("Logged in as Admin User: #{user.first_name user.last_name}")
+      expect(page).to have_content("Logged in as Admin User: #{admin.first_name admin.last_name}")
     end
 
     expect(page).to have_content(user.first_name)
