@@ -18,7 +18,7 @@ I also see a link for "Logout".
 =end
 
 describe 'login workflow' do
-  it 'allows a visitor to create an account and log in successfully' do
+  it 'allows visitor to create account, log in & log out successfully' do
     first_name = 'Jeff'
     last_name = 'Casimir'
     street = '123 Main Street'
@@ -56,5 +56,10 @@ describe 'login workflow' do
     expect(page).to have_content(zip_code)
     expect(page).to have_content('Logout')
     expect(page).to_not have_content('Login')
+
+    click_on 'Logout'
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content('Login')
+    expect(page).to_not have_content('logout')
   end
 end
