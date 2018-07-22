@@ -26,5 +26,11 @@ describe Trip, type: :model do
 
       expect(actual).to eq(expected)
     end
+    it 'should find the duration of the longest trip' do
+      expected = @trip4.duration
+      actual = Trip.longest_duration
+
+      expect(actual).to eq(expected)
+    end
   end
 end

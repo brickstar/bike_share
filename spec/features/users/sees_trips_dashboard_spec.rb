@@ -17,7 +17,10 @@ describe 'visits trips dashboard' do
     expect(page).to have_content("Average Duration: #{expected}")
   end
   it 'sees the longest trip' do
+    visits trips_dashboard_path
 
+    expected = Time.at(@trip4.duration).utc.strftime("%H:%M:%S")
+    expect(page).to have_content("Longest Trip: #{expected}")
   end
   it 'sees the shortest trip' do
 
