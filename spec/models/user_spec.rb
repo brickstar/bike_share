@@ -27,12 +27,12 @@ describe User, type: :model do
                          role: 1)
 
 
-      expect(user.role).to eq("admin")
+      expect(user.role).to eq('admin')
       expect(user.admin?).to eq(true)
     end
   end
 
-    it "can be created as a default user" do
+    it 'can be created as a default user' do
       user = User.create(first_name: 'pearl',
                          last_name: 'girl',
                          street: '9th ave',
@@ -43,7 +43,7 @@ describe User, type: :model do
                          password: 'love',
                          role: 0)
 
-      expect(user.role).to eq("default")
+      expect(user.role).to eq('default')
       expect(user.default?).to eq(true)
   end
 end

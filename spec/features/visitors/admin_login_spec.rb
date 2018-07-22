@@ -21,7 +21,7 @@ I see a link for "Logout"
 
 describe 'as an admin user' do
   it 'should login and land on /admin/dashboard' do
-    user = User.create( first_name: 'pearl',
+    admin = User.create( first_name: 'pearl',
                         last_name: 'girl',
                         street: '9th ave',
                         city: 'denver',
@@ -34,6 +34,9 @@ describe 'as an admin user' do
     visit '/'
 
     click_on 'Login'
+
+    expect(user.role).to eq('admin')
+    expect(user.admin?).to eq(true)
 
     fill_in :user_first_name, with: admin.first_name
     fill_in :user_last_name, with: admin.last_name
