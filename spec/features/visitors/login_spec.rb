@@ -19,6 +19,14 @@ I also see a link for "Logout".
 
 describe 'login workflow' do
   it 'allows a visitor to create an account and log in successfully' do
+    first_name = 'Jeff'
+    last_name = 'Casimir'
+    street = '123 Main Street'
+    city = 'Denver'
+    state = 'Colorado'
+    zip_code = '80304'
+    email = 'Jeff@Turing.com'
+    password = 'password'
 
     visit '/'
 
@@ -28,25 +36,25 @@ describe 'login workflow' do
 
     click_on 'Create Account'
 
-    fill_in :first_name, with: 'Jeff'
-    fill_in :last_name, with: 'Casimir'
-    fill_in :street, with: '123 Main Street'
-    fill_in :city, with: 'Denver'
-    fill_in :state, with: 'Colorado'
-    fill_in :zip_code, with: '80403'
-    fill_in :email, with: 'Jeff@Turing.com'
-    fill_in :password, with: 'password'
+    fill_in :user_first_name, with: first_name
+    fill_in :user_last_name, with: last_name
+    fill_in :user_street, with: street
+    fill_in :user_city, with: city
+    fill_in :user_state, with: state
+    fill_in :user_zip_code, with: zip_code
+    fill_in :user_email, with: email
+    fill_in :user_password, with: password
 
-    click_on 'Submit'
+    click_on 'Create User'
 
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content('Logged in as Jeff')
-    expect(page).to have_content('First Name: Jeff')
-    expect(page).to have_content('Last Name: Casimir')
-    expect(page).to have_content('Street: 123 Main Street')
-    expect(page).to have_content('City: Denver')
-    expect(page).to have_content('State: Colorado')
-    expect(page).to have_content('Zip Code: 80403')
+    expect(page).to have_content(first_name)
+    expect(page).to have_content(last_name)
+    expect(page).to have_content(street)
+    expect(page).to have_content(city)
+    expect(page).to have_content(state)
+    expect(page).to have_content(zip_code)
     expect(page).to have_content('Logout')
     expect(page).to_not have_content('Login')
   end
