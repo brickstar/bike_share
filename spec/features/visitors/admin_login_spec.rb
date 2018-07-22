@@ -41,3 +41,26 @@ describe 'an admin user' do
     expect(page).to_not have_content('Login')
   end
 end
+
+describe 'default user' do
+  it 'should not be able to see admin dashboard page' do
+    user = User.create!( first_name: 'barry',
+                         last_name: 'b',
+                         street: '9th ave',
+                         city: 'denver',
+                         state: 'CO',
+                         zip_code: '12345',
+                         email: 'barry@barry.com',
+                         password: 'barrybarry',
+                         role: 0 )
+   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+   visit admin_dashboard_path(user)
+
+   within('#admin-nav') do
+     expect(page).to_not have_content("Logged in as Admin User: #{user.first_name}")
+   end
+
+   expect(page).to have_content("The page you were looking for doesn't exist.")
+  end
+end
