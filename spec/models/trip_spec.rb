@@ -38,5 +38,11 @@ describe Trip, type: :model do
 
       expect(actual).to eq(expected)
     end
+    it 'should find the station name with the most starting trips' do
+      expected = @trip1.name
+      actual = Trip.station_most_starts
+
+      expect(actual).to eq(expected)
+    end
   end
 end
