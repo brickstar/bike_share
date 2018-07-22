@@ -22,4 +22,13 @@ class Trip < ApplicationRecord
   def self.shortest_duration
     minimum(:duration)
   end
+
+  def self.station_most_starts
+    group(:start_station_name)
+    .order('count_start_station_name desc')
+    .limit(1)
+    .count(:start_station_name)
+    .keys
+    .first
+  end
 end
