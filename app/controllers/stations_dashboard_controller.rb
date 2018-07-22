@@ -12,6 +12,3 @@ class StationsDashboardController < ApplicationController
     @oldest_station = Station.oldest
   end
 end
-
-
-  end

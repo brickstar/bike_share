@@ -46,5 +46,6 @@ describe Station, type: :model do
 
     it 'find oldest station' do
       expect(Station.oldest).to eq(@station_1)
+    end
   end
 end
