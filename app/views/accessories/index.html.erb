@@ -5,9 +5,9 @@
   <div id="accessory_<%= accessory.id %>">
     <li>Image tag placeholder</li>
     <li><%= accessory.title %></li>
-    <li><%= accessory.description %></li>
-    <li><%= accessory.price %></li>
-    <li><%= link_to 'Add to Cart (placeholder link path)', bike_shop_path %></li>
+    <li><%= link_to 'Add to Cart (placeholder link path)', accessories_path %></li>
   </div>
   <% end %>
 </ul>
+
+<%= paginate @accessories %>
