@@ -18,7 +18,7 @@ describe 'visits bike shop' do
     visit bike_shop_path
 
     expect(page).to have_content(accessory1.title)
-    within "#accessory_#{accessory_1.id}" do
+    within("#accessory_#{accessory1.id}") do
       expect(page).to have_content('Add to Cart')
     end
     expect(page).to have_content(accessory2.title)
@@ -31,7 +31,7 @@ describe 'visits bike shop' do
     expect(page).to have_content(accessory9.title)
     expect(page).to have_content(accessory10.title)
     expect(page).to have_content(accessory11.title)
-    within "#accessory_#{accessory_11.id}" do
+    within("#accessory_#{accessory11.id}") do
       expect(page).to have_content('Add to Cart')
     end
     expect(page).to have_content(accessory12.title)
