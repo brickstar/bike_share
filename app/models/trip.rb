@@ -11,4 +11,7 @@ class Trip < ApplicationRecord
                         :zip_code
   paginates_per 30
 
+  def self.average_duration
+    average(:duration)
+  end
 end
