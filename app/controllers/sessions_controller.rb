@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       if current_admin?
         redirect_to admin_dashboard_path(user)
-      elsif current_user
+      else
         redirect_to dashboard_path
       end
     else
