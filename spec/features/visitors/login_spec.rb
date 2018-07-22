@@ -1,22 +1,5 @@
 require 'rails_helper'
 
-=begin
-As a visitor,
-When I visit "/",
-I see a link for "Login",
-When I click "Login",
-I should be on the "/login" page,
-I see a link to "Create Account",
-When I click link "Create Account",
-I fill in my desired credentials,
-And I submit my information,
-My current page should be "/dashboard",
-I see a message in the navbar that says "Logged in as SOME_USER",
-I see my profile information,
-I do not see a link for "Login",
-I also see a link for "Logout".
-=end
-
 describe 'login workflow' do
   it 'allows visitor to create account, log in & log out successfully' do
     first_name = 'Jeff'
