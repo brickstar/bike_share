@@ -17,7 +17,7 @@ describe Station, type: :model do
     end
 
     it 'calculate total count of all stations' do
-      expect(Station.average_total_count).to eq(3)
+      expect(Station.total_count).to eq(3)
     end
 
     xit 'calculate average bikes per station' do
@@ -38,7 +38,7 @@ describe Station, type: :model do
     xit 'find oldest station' do
     end
 
-    xit 'find newest station' do 
+    xit 'find newest station' do
     end
 
   end

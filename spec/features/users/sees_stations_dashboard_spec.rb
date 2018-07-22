@@ -1,16 +1,5 @@
 require 'rails_helper'
 
-# As a registered user,
-# When I visit '/stations-dashboard',
-# I see the Total count of stations,
-# I see the Average bikes available per station (based on docks),
-# I see the Most bikes available at a station (based on docks),
-# I see the Station(s) where the most bikes are available (based on docks),
-# I see the Fewest bikes available at a station (based on docks),
-# I see the Station(s) where the fewest bikes are available (based on docks),
-# I see the Most recently installed station,
-# I also see the Oldest station.
-
 xdescribe 'visiting the /stations-dashboard' do
   before :each do
     station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: 8/6/2013)

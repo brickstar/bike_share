@@ -7,4 +7,8 @@ class Station < ApplicationRecord
   def generate_slug
     self.slug = name.parameterize
   end
+
+  def self.total_count
+    count
+  end
 end
