@@ -1,23 +1,23 @@
 <h1>Station's Dashboard</h1></br>
 
 <p>Total Number of Stations: <%= @stations_total_count %><p>
-
+</br>
 <p>Average Bikes Available per Station: <%= @stations_average_bikes.round %><p>
-
+</br>
 <p>Inventory Level (Low): <%= @stations_lowest_bike_total %></p>
-<p>Lowest Inventory: <% @stations_with_lowest_inventory.each do |station| %>
-<p><%= station.name %></p></br>
+<p>Stations with Lowest Inventory: <% @stations_with_lowest_inventory.each do |station| %>
+<p><%= station.name %></p>
 <% end %>
-
+</br>
 <p>Inventory Level (High): <%= @stations_highest_bike_total %></p>
-<p>Highest Inventory: <% @stations_with_highest_inventory.each do |station| %>
-<p><%= station.name %></p></br>
+<p>Stations with Highest Inventory: <% @stations_with_highest_inventory.each do |station| %>
+<p><%= station.name %></p>
 <% end %>
-
+</br>
 <p>Newest Stations: <% @newest_stations.each do |station| %>
-<%= station.name %></p></br>
+<p><%= station.name %></p>
 <% end %>
-
+</br>
 <p>Oldest Stations: <% @oldest_stations.each do |station| %>
-<%= station.name %></p></br>
+<p><%= station.name %></p>
 <% end %>
