@@ -15,7 +15,7 @@ describe 'visits bike shop' do
     accessory11 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test11', description: 'this is a test', price: 4, status: 1)
     accessory12 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test12', description: 'this is a test', price: 4, status: 1)
 
-    visit bike_shop_path
+    visit accessories_path
 
     expect(page).to have_content(accessory1.title)
     within("#accessory_#{accessory1.id}") do
