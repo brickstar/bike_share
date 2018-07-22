@@ -31,4 +31,13 @@ class Trip < ApplicationRecord
     .keys
     .first
   end
+
+  def self.station_most_ends
+    group(:end_station_name)
+    .order('count_end_station_name desc')
+    .limit(1)
+    .count(:end_station_name)
+    .keys
+    .first
+  end
 end
