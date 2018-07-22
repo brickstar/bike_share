@@ -18,4 +18,8 @@ class Trip < ApplicationRecord
   def self.longest_duration
     maximum(:duration)
   end
+
+  def self.shortest_duration
+    minimum(:duration)
+  end
 end
