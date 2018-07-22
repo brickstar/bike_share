@@ -1,7 +1,6 @@
 class StationsDashboardController < ApplicationController
 
   def index
-    @stations = Station.all
     @stations_total_count = Station.total_count
     @stations_average_bikes = Station.average_bikes_per_station
     @stations_highest_bike_total = Station.highest_bike_total

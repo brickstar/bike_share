@@ -12,11 +12,11 @@ describe 'visiting the /stations-dashboard' do
     expect(page).to have_content("Total Number of Stations: #{Station.total_count}")
   end
 
-  xit 'sees average bikes available per station' do
-    expect(page).to have_content("Average Bikes Available per Station: #{Station.avg_bikes_per_station}")
+  it 'sees average bikes available per station' do
+    expect(page).to have_content("Average Bikes Available per Station: #{Station.average_bikes_per_station}")
   end
 
-  xit 'sees most bikes available at a station' do
+  it 'sees most bikes available at a station' do
     expect(page).to have_content("Highest Bike Count: #{Station.highest_bike_total}")
   end
 
