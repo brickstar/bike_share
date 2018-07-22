@@ -33,13 +33,13 @@ describe User, type: :model do
   end
 
     it 'can be created as a default user' do
-      user = User.create!(first_name: 'pearl',
-                         last_name: 'girl',
+      user = User.create!(first_name: 'heidi',
+                         last_name: 'b',
                          street: '9th ave',
                          city: 'denver',
                          state: 'CO',
                          zip_code: '12345',
-                         email: 'pearl@pearl.com',
+                         email: 'heidi@heidi.com',
                          password: 'lovelove',
                          role: 0)
 
