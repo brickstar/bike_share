@@ -24,10 +24,12 @@ describe Station, type: :model do
       expect(Station.average_bikes_per_station).to eq(5)
     end
 
-    xit 'calculate most bikes available' do
+    it 'calculate most bikes available' do
+      expect(Station.most_bikes_total).to eq(6)
     end
 
-    xit 'calculate fewest bikes available' do
+    it 'calculate fewest bikes available' do
+      expect(Station.most_bikes_total).to eq(6)
     end
 
     xit 'find station with most bikes available' do

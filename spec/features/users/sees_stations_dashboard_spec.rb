@@ -16,7 +16,7 @@ xdescribe 'visiting the /stations-dashboard' do
   end
 
   xit 'sees most bikes available at a station' do
-    expect(page).to have_content("Most Bikes Available Count: #{Station.num_most_bikes_available}")
+    expect(page).to have_content("Most Bikes Available Count: #{Station.most_bikes_total}")
   end
 
   xit 'sees the station that has the most bikes available' do
@@ -24,7 +24,7 @@ xdescribe 'visiting the /stations-dashboard' do
   end
 
   xit 'sees fewest bikes available at a station' do
-    expect(page).to have_content("Fewest Bikes Available Count: #{Station.num_least_bikes_available}")
+    expect(page).to have_content("Fewest Bikes Available Count: #{Station.fewest_bikes_total}")
   end
 
   xit 'sees the station that has the fewest bikes available' do
