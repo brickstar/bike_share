@@ -6,6 +6,7 @@ describe 'visiting the /stations-dashboard' do
     station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: 8/16/2014)
     station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 6, installation_date: 1/23/2016)
     visit stations_dashboard_path
+    save_and_open_page
   end
 
   it 'sees a total count of stations' do
@@ -20,23 +21,23 @@ describe 'visiting the /stations-dashboard' do
     expect(page).to have_content("Highest Bike Count: #{Station.highest_bike_total}")
   end
 
-  xit 'sees the station that has the most bikes available' do
+  it 'sees the station that has the most bikes available' do
     expect(page).to have_content("Station with Most Bikes Available: #{Station.with_highest_inventory}")
   end
 
-  xit 'sees fewest bikes available at a station' do
+  it 'sees fewest bikes available at a station' do
     expect(page).to have_content("Lowest Bike Count: #{Station.lowest_bike_total}")
   end
 
-  xit 'sees the station that has the fewest bikes available' do
-    expect(page).to have_content("Station with Least Bikes Available: #{Station.with_lowest_inventory}")
+  it 'sees the station that has the fewest bikes available' do
+    expect(page).to have_content("Station with Fewest Bikes Available: #{Station.with_lowest_inventory}")
   end
 
-  xit 'sees the newest station' do
+  it 'sees the newest station' do
     expect(page).to have_content("Newest Station: #{Station.newest}")
   end
 
-  xit 'sees the oldest station' do
+  it 'sees the oldest station' do
     expect(page).to have_content("Oldest Station: #{Station.oldest}")
   end
 end
