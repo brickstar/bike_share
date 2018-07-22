@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'an admin user' do
   it 'should land on /admin/dashboard after login,
       and see their name in navbar and profile information' do
-    admin = User.create!(first_name: 'pearl',
+    admin = User.create(first_name: 'pearl',
                          last_name: 'girl',
                          street: '9th ave',
                          city: 'denver',
