@@ -20,9 +20,47 @@ I see a link for "Logout"
 =end
 
 describe 'as an admin user' do
-  describe 'visits root path and sees login link' do
-    describe 'links to login form' do
+  it 'should login and land on /admin/dashboard' do
+    user = User.create( first_name: 'pearl',
+                        last_name: 'girl',
+                        street: '9th ave',
+                        city: 'denver',
+                        state: 'CO',
+                        zip_code: '12345',
+                        email: 'www.pearl.com',
+                        password: 'love',
+                        role: 1 )
 
+    visit '/'
+
+    click_on 'Login'
+
+    fill_in :user_first_name, with: admin.first_name
+    fill_in :user_last_name, with: admin.last_name
+    fill_in :user_street, with: admin.street
+    fill_in :user_city, with: admin.city
+    fill_in :user_state, with: admin.state
+    fill_in :user_zip_code, with: admin.zip_code
+    fill_in :user_email, with: admin.email
+    fill_in :user_password, with: admin.password
+
+    click_on 'Login'
+
+    expect(current_path).to eq('/admin/dashboard')
+
+    within('nav') do
+      expect(page).to have_content("Logged in as Admin User: #{user.first_name user.last_name}")
     end
+
+    expect(page).to have_content(user.first_name)
+    expect(page).to have_content(user.last_name)
+    expect(page).to have_content(user.street)
+    expect(page).to have_content(user.city)
+    expect(page).to have_content(user.state)
+    expect(page).to have_content(user.zip_code)
+    expect(page).to have_content(user.email)
+
+    expect(page).to have_content('Logout')
+    expect(page).to_not have_content('Login')
   end
 end
