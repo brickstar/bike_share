@@ -44,7 +44,7 @@ end
 
 describe 'default user' do
   it 'should not be able to see admin dashboard page' do
-    user = User.create!( first_name: 'barry',
+    user = User.create( first_name: 'barry',
                          last_name: 'b',
                          street: '9th ave',
                          city: 'denver',
