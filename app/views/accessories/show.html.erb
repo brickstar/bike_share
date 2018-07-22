@@ -4,5 +4,9 @@
   <li>Image tag placeholder</li>
   <li><%= @accessory.description %></li>
   <li><%= number_to_currency(@accessory.price) %></li>
-  <li><%= link_to 'Add to Cart (placeholder link path)', accessories_path %></li>
+  <% if @accessory.active? %>
+    <li><%= link_to 'Add to Cart (placeholder link path)', accessories_path %></li>
+  <% else %>
+    <li>Accessory Retired</li>
+  <% end %>
 </ul>
