@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180722031933) do
     t.string "title"
     t.string "description"
     t.float "price"
-    t.integer "status"
+    t.integer "status", default: 1
   end
 
   create_table "conditions", force: :cascade do |t|
