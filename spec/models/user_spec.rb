@@ -16,7 +16,7 @@ describe User, type: :model do
   describe 'roles' do
     it 'can be created as an admin' do
 
-      user = User.create!(first_name: 'pearl',
+      user = User.create(first_name: 'pearl',
                          last_name: 'girl',
                          street: '9th ave',
                          city: 'denver',
