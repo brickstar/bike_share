@@ -11,16 +11,17 @@ describe Station, type: :model do
 
   describe "class methods" do
     before :each do
-      Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: 8/6/2013)
-      Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 17, installation_date: 8/16/2014)
-      Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 27, installation_date: 1/23/2013)
+      Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: 8/6/2013)
+      Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: 8/16/2014)
+      Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 4, installation_date: 1/23/2013)
     end
 
     it 'calculate total count of all stations' do
       expect(Station.total_count).to eq(3)
     end
 
-    xit 'calculate average bikes per station' do
+    it 'calculate average bikes per station' do
+      expect(Station.average_bikes_per_station).to eq(5)
     end
 
     xit 'calculate most bikes available' do
