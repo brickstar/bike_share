@@ -10,6 +10,11 @@
 
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
+      <div id="admin-nav">
+        <% if current_admin? %>
+          Logged in as Admin User: <%= current_user.first_name %>
+        <% end %>
+      </div>
     </div>
   </nav>
 

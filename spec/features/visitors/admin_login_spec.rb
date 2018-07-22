@@ -19,18 +19,18 @@ I see a link for "Logout"
 
 =end
 
-describe 'as an admin user' do
-  it 'should login and land on /admin/dashboard,
-        see flash message and profile information' do
-    admin = User.create!( first_name: 'pearl',
-                        last_name: 'girl',
-                        street: '9th ave',
-                        city: 'denver',
-                        state: 'CO',
-                        zip_code: '12345',
-                        email: 'pearl@pearl.com',
-                        password: 'lovelove',
-                        role: 1 )
+describe 'an admin user' do
+  it 'should land on /admin/dashboard after login,
+      and see their name in navbar and profile information' do
+    admin = User.create!(first_name: 'pearl',
+                         last_name: 'girl',
+                         street: '9th ave',
+                         city: 'denver',
+                         state: 'CO',
+                         zip_code: '12345',
+                         email: 'pearl@pearl.com',
+                         password: 'lovelove',
+                         role: 1 )
 
     visit login_path
 
@@ -44,8 +44,8 @@ describe 'as an admin user' do
 
     expect(current_path).to eq(admin_dashboard_path(admin))
 
-    within('nav') do
-      expect(page).to have_content("Logged in as Admin User: #{admin.first_name admin.last_name}")
+    within('#admin-nav') do
+      expect(page).to have_content("Logged in as Admin User: #{admin.first_name}")
     end
 
     expect(page).to have_content(admin.first_name)
