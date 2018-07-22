@@ -45,8 +45,7 @@ describe 'login workflow' do
     fill_in :user_email, with: email
     fill_in :user_password, with: password
 
-    click_on 'Create User'
-
+    click_on 'Create Account'
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content('Logged in as Jeff')
     expect(page).to have_content(first_name)
