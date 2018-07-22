@@ -35,6 +35,9 @@ describe 'visits trips dashboard' do
     expect(page).to have_content("Station with Most Starting Trips: #{expected}")
   end
   it 'sees the station with the most rides as an ending place' do
+    visit trips_dashboard_path
 
+    expected = @trip4.end_station_name
+    expect(page).to have_content("Station with Most Ending Trips: #{expected}")
   end
 end

@@ -44,5 +44,11 @@ describe Trip, type: :model do
 
       expect(actual).to eq(expected)
     end
+    it 'should find the station name with the most ending trips' do
+      expected = @trip4.end_station_name
+      actual = Trip.station_most_end
+
+      expect(actual).to eq(expected)
+    end
   end
 end
