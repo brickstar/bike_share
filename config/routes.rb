@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get '/dashboard', to: 'dashboard#show'
-  get '/trips-dashboard', to: 'tripsdashboard#index'
+  get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/bike-shop', to: 'accessories#index'
   get '/bike-shop/:id', to: 'accessories#show'
   resources :accessories, only: [:index, :show], path: 'bikeshop'
