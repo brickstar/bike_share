@@ -1,1 +1,14 @@
+ <p> Logged in as <%= current_user.first_name %> </p>
 
+ <h3>Account Profile:</h3>
+ <h4> First Name: <%= current_user.first_name %> </h4>
+ <h4> Last Name: <%= current_user.last_name %> </h4>
+ <h4> Street: <%= current_user.street %> </h4>
+ <h4> City: <%= current_user.city %> </h4>
+ <h4> State: <%= current_user.state %> </h4>
+ <h4> Zip Code: <%= current_user.zip_code %> </h4>
+ <h4> Email: <%= current_user.email %> </h4>
+ <h4> Password: <%= current_user.password %> </h4>
+
+
+<%= link_to 'Logout', logout_path, method: :destroy  %>
