@@ -8,7 +8,7 @@ CSV.foreach('./../sf-bay-area-bike-share/trip.csv', headers: true, header_conver
   if index%149 == 0
     formatted_start_date = DateTime.strptime row[2], '%m/%d/%Y %H:%M'
     formatted_end_date = DateTime.strptime row[2], '%m/%d/%Y %H:%M'
-    Trip.create(id:row[0], duration:row[1], start_date:formatted_start_date, start_station_name:row[3], start_station_id:row[4], end_date:formatted_end_date, end_station_name:row[6], end_station_id:row[7], bike_id:row[8], subscription_type:row[9], zip_code:row[10], )
+    Trip.create(id:row[0], duration:row[1], start_date:formatted_start_date, start_station_name:row[3], start_station_id:row[4], end_date:formatted_end_date, end_station_name:row[6], end_station_id:row[7], bike_id:row[8], subscription_type:row[9], zip_code:row[10])
   end
 end
 
