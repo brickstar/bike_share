@@ -1,28 +1,28 @@
 <%= form_for @user do |f| %>
 
-  <%= label :first_name%>
-  <%= text_field :first_name%>
+  <%= f.label :first_name%>
+  <%= f.text_field :first_name%>
 
-  <%= label :last_name%>
-  <%= text_field :last_name%>
+  <%= f.label :last_name%>
+  <%= f.text_field :last_name%>
 
-  <%= label :street%>
-  <%= text_field :street%>
+  <%= f.label :street%>
+  <%= f.text_field :street%>
 
-  <%= label :city%>
-  <%= text_field :city%>
+  <%= f.label :city%>
+  <%= f.text_field :city%>
 
-  <%= label :state%>
-  <%= text_field :state%>
+  <%= f.label :state%>
+  <%= f.text_field :state%>
 
-  <%= label :zip_code%>
-  <%= text_field :zip_code%>
+  <%= f.label :zip_code%>
+  <%= f.text_field :zip_code%>
 
-  <%= label :email%>
-  <%= text_field :email%>
+  <%= f.label :email%>
+  <%= f.text_field :email%>
 
-  <%= label :password%>
-  <%= password_field :password%>
+  <%= f.label :password%>
+  <%= f.password_field :password%>
 
 <%= f.submit %>
 <% end %>
