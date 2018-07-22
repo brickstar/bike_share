@@ -11,8 +11,8 @@ require 'rails_helper'
 # I see the Most recently installed station,
 # I also see the Oldest station.
 
-describe 'visiting the /stations-dashboard' do
-  xbefore :each do
+xdescribe 'visiting the /stations-dashboard' do
+  before :each do
     station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: 8/6/2013)
     station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 17, installation_date: 8/16/2014)
     station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 27, installation_date: 1/23/2013)
