@@ -12,4 +12,38 @@ describe User, type: :model do
     it { should validate_uniqueness_of(:email) }
     it { should validate_presence_of(:password) }
   end
+
+  describe 'roles' do
+    it 'can be created as an admin' do
+
+      user = User.create(first_name: 'pearl',
+                         last_name: 'girl',
+                         street: '9th ave',
+                         city: 'denver',
+                         state: 'CO',
+                         zip_code: '12345',
+                         email: 'www.pearl.com',
+                         password: 'love',
+                         role: 1)
+
+
+      expect(user.role).to eq("admin")
+      expect(user.admin?).to eq(true)
+    end
+  end
+
+    it "can be created as a default user" do
+      user = User.create(first_name: 'pearl',
+                         last_name: 'girl',
+                         street: '9th ave',
+                         city: 'denver',
+                         state: 'CO',
+                         zip_code: '12345',
+                         email: 'www.pearl.com',
+                         password: 'love',
+                         role: 0)
+
+      expect(user.role).to eq("default")
+      expect(user.default?).to eq(true)
+  end
 end
