@@ -32,5 +32,11 @@ describe Trip, type: :model do
 
       expect(actual).to eq(expected)
     end
+    it 'should find the duration of the shortest trip' do
+      expected = @trip1.duration
+      actual = Trip.shortest_duration
+
+      expect(actual).to eq(expected)
+    end
   end
 end

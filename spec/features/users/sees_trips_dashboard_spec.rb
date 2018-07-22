@@ -17,13 +17,16 @@ describe 'visits trips dashboard' do
     expect(page).to have_content("Average Duration: #{expected}")
   end
   it 'sees the longest trip' do
-    visits trips_dashboard_path
+    visit trips_dashboard_path
 
     expected = Time.at(@trip4.duration).utc.strftime("%H:%M:%S")
-    expect(page).to have_content("Longest Trip: #{expected}")
+    expect(page).to have_content("Longest Duration: #{expected}")
   end
   it 'sees the shortest trip' do
+    visit trips_dashboard_path
 
+    expected = Time.at(@trip1.duration).utc.strftime("%H:%M:%S")
+    expect(page).to have_content("Shortest Duration: #{expected}")
   end
   it 'sees the statoin with the most rides as a starting place' do
 
