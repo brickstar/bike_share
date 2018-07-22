@@ -21,7 +21,7 @@ describe 'visiting the /stations-dashboard' do
   end
 
   xit 'sees the station that has the most bikes available' do
-    expect(page).to have_content("Station with Most Bikes Available: #{Station.with_highest_bike_total}")
+    expect(page).to have_content("Station with Most Bikes Available: #{Station.with_highest_inventory}")
   end
 
   xit 'sees fewest bikes available at a station' do
@@ -29,7 +29,7 @@ describe 'visiting the /stations-dashboard' do
   end
 
   xit 'sees the station that has the fewest bikes available' do
-    expect(page).to have_content("Station with Least Bikes Available: #{Station.with_lowest_bike_total}")
+    expect(page).to have_content("Station with Least Bikes Available: #{Station.with_lowest_inventory}")
   end
 
   xit 'sees the newest station' do

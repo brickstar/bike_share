@@ -33,11 +33,11 @@ describe Station, type: :model do
     end
 
     it 'find station with highest bikes available' do
-      expect(Station.with_highest_bike_total).to eq(@station_1)
+      expect(Station.with_highest_inventory).to eq(@station_1)
     end
 
     it 'find station with lowest bikes available' do
-      expect(Station.with_lowest_bike_total).to eq(@station_3)
+      expect(Station.with_lowest_inventory).to eq(@station_3)
     end
 
     it 'find newest station' do
@@ -46,6 +46,5 @@ describe Station, type: :model do
 
     it 'find oldest station' do
       expect(Station.oldest).to eq(@station_1)
-    end
   end
 end

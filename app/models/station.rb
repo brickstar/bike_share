@@ -24,11 +24,11 @@ class Station < ApplicationRecord
     minimum(:dock_count)
   end
 
-  def self.with_highest_bike_total
+  def self.with_highest_inventory
     where(:dock_count == highest_bike_total).first
   end
 
-  def self.with_lowest_bike_total
+  def self.with_lowest_inventory
     where(:dock_count == lowest_bike_total).last
   end
 
