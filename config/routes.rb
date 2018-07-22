@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  root to: 'dashboard#index'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  get '/dashboard', to: 'dashboard#show'
 
-  resources :users
+
+  resources :users, only: [:new, :create, :show]
 
   resources :stations
 
