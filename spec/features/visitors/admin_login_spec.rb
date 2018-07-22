@@ -20,48 +20,41 @@ I see a link for "Logout"
 =end
 
 describe 'as an admin user' do
-  it 'should login and land on /admin/dashboard' do
-    admin = User.create( first_name: 'pearl',
+  it 'should login and land on /admin/dashboard,
+        see flash message and profile information' do
+    admin = User.create!( first_name: 'pearl',
                         last_name: 'girl',
                         street: '9th ave',
                         city: 'denver',
                         state: 'CO',
                         zip_code: '12345',
-                        email: 'www.pearl.com',
-                        password: 'love',
+                        email: 'pearl@pearl.com',
+                        password: 'lovelove',
                         role: 1 )
 
-    visit '/'
+    visit login_path
+
+    fill_in :email, with: admin.email
+    fill_in :password, with: admin.password
+
+    expect(admin.role).to eq('admin')
+    expect(admin.admin?).to eq(true)
 
     click_on 'Login'
 
-    expect(user.role).to eq('admin')
-    expect(user.admin?).to eq(true)
-
-    fill_in :user_first_name, with: admin.first_name
-    fill_in :user_last_name, with: admin.last_name
-    fill_in :user_street, with: admin.street
-    fill_in :user_city, with: admin.city
-    fill_in :user_state, with: admin.state
-    fill_in :user_zip_code, with: admin.zip_code
-    fill_in :user_email, with: admin.email
-    fill_in :user_password, with: admin.password
-
-    click_on 'Login'
-
-    expect(current_path).to eq('/admin/dashboard')
+    expect(current_path).to eq(admin_dashboard_path(admin))
 
     within('nav') do
       expect(page).to have_content("Logged in as Admin User: #{admin.first_name admin.last_name}")
     end
 
-    expect(page).to have_content(user.first_name)
-    expect(page).to have_content(user.last_name)
-    expect(page).to have_content(user.street)
-    expect(page).to have_content(user.city)
-    expect(page).to have_content(user.state)
-    expect(page).to have_content(user.zip_code)
-    expect(page).to have_content(user.email)
+    expect(page).to have_content(admin.first_name)
+    expect(page).to have_content(admin.last_name)
+    expect(page).to have_content(admin.street)
+    expect(page).to have_content(admin.city)
+    expect(page).to have_content(admin.state)
+    expect(page).to have_content(admin.zip_code)
+    expect(page).to have_content(admin.email)
 
     expect(page).to have_content('Logout')
     expect(page).to_not have_content('Login')

@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
-  
+  namespace :admin do
+    resources :dashboard, only: [:show]
+  end
 
   get '/:station_name', to: 'stations#show'
 
