@@ -32,12 +32,20 @@ class Station < ApplicationRecord
     where(dock_count: lowest_bike_total)
   end
 
+  def self.old_date
+    maximum(:installation_date)
+  end
+
+  def self.new_date
+    minimum(:installation_date)
+  end
+
   def self.newest
-    order(installation_date: :asc)
+    where(installation_date: new_date)
   end
 
   def self.oldest
-    order(installation_date: :asc)
+    where(installation_date: old_date)
   end
 
 end
