@@ -11,9 +11,9 @@ describe Station, type: :model do
 
   describe "class methods" do
     before :each do
-      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: 8/6/2013)
-      @station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: 8/16/2014)
-      @station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 4, installation_date: 1/23/2013)
+      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: '8/6/2013')
+      @station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: '8/16/2014')
+      @station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 4, installation_date: '1/23/2016')
     end
 
     it 'calculate total count of all stations' do
@@ -32,19 +32,20 @@ describe Station, type: :model do
       expect(Station.fewest_bikes_total).to eq(4)
     end
 
-    it 'find station with most bikes available' do
+    it 'find station with highest bikes available' do
       expect(Station.highest_bike_count).to eq(@station_1)
     end
 
-    xit 'find station with least bikes available' do
-      expect(Station.lowest_bike_count).to eq(@station_2)
+    it 'find station with lowest bikes available' do
+      expect(Station.lowest_bike_count).to eq(@station_3)
     end
 
-    xit 'find oldest station' do
+    it 'find newest station' do
+      expect(Station.newest).to eq(@station_3)
     end
 
-    xit 'find newest station' do
+    it 'find oldest station' do
+      expect(Station.oldest).to eq(@station_1)
     end
-
   end
 end
