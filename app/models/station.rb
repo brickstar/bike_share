@@ -25,19 +25,19 @@ class Station < ApplicationRecord
   end
 
   def self.with_highest_inventory
-    where(:dock_count == highest_bike_total).first
+    where(dock_count: highest_bike_total)
   end
 
   def self.with_lowest_inventory
-    where(:dock_count == lowest_bike_total).last
+    where(dock_count: lowest_bike_total)
   end
 
   def self.newest
-    order(installation_date: :asc).first
+    order(installation_date: :asc)
   end
 
   def self.oldest
-    order(installation_date: :asc).last
+    order(installation_date: :asc)
   end
 
 end
