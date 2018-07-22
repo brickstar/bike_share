@@ -44,5 +44,15 @@ describe 'login workflow' do
     expect(current_path).to eq(root_path)
     expect(page).to have_content('Login')
     expect(page).to_not have_content('logout')
+
+    click_on 'Login'
+    expect(current_path).to eq('/login')
+
+    fill_in 'Email', with: email
+    fill_in 'Password', with: password
+
+    click_on 'Login'
+    expect(current_path).to eq('/dashboard')
+    expect(page).to have_content('Logged in as Jeff')
   end
 end

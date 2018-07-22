@@ -6,7 +6,6 @@ describe 'visiting the /stations-dashboard' do
     station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: '8/16/2014')
     station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 6, installation_date: '1/23/2016')
     visit stations_dashboard_path
-    save_and_open_page
   end
 
   it 'sees a total count of stations' do
