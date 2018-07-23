@@ -1,19 +1,5 @@
 require 'rails_helper'
 
-=begin
-As a visitor,
-When I visit a condition show,
-I see all attributes for that condition. (Date, Max Temperature,
-                                          Mean Temperature,
-                                          Min Temperature,
-                                          Mean Humidity,
-                                          Mean Visibility (in Miles),
-                                          Mean Wind Speed (mph),
-                                          Precipitation (inches))
-
-** All Attributes must be present **
-=end
-
 describe 'visits condition show' do
   it 'should see all condition attributes' do
     condition = Condition.create( date: 'Tue, 04 Aug 2015',

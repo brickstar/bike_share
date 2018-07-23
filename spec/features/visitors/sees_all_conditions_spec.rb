@@ -1,12 +1,5 @@
 require 'rails_helper'
 
-=begin
-As a visitor,
-When I visit the conditions index,
-I see all conditions (Date, Max Temperature, Mean Temperature, Min Temperature, Mean Humidity, Mean Visibility (in Miles), Mean Wind Speed (mph), Precipitation (inches))
-** All Attributes must be present **
-=end
-
 describe 'visiting the conditions index' do
   it 'sees a list of all conditions' do
     condition_1 = Condition.create(date: 'Tue, 04 Aug 2015', max_temp: 74.0, mean_temp: 68.0, min_temp: 61.0, mean_humidity: 61.0, mean_visibility: 58.0 , mean_wind_speed: 56.0, precipitation: 93.0)
