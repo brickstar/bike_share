@@ -50,7 +50,7 @@ describe 'visits trips dashboard' do
     total2016rides = Trip.where('extract(year  from start_date) = ?', '2016').count
     jul2016rides = Trip.where('extract(year  from start_date) = ? AND extract(month  from start_date) = ?', '2016', '07').count
     sept2016rides = Trip.where('extract(year  from start_date) = ? AND extract(month  from start_date) = ?', '2016', '09').count
-
+    r
     expect(page).to have_content("Breakdown of Rides per Month for each Year:")
     expect(page).to have_content("#{@trip1.start_date.year} (#{total2015rides} Total Rides):")
     expect(page).to have_content("January: #{jan2015rides}")

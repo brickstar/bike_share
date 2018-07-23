@@ -15,10 +15,10 @@ describe Trip, type: :model do
   end
   describe 'class methods' do
     before :each do
-      @trip1 = Trip.create(duration: 120, start_date: '12/12/2015 12:12', start_station_name: 'Test Station 2', start_station_id: 2, end_date: '12/12/2015 12:42', end_station_name: 'Test Station 4', end_station_id: 4, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
-      @trip2 = Trip.create(duration: 130, start_date: '12/12/2015 12:12', start_station_name: 'Test Station 1', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
-      @trip3 = Trip.create(duration: 140, start_date: '12/12/2015 12:12', start_station_name: 'Test Station 1', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
-      @trip4 = Trip.create(duration: 150, start_date: '12/12/2015 12:12', start_station_name: 'Test Station 1', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+      @trip1 = Trip.create!(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 2', start_station_id: 2, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
+      @trip2 = Trip.create!(duration: 130, start_date: DateTime.strptime('10/13/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('10/13/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+      @trip3 = Trip.create!(duration: 140, start_date: DateTime.strptime('07/14/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('07/14/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+      @trip4 = Trip.create!(duration: 150, start_date: DateTime.strptime('09/12/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('09/12/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
     end
     it 'should calculate the average duration of all trips' do
       expected = (@trip1.duration + @trip2.duration + @trip3.duration + @trip4.duration) / 4
@@ -47,6 +47,37 @@ describe Trip, type: :model do
     it 'should find the station name with the most ending trips' do
       expected = @trip4.end_station_name
       actual = Trip.station_most_ends
+
+      expect(actual).to eq(expected)
+    end
+    it 'should create a hash with each month as a key and number of rides as value' do
+      expected = {
+                  Jan 2015: 0
+                  Feb 2015: 0
+                  Mar 2015: 0
+                  Apr 2015: 0
+                  May 2015: 0
+                  Jun 2015: 0
+                  Jul 2015: 0
+                  Aug 2015: 0
+                  Sept 2015: 0
+                  Oct 2015: 2
+                  Nov 2015: 0
+                  Dec 2015: 0
+                  Jan 2016: 0
+                  Feb 2016: 0
+                  Mar 2016: 0
+                  Apr 2016: 0
+                  May 2016: 0
+                  Jun 2016: 0
+                  Jul 2016: 1
+                  Aug 2016: 0
+                  Sept 2016: 1
+                  Oct 2016: 0
+                  Nov 2016: 0
+                  Dec 2016: 0
+      }
+      actual = Trip.breakdown_by_month
 
       expect(actual).to eq(expected)
     end

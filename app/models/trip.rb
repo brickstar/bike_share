@@ -40,4 +40,9 @@ class Trip < ApplicationRecord
     .keys
     .first
   end
+
+  # def self.breakdown_by_month
+  #   .group()
+  #   .select()
+  # end
 end

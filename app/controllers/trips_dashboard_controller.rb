@@ -1,9 +1,10 @@
 class TripsDashboardController < ApplicationController
   def index
-    @average_duration = Time.at(Trip.average_duration).utc.strftime("%H:%M:%S")
-    @longest_duration = Time.at(Trip.longest_duration).utc.strftime("%H:%M:%S")
-    @shortest_duration = Time.at(Trip.shortest_duration).utc.strftime("%H:%M:%S")
+    @average_duration = Trip.average_duration
+    @longest_duration = Trip.longest_duration
+    @shortest_duration = Trip.shortest_duration
     @station_most_starts = Trip.station_most_starts
     @station_most_ends = Trip.station_most_ends
+    # @breakdown_by_month = Trip.breakdown_by_month
   end
 end
