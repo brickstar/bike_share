@@ -1,12 +1,5 @@
 require 'rails_helper'
 
-=begin
-As a visitor,
-When I visit the stations index,
-I see all stations (name, dock count, city, installation date)
-** All Attributes must be present **
-=end
-
 describe 'visiting the stations index' do
   it 'sees a list of all stations' do
     station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: 8/6/2013)
