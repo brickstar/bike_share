@@ -5,6 +5,7 @@ class TripsDashboardController < ApplicationController
     @shortest_duration = Trip.shortest_duration
     @station_most_starts = Trip.station_most_starts
     @station_most_ends = Trip.station_most_ends
+    # @breakdown_by_year = Trip.breakdown_by_year
     # @breakdown_by_month = Trip.breakdown_by_month
   end
 end
