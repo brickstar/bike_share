@@ -1,18 +1,5 @@
 require 'rails_helper'
 
-=begin
-As a registered user,
-When I visit a station show,
-In addition to the user story above,
-I see the Number of rides started at this station,
-I see the Number of rides ended at this station,
-I see the Most frequent destination station (for rides that began at this station),
-I see the Most frequent origination station (for rides that ended at this station),
-I see the Date with the highest number of trips started at this station,
-I see the Most frequent zip code for users starting trips at this station,
-I see the Bike ID most frequently starting a trip at this station.
-=end
-
 describe 'station show page' do
   it 'sees station analysis' do
     before :each do
@@ -24,6 +11,25 @@ describe 'station show page' do
       @station_6 = Station.create(name: 'Market at 28th', city: 'San Francisco', dock_count: 4, installation_date: '12/23/2015')
     end
 
+    it 'can see the number of rides started here' do 
+    end
 
+    it 'can see the number of rides ended here' do
+    end
+
+    it 'can see the most frequent destination station for rides that begin here'
+    end
+
+    it 'can see the most frequent origination station for rides that end here'
+    end
+
+    it 'can see the date with the highest number of trips started here'
+    end
+
+    it 'can see the most frequent zip code for users starting trips here'
+    end
+
+    it 'can see the Bike ID that most frequently starts a trip here'
+    end
   end
 end
