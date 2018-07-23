@@ -41,8 +41,11 @@ class Trip < ApplicationRecord
     .first
   end
 
-  # def self.breakdown_by_month
-  #   .group()
-  #   .select()
-  # end
+  def self.breakdown_by_month
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.breakdown_by_year
+    group("DATE_TRUNC('year', start_date)").count
+  end
 end

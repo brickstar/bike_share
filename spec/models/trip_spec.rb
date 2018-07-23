@@ -51,31 +51,11 @@ describe Trip, type: :model do
       expect(actual).to eq(expected)
     end
     it 'should create a hash with each month as a key and number of rides as the value' do
+
       expected = {
-                  Jan 2015: 0,
-                  Feb 2015: 0,
-                  Mar 2015: 0,
-                  Apr 2015: 0,
-                  May 2015: 0,
-                  Jun 2015: 0,
-                  Jul 2015: 0,
-                  Aug 2015: 0,
-                  Sept 2015: 0,
-                  Oct 2015: 2,
-                  Nov 2015: 0,
-                  Dec 2015: 0,
-                  Jan 2016: 0,
-                  Feb 2016: 0,
-                  Mar 2016: 0,
-                  Apr 2016: 0,
-                  May 2016: 0,
-                  Jun 2016: 0,
-                  Jul 2016: 1,
-                  Aug 2016: 0,
-                  Sept 2016: 1,
-                  Oct 2016: 0,
-                  Nov 2016: 0,
-                  Dec 2016: 0
+                  Time.parse('2015-10-01').utc.midnight => 2,
+                  Time.parse('2016-07-01').utc.midnight => 1,
+                  Time.parse('2016-09-01').utc.midnight => 1
                   }
       actual = Trip.breakdown_by_month
 
@@ -83,8 +63,8 @@ describe Trip, type: :model do
     end
     it 'should create a hash with each year as a key and number of rides as the value' do
       expected = {
-                  2015: 2,
-                  2016: 2
+                  Time.parse('2015-01-01').utc.midnight => 2,
+                  Time.parse('2016-01-01').utc.midnight => 2
                   }
       actual = Trip.breakdown_by_year
 
