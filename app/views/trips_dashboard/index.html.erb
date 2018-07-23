@@ -22,6 +22,18 @@
 
 <br>
 
-<p>Breakdown of Rides per Month for each Year:</p>
+<p>Breakdown of Rides per Year:</p>
 <ul>
+  <% @breakdown_by_year.sort.each do |year, rides| %>
+    <li><%= year.strftime('%Y') %>: <%= rides %> rides</li>
+  <% end %>
+</ul>
+
+<br>
+
+<p>Breakdown of Rides per Month:</p>
+<ul>
+  <% @breakdown_by_month.sort.each do |month, rides| %>
+    <li><%= month.strftime('%b %Y') %>: <%= rides %> rides</li>
+  <% end %>
 </ul>

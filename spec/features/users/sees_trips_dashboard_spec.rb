@@ -41,27 +41,25 @@ describe 'visits trips dashboard' do
     expected = @trip4.end_station_name
     expect(page).to have_content("Station with Most Ending Trips: #{expected}")
   end
-  it 'sees the breakdown of trips per month for each year' do
+  it 'sees the breakdown of trips per month' do
     visit trips_dashboard_path
 
-    total2015rides = Trip.where('extract(year  from start_date) = ?', '2015').count
     jan2015rides = Trip.where('extract(year  from start_date) = ? AND extract(month  from start_date) = ?', '2015', '01').count
     oct2015rides = Trip.where('extract(year  from start_date) = ? AND extract(month  from start_date) = ?', '2015', '10').count
-    total2016rides = Trip.where('extract(year  from start_date) = ?', '2016').count
     jul2016rides = Trip.where('extract(year  from start_date) = ? AND extract(month  from start_date) = ?', '2016', '07').count
     sept2016rides = Trip.where('extract(year  from start_date) = ? AND extract(month  from start_date) = ?', '2016', '09').count
 
-    expect(page).to have_content("Breakdown of Rides per Month for each Year:")
-    expect(page).to have_content("#{@trip1.start_date.year} (#{total2015rides} Total Rides):")
-    expect(page).to have_content("January: #{jan2015rides}")
-    expect(page).to have_content("October: #{oct2015rides}")
-    expect(page).to have_content("#{@trip4.start_date.year} (#{total2016rides} Total Rides):")
-    expect(page).to have_content("July: #{jul2016rides}")
-    expect(page).to have_content("September: #{sept2016rides}")
+    expect(page).to have_content("Oct 2015: #{oct2015rides} rides")
+    expect(page).to have_content("Jul 2016: #{jul2016rides} rides")
+    expect(page).to have_content("Sep 2016: #{sept2016rides} rides")
   end
   it 'sees the total number of trips for each year' do
     visit trips_dashboard_path
 
+    total2015rides = Trip.where('extract(year  from start_date) = ?', '2015').count
+    total2016rides = Trip.where('extract(year  from start_date) = ?', '2016').count
 
+    expect(page).to have_content("2015: #{total2015rides} rides")
+    expect(page).to have_content("2016: #{total2016rides} rides")
   end
 end
