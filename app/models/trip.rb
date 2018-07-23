@@ -11,4 +11,33 @@ class Trip < ApplicationRecord
                         :zip_code
   paginates_per 30
 
+  def self.average_duration
+    average(:duration)
+  end
+
+  def self.longest_duration
+    maximum(:duration)
+  end
+
+  def self.shortest_duration
+    minimum(:duration)
+  end
+
+  def self.station_most_starts
+    group(:start_station_name)
+    .order('count_start_station_name desc')
+    .limit(1)
+    .count(:start_station_name)
+    .keys
+    .first
+  end
+
+  def self.station_most_ends
+    group(:end_station_name)
+    .order('count_end_station_name desc')
+    .limit(1)
+    .count(:end_station_name)
+    .keys
+    .first
+  end
 end
