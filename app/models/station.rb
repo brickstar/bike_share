@@ -48,4 +48,24 @@ class Station < ApplicationRecord
     where(installation_date: old_date)
   end
 
+  def total_trips_ended
+  end
+
+  def total_trips_started
+  end
+
+  def most_riders_went_to
+  end
+
+  def most_riders_came_from
+  end
+
+  def highest_start_volume_date
+  end
+
+  def most_users_from_zipcode
+  end
+
+  def most_started_bike_id
+  end
 end
