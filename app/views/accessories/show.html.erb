@@ -5,7 +5,7 @@
   <li><%= @accessory.description %></li>
   <li><%= number_to_currency(@accessory.price) %></li>
   <% if @accessory.active? %>
-    <li><%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id) %></li>
+    <li><%= button_to 'Add to Cart', cart_path(accessory_id: @accessory.id) %></li>
   <% else %>
     <li>Accessory Retired</li>
   <% end %>

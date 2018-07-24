@@ -1,4 +1,8 @@
-class CartsController < ApplicationController
+class CartController < ApplicationController
+  def show
+    
+  end
+  
   def create
     accessory = Accessory.find(params[:accessory_id])
     @cart = Cart.new(session[:cart])

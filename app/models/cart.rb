@@ -13,4 +13,17 @@ class Cart
     @contents[accessory_id.to_s] ||= 0
     @contents[accessory_id.to_s] += 1
   end
+
+  def unpack_contents
+    content_objs = contents.keys.map do |accessory_id|
+      Accessory.find(accessory_id)
+    end
+    Hash[content_objs.zip(contents.values)]
+  end
+
+  def total
+    unpack_contents.map do |accessory, quantity|
+      accessory.price * quantity
+    end.sum
+  end
 end
