@@ -2,15 +2,15 @@
 
 <br>
 
-<p>Average Duration: <%= @average_duration %></p>
+<p>Average Duration: <%= format_time(@average_duration) %></p>
 
 <br>
 
-<p>Longest Duration: <%= @longest_duration %></p>
+<p>Longest Duration: <%= format_time(@longest_duration) %></p>
 
 <br>
 
-<p>Shortest Duration: <%= @shortest_duration %></p>
+<p>Shortest Duration: <%= format_time(@shortest_duration) %></p>
 
 <br>
 
@@ -19,3 +19,31 @@
 <br>
 
 <p>Station with Most Ending Trips: <%= @station_most_ends %></p>
+
+<br>
+
+<p>Breakdown of Rides per Year:</p>
+<ul>
+  <% @breakdown_by_year.sort.each do |year, rides| %>
+    <li><%= year.strftime('%Y') %>: <%= rides %> rides</li>
+  <% end %>
+</ul>
+
+<br>
+
+<p>Breakdown of Rides per Month:</p>
+<ul>
+  <% @breakdown_by_month.sort.each do |month, rides| %>
+    <li><%= month.strftime('%b %Y') %>: <%= rides %> rides</li>
+  <% end %>
+</ul>
+
+<br>
+
+<p>Most Ridden Bike: #<%= @most_ridden_bike.bike_id %> (<%= @most_ridden_bike.number_of_rides %> rides)</p>
+
+<br>
+
+<p>Least Ridden Bike: #<%= @least_ridden_bike.bike_id %> (<%= @least_ridden_bike.number_of_rides %> rides)</p>
+
+<br>
