@@ -26,4 +26,8 @@ class Cart
       accessory.price * quantity
     end.sum
   end
+
+  def remove_accessory(accessory_id)
+    @contents.delete(accessory_id.to_s)
+  end
 end
