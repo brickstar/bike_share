@@ -10,6 +10,6 @@ class CartController < ApplicationController
     session[:cart] = @cart.contents
     
     flash[:notice] = "You have added #{accessory.title} to your cart."
-    redirect_to accessory_path(accessory)
+    redirect_to accessories_path
   end
 end

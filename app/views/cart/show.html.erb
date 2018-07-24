@@ -1,11 +1,13 @@
-<td>
+<table>
   <% @cart.unpack_contents.each do |accessory, quantity| %>
-    <tr>Image tag placeholder (THUMBNAIL ONLY)</tr>
-    <tr><%= accessory.title %></tr>
-    <tr>Price: $<%= accessory.price %></tr>
-    <tr>Subtotal: $<%= accessory.price * quantity %></tr>
+    <tr>
+      <td>Image tag placeholder (THUMBNAIL ONLY)</td>
+      <td><%= accessory.title %></td>
+      <td>Price: $<%= accessory.price %></td>
+      <td>Subtotal: $<%= accessory.price * quantity %></td>
+    </tr>
   <% end %>
-</td>
+<table>
 <p>Total: $<%= @cart.total %></p>
 <% if current_user %>
   <%= button_to 'Checkout', cart_path %>
