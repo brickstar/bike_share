@@ -11,7 +11,4 @@ describe Condition, type: :model do
     it { should validate_presence_of(:mean_wind_speed) }
     it { should validate_presence_of(:precipitation) }
   end
-
-  describe 'class methods' do
-    describe '.'
 end
