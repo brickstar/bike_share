@@ -7,5 +7,7 @@ class TripsDashboardController < ApplicationController
     @station_most_ends = Trip.station_most_ends
     @breakdown_by_year = Trip.breakdown_by_year
     @breakdown_by_month = Trip.breakdown_by_month
+    @most_ridden_bike = Trip.bike_id_table.first
+    @least_ridden_bike = Trip.bike_id_table.last
   end
 end

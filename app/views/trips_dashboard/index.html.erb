@@ -37,3 +37,13 @@
     <li><%= month.strftime('%b %Y') %>: <%= rides %> rides</li>
   <% end %>
 </ul>
+
+<br>
+
+<p>Most Ridden Bike: #<%= @most_ridden_bike.bike_id %> (<%= @most_ridden_bike.number_of_rides %> rides)</p>
+
+<br>
+
+<p>Least Ridden Bike: #<%= @least_ridden_bike.bike_id %> (<%= @least_ridden_bike.number_of_rides %> rides)</p>
+
+<br>
