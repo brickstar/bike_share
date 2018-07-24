@@ -1,11 +1,12 @@
 class Station < ApplicationRecord
   extend FriendlyId
+  has_many :start_trips, class_name: 'Trip', foreign_key: :start_station_id
+  has_many :end_trips, class_name: 'Trip', foreign_key: :end_station_id
+
   friendly_id :name, use: :slugged
   validates_presence_of :name, :dock_count, :city, :installation_date
   before_save :generate_slug
 
-  has_many :start_trips, class_name: 'Trip', foreign_key: :start_station_id
-  has_many :end_trips, class_name: 'Trip', foreign_key: :end_station_id
 
   def generate_slug
     self.slug = name.parameterize
@@ -51,12 +52,12 @@ class Station < ApplicationRecord
     where(installation_date: old_date)
   end
 
-  def total_trips_started
-    start_trips.count
-  end
-
   def total_trips_ended
     end_trips.count
+  end
+
+  def total_trips_started
+    start_trips.count
   end
 
   def most_riders_went_to
