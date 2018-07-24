@@ -13,6 +13,12 @@ describe Trip, type: :model do
     it { should validate_presence_of(:subscription_type) }
     it { should validate_presence_of(:zip_code) }
   end
+
+  describe "relationships" do
+    it { should respond_to(:start_station) }
+    it { should respond_to(:end_station) }
+  end
+
   describe 'class methods' do
     before :each do
       @trip1 = Trip.create(duration: 120, start_date: '12/12/2015 12:12', start_station_name: 'Test Station 2', start_station_id: 2, end_date: '12/12/2015 12:42', end_station_name: 'Test Station 4', end_station_id: 4, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
