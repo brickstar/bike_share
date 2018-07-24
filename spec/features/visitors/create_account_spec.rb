@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'login workflow' do
-  it 'allows visitor to create account, log in & log out successfully' do
+describe 'registration workflow' do
+  it 'allows visitor to create account and logout succesfully' do
     first_name = 'Jeff'
     last_name = 'Casimir'
     street = '123 Main Street'
@@ -44,15 +44,5 @@ describe 'login workflow' do
     expect(current_path).to eq(root_path)
     expect(page).to have_content('Login')
     expect(page).to_not have_content('logout')
-
-    click_on 'Login'
-    expect(current_path).to eq('/login')
-
-    fill_in 'Email', with: email
-    fill_in 'Password', with: password
-
-    click_on 'Login'
-    expect(current_path).to eq('/dashboard')
-    expect(page).to have_content('Logged in as Jeff')
   end
 end

@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Visitors:
+  total visitor stories: 15
+  total completed: 11
+  total open: 4
 
-Things you may want to cover:
 
-* Ruby version
+Users:
+  total user stories: 12
+  total completed: 4
+  total open: 8
 
-* System dependencies
 
-* Configuration
+Admin:
+  total admin stories: 20
+  total completed: 1
+  total open: 19
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Total Stories due 7/22- 5     (turned in 16)
+Total Stories due 7/25- 28    (12 stories to close)
