@@ -11,6 +11,9 @@ class Trip < ApplicationRecord
                         :zip_code
   paginates_per 30
 
+  belongs_to :start_station, class_name: 'Station', optional: true
+  belongs_to :end_station, class_name: 'Station', optional: true
+
   def self.average_duration
     average(:duration)
   end

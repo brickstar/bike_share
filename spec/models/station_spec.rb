@@ -64,14 +64,14 @@ describe Station, type: :model do
     end
 
     it 'find total number of trips that began here' do
-      expect(@station_1.total_trip_started).to eq(3)
+      expect(@station_1.total_trips_started).to eq(3)
     end
 
-    xit 'find total number of trips that ended here' do
+    it 'find total number of trips that ended here' do
       expect(@station_1.total_trips_ended).to eq(1)
     end
 
-    xit 'find most frequent destination for rides beginning here' do
+    it 'find most frequent destination for rides beginning here' do
       expect(@station_1.most_riders_went_to).to eq(@station_2)
     end
 
