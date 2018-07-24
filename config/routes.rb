@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/stations-dashboard', to: 'stations_dashboard#index'
+
   resources :accessories, only: [:index, :show], path: 'bikeshop'
+
+  resources :carts, only: [:create]
 
   resources :users, only: [:new, :create]
 
