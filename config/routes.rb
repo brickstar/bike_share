@@ -28,7 +28,8 @@ Rails.application.routes.draw do
     resources :stations
 
     resources :dashboard, only: [:show]
-    resources :conditions, only: [:edit, :destroy]
+    
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
   get '/:station_name', to: 'stations#show'
