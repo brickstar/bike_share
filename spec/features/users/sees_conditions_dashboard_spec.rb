@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 =begin
+
 As a registered user,
 When I visit '/conditions-dashboard',
 I see the Breakout of
@@ -15,15 +16,18 @@ I see the Breakout of
 
   7 total
 
-  Trip.select.where("conditions*", count()).joins(:trips).joins(:conditions)
+  Condition.select("conditions.max_temp, count(trips.id) as trip_count")
+  .joins("inner join trips on conditions.zip_code=trips.zip_code")
+  .where("conditions.date=trips.start_date")
+  .group(:max_temp,:id)
 
-joins inner join trips on conditions.date = trips.start_date
 
-  Condition.select("conditions.id, conditions.date")
-  .where("max_temp >= ? AND max_temp <= ?", 40, 50)
-  .pluck(:date)
-
-  Condition.joins("INNER JOINS trips ON Conditions.date = trips.start_date").where("max_temp >= ? AND max_temp <= ?", 40, 50)
+  Condition.joins("INNER JOIN trips ON conditions.date = trips.start_date")
+  .select("conditions.date, count(trips.id) as trip_count")
+  .where(max_temp: 40..50)
+  .group("conditions.date")
+  .order("trip_count DESC")
+  .first.trip_count
 
   def thing
     ary = [[40, 50], [50, 60], [60, 70], [70, 80], [80, 90], [90, 100], [100, 110]]
@@ -33,24 +37,21 @@ joins inner join trips on conditions.date = trips.start_date
     thing
   end
 
-  thing.map do |ary|
-    Trip.where(start_date: ary)
-  end
-
 =end
 
 describe 'registered user visits /conditions-dashboard' do
   describe 'on days with high temperature in 10 degree chunks' do
-    it 'should see average number of rides' do
-    end
     it 'should see highest number of rides' do
     end
     it 'should see lowest number of rides' do
+    end
+    it 'should see average number of rides' do
     end
   end
 end
 
 =begin
+
 I see the Breakout of
  average number of rides,
  highest number of rides,
