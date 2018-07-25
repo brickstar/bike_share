@@ -19,7 +19,7 @@ describe 'admin user visits condition new' do
       visit new_admin_condition_path
 
       fill_in 'condition[date]', with: date
-      fill_in 'condition[date]', with: max_temp
+      fill_in 'condition[max_temp]', with: max_temp
       fill_in 'condition[mean_temp]', with: mean_temp
       fill_in 'condition[min_temp]', with: min_temp
       fill_in 'condition[mean_humidity]', with: mean_humidity
@@ -29,7 +29,7 @@ describe 'admin user visits condition new' do
 
       click_on 'Create Condition'
 
-      expect(current_path).to eq(admin_condition_path(Condition.last))
+      expect(current_path).to eq(condition_path(Condition.last))
       expect(page).to have_content("Weather condition for #{Condition.last.date} created.")
       expect(page).to have_content(Condition.last.precipitation)
     end
