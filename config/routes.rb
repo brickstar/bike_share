@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
 
   namespace :admin do
+    resources :trips, except: [:index, :show]
     resources :dashboard, only: [:show]
   end
 
