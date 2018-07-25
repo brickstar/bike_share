@@ -32,7 +32,7 @@ I see the Breakout of
   def thing
     ary = [[40, 50], [50, 60], [60, 70], [70, 80], [80, 90], [90, 100], [100, 110]]
     thing = ary.map do |array|
-      Condition.select("conditions.id, conditions.date").where("max_temp >= ? AND max_temp <= ?", array[0], array[1]).pluck(:date)
+      Condition.select("conditions.id, conditions.date").where("max_temp >= ? AND max_temp <= ?", array[0][0], array[0][1]).pluck(:date)
     end
     thing
   end
