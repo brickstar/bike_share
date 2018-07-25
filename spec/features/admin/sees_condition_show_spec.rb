@@ -22,7 +22,7 @@ describe 'admin user visits conditions show' do
     expect(page).to have_content(@condition.mean_wind_speed)
     expect(page).to have_content(@condition.precipitation)
   end
-
+  
   it 'can delete a condition' do
 
     visit conditions_path(@condition)
