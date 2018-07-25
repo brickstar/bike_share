@@ -14,6 +14,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      flash[:success] = 'Account details updated.'
+      if current_admin?
+        redirect_to admin_dashboard(current_user)
+      else
+        redirect_to dashboard_path
+      end
+    else
+      render :edit
+    end
+  end
+
   private
 
     def user_params

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :accessories, only: [:index, :show], path: 'bike-shop'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
 
   resources :stations
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     resources :stations
 
-    resources :dashboard, only: [:show]
+    get '/dashboard', to: 'dashboard#show'
     
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end

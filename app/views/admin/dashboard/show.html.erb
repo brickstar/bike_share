@@ -7,4 +7,5 @@
   <li><%= @user.zip_code %> </li>
   <li><%= @user.email %> </li>
 </ul>
+<%= button_to 'Edit Account', edit_user_path(@user) %>
 <%= link_to 'Logout', logout_path %>
