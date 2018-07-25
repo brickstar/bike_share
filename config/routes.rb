@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:show]
-    resources :conditions, only: [:index, :show, :edit, :delete]
+    resources :conditions
   end
 
   get '/:station_name', to: 'stations#show'
