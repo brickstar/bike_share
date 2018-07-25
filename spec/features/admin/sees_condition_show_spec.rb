@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'admin user visits conditions show'do
   before(:each) do
     @admin = User.create!(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
-    @condition.create!(date: 'Tue, 04 Aug 2015', max_temp: 71.0, mean_temp: 58.0, min_temp: 46.0, mean_humidity: 50.0, mean_visibility: 45.0 , mean_wind_speed: 41.0, precipitation: 93.0)
+    @condition = Condition.create!(date: 'Tue, 04 Aug 2015', max_temp: 71.0, mean_temp: 58.0, min_temp: 46.0, mean_humidity: 50.0, mean_visibility: 45.0 , mean_wind_speed: 41.0, precipitation: 93.0)
   end
 
   it 'sees condition attributes, edit and delete buttons' do
