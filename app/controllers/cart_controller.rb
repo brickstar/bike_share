@@ -1,4 +1,8 @@
-class CartsController < ApplicationController
+class CartController < ApplicationController
+  def show
+    
+  end
+  
   def create
     accessory = Accessory.find(params[:accessory_id])
     @cart = Cart.new(session[:cart])
@@ -6,6 +10,6 @@ class CartsController < ApplicationController
     session[:cart] = @cart.contents
     
     flash[:notice] = "You have added #{accessory.title} to your cart."
-    redirect_to accessory_path(accessory)
+    redirect_to accessories_path
   end
 end

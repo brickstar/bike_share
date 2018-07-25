@@ -6,7 +6,7 @@
       <li>Image tag placeholder</li>
       <li><%= accessory.title %></li>
       <% if accessory.active? %>
-        <li><%= button_to 'Add to Cart', carts_path(accessory_id: accessory.id) %></li>
+        <li><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id) %></li>
       <% else %>
         <li>Accessory Retired</li>
       <% end %>

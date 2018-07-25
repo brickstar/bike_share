@@ -13,10 +13,13 @@
       <div id="admin-nav">
         <% if current_admin? %>
           Logged in as Admin User: <%= current_user.first_name %>
+        <% elsif current_user %>
+          Logged in as <%= current_user.first_name %>
         <% end %>
       </div>
     </div>
     <p>Cart: <%= @cart.total_count %></p>
+    <%= link_to 'View Cart', cart_path %>
   </nav>
 
   <body>
