@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'admin user visits conditions index'do
+describe 'admin user visits conditions index' do
   before(:each) do
     @admin = User.create(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
     @condition_1 = Condition.create(date: 'Tue, 04 Aug 2015', max_temp: 74.0, mean_temp: 68.0, min_temp: 61.0, mean_humidity: 61.0, mean_visibility: 58.0 , mean_wind_speed: 56.0, precipitation: 93.0)

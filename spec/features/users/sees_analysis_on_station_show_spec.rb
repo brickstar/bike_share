@@ -10,10 +10,15 @@ describe 'station show page analysis' do
     @station_6 = Station.create(name: 'Market at 28th', city: 'San Francisco', dock_count: 4, installation_date: '12/23/2015')
   end
 
-  xit 'can see the number of rides started here' do
+  it 'does not have access to admin edit and delete functionality' do
+    expect(page).to_not have_button('Edit')
+    expect(page).to_not have_button('Delete')
   end
 
-  xit 'can see the number of rides ended here' do
+  it 'can see the number of rides started here' do
+  end
+
+  it 'can see the number of rides ended here' do
   end
 
   xit 'can see the most frequent destination station for rides that begin here' do
