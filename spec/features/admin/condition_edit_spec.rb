@@ -36,7 +36,7 @@ describe 'admin user visits conditions edit' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit edit_admin_condition_path(admin, condition)
+      visit edit_admin_condition_path(condition)
 
       fill_in 'condition[date]', with: date
       fill_in 'condition[max_temp]', with: max_temp
