@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'login workflow' do
   it 'allows user to log in & log out successfully' do
-  user = User.create!(first_name: 'Jeff',
+  user = User.create(first_name: 'Jeff',
                      last_name: 'Casimir',
                      street: '123 Main St',
                      city: 'Denver',

@@ -43,4 +43,16 @@ class Trip < ApplicationRecord
     .keys
     .first
   end
+
+  def self.breakdown_by_month
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.breakdown_by_year
+    group("DATE_TRUNC('year', start_date)").count
+  end
+
+  def self.bike_id_table
+    select('trips.bike_id, count(trips.bike_id) AS number_of_rides').group(:bike_id).order('number_of_rides desc')
+  end
 end

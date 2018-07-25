@@ -29,8 +29,8 @@ SimpleCov.start
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.before(:all) do
-  DatabaseCleaner.strategy = :transaction
+  config.before(:suite) do
+  DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean_with(:truncation)
 end
 
