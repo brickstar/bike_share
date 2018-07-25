@@ -4,7 +4,7 @@ describe 'admin user visits conditions index'do
   before(:each) do
     @admin = User.create(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
     @condition_1 = Condition.create(date: 'Tue, 04 Aug 2015', max_temp: 74.0, mean_temp: 68.0, min_temp: 61.0, mean_humidity: 61.0, mean_visibility: 58.0 , mean_wind_speed: 56.0, precipitation: 93.0)
-    @condition_2 = Condition.create(date: 'Tue, 04 Aug 2015', max_temp: 71.0, mean_temp: 58.0, min_temp: 46.0, mean_humidity: 50.0, mean_visibility: 45.0 , mean_wind_speed: 41.0, precipitation: 93.0)
+    @condition_2 = Condition.create(date: 'Wed, 05 Jan 2013', max_temp: 71.0, mean_temp: 58.0, min_temp: 46.0, mean_humidity: 50.0, mean_visibility: 45.0 , mean_wind_speed: 41.0, precipitation: 0.0)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
 
@@ -52,6 +52,7 @@ describe 'admin user visits conditions index'do
 
     expect(current_path).to eq(conditions_path)
     expect(page).to_not have_content(@condition_2.date)
-    expect(page).to have_content("Successfully deleted condition ##{@condition.id}.")
+    expect(page).to_not have_content(@condition_2.precipitation)
+    expect(page).to have_content("Successfully deleted condition ##{@condition_2.id}")
   end
 end
