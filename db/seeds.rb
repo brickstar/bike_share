@@ -25,23 +25,25 @@ CSV.foreach('./../sf-bay-area-bike-share/weather.csv', headers: true, header_con
   Condition.create(date:formatted_date, max_temp:row[1], mean_temp:row[2], min_temp:row[3], mean_humidity:row[8], mean_visibility:row[14], mean_wind_speed:row[17], precipitation:row[19])
 end
 
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 1)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test2', description: 'this is a test', price: 2)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test3', description: 'this is a test', price: 3)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test4', description: 'this is a test', price: 4)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test5', description: 'this is a test', price: 5, status: 0)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test5', description: 'this is a test', price: 5, status: 0)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test6', description: 'this is a test', price: 6)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test7', description: 'this is a test', price: 7)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test8', description: 'this is a test', price: 8)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test9', description: 'this is a test', price: 9)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test10', description: 'this is a test', price: 10)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test11', description: 'this is a test', price: 11)
-Accessory.create(image_url: 'www.insertrealpics.com', title: 'test12', description: 'this is a test', price: 12)
+Accessory.create(image_url: 'www.robohash.org/1', title: 'test1', description: 'this is a test', price: 1)
+Accessory.create(image_url: 'www.robohash.org/2', title: 'test2', description: 'this is a test', price: 2)
+Accessory.create(image_url: 'www.robohash.org/3', title: 'test3', description: 'this is a test', price: 3)
+Accessory.create(image_url: 'www.robohash.org/4', title: 'test4', description: 'this is a test', price: 4)
+Accessory.create(image_url: 'www.robohash.org/5', title: 'test5', description: 'this is a test', price: 5, status: 0)
+Accessory.create(image_url: 'www.robohash.org/6', title: 'test5', description: 'this is a test', price: 5, status: 0)
+Accessory.create(image_url: 'www.robohash.org/7', title: 'test6', description: 'this is a test', price: 6)
+Accessory.create(image_url: 'www.robohash.org/8', title: 'test7', description: 'this is a test', price: 7)
+Accessory.create(image_url: 'www.robohash.org/9', title: 'test8', description: 'this is a test', price: 8)
+Accessory.create(image_url: 'www.robohash.org/10', title: 'test9', description: 'this is a test', price: 9)
+Accessory.create(image_url: 'www.robohash.org/11', title: 'test10', description: 'this is a test', price: 10)
+Accessory.create(image_url: 'www.robohash.org/12', title: 'test11', description: 'this is a test', price: 11)
+Accessory.create(image_url: 'www.robohash.org/13', title: 'test12', description: 'this is a test', price: 12)
 
 User.create(first_name: 'admin', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'admin', password: 'adminadmin', role: 1)
 User.create(first_name: 'user', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'user', password: 'useruser', role: 0)
 
-puts Trip.count
-puts Station.count
-puts Condition.count
+puts 'trips:' Trip.count
+puts 'trips:' Station.count
+puts 'trips:' Condition.count
+puts 'accessories:' Accessory.count
+puts 'users:' User.count
