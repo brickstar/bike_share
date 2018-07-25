@@ -42,8 +42,8 @@ Accessory.create(image_url: 'www.robohash.org/13', title: 'test12', description:
 User.create(first_name: 'admin', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'admin', password: 'adminadmin', role: 1)
 User.create(first_name: 'user', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'user', password: 'useruser', role: 0)
 
-puts 'trips:' Trip.count
-puts 'trips:' Station.count
-puts 'trips:' Condition.count
-puts 'accessories:' Accessory.count
-puts 'users:' User.count
+puts Trip.count puts 'trips'
+puts Station.count puts 'stations'
+puts Condition.count puts 'conditions'
+puts Accessory.count puts 'accessories'
+puts User.count puts 'users'
