@@ -21,7 +21,7 @@ describe 'visits bike shop' do
 
     expect(page).to have_content(@accessory1.title)
     within("#accessory_#{@accessory1.id}") do
-      expect(page).to have_content('Add to Cart')
+      expect(page).to have_button('Add to Cart')
     end
     expect(page).to have_content(@accessory2.title)
     expect(page).to have_content(@accessory3.title)
@@ -34,7 +34,7 @@ describe 'visits bike shop' do
     expect(page).to have_content(@accessory10.title)
     expect(page).to have_content(@accessory11.title)
     within("#accessory_#{@accessory11.id}") do
-      expect(page).to have_content('Add to Cart')
+      expect(page).to have_button('Add to Cart')
     end
     expect(page).to have_content(@accessory12.title)
     expect(page).to_not have_content(@accessory13.title)
@@ -61,10 +61,10 @@ describe 'visits bike shop' do
     visit accessories_path
 
     within("#accessory_#{@accessory4.id}") do
-      expect(page).to have_content('Add to Cart')
+      expect(page).to have_button('Add to Cart')
     end
     within("#accessory_#{@accessory5.id}") do
-      expect(page).to_not have_content('Add to Cart')
+      expect(page).to_not have_button('Add to Cart')
       expect(page).to have_content('Accessory Retired')
     end
   end

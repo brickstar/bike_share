@@ -15,7 +15,7 @@ describe 'visits accessory show page' do
 
     visit accessory_path(accessory)
 
-    expect(page).to have_content('Add to Cart')
+    expect(page).to have_button('Add to Cart')
     click_on 'Add to Cart'
   end
   it 'sees Accessory Retired instead of Add to Cart for retired accessories' do
@@ -23,7 +23,7 @@ describe 'visits accessory show page' do
 
     visit accessory_path(accessory)
 
-    expect(page).to_not have_content('Add to Cart')
+    expect(page).to_not have_button('Add to Cart')
     expect(page).to have_content('Accessory Retired')
   end
 end
