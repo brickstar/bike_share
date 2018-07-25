@@ -16,8 +16,8 @@ describe 'when on the dashboard as a logged in user' do
     fill_in 'Password', with: user.password
     click_on 'Login'
     click_on 'Edit Account'
-    fill_in 'first_name', with: 'Billy'
-    click_on 'Update'
+    fill_in :user_first_name, with: 'Billy'
+    click_on 'Update Account'
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Billy')

@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = 'Account details updated.'
       if current_admin?
-        redirect_to admin_dashboard(current_user)
+        redirect_to admin_dashboard_path
       else
         redirect_to dashboard_path
       end

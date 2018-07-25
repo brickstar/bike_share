@@ -23,13 +23,13 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
 
   namespace :admin do
+    get '/dashboard', to: 'dashboard#show'
+
     resources :trips, except: [:index, :show]
 
     resources :stations
 
-    get '/dashboard', to: 'dashboard#show'
-    
-    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :conditions, except: [:index, :show]
   end
 
   get '/:station_name', to: 'stations#show'

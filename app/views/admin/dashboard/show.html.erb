@@ -1,11 +1,11 @@
 <ul>
-  <li><%= @user.first_name %> </li>
-  <li><%= @user.last_name %> </li>
-  <li><%= @user.street %> </li>
-  <li><%= @user.city %> </li>
-  <li><%= @user.state %> </li>
-  <li><%= @user.zip_code %> </li>
-  <li><%= @user.email %> </li>
+  <li><%= current_user.first_name %> </li>
+  <li><%= current_user.last_name %> </li>
+  <li><%= current_user.street %> </li>
+  <li><%= current_user.city %> </li>
+  <li><%= current_user.state %> </li>
+  <li><%= current_user.zip_code %> </li>
+  <li><%= current_user.email %> </li>
 </ul>
-<%= button_to 'Edit Account', edit_user_path(@user) %>
+<%= button_to 'Edit Account', edit_user_path(current_user) %>
 <%= link_to 'Logout', logout_path %>
