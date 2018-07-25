@@ -4,7 +4,11 @@
       <td>Image tag placeholder (THUMBNAIL ONLY)</td>
       <td><%= accessory.title %></td>
       <td>Price: $<%= accessory.price %></td>
+      <td>Quantity: <%= quantity %></td>
+      <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
+      <td><%= button_to 'Decrease Quantity', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
       <td>Subtotal: $<%= accessory.price * quantity %></td>
+      <td><%= button_to 'Remove Accessory', cart_path(accessory_id: accessory.id), method: 'delete' %></td>
     </tr>
   <% end %>
 <table>

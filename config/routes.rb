@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/cart', to: 'cart#show'
   post '/cart', to: 'cart#create'
+  delete '/cart', to: 'cart#destroy'
   
   resources :accessories, only: [:index, :show], path: 'bike-shop'
 

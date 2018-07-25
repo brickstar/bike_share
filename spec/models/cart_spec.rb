@@ -34,5 +34,13 @@ describe Cart do
 
       expect(@cart.total).to eq(32)
     end
+    it '.remove_accessory' do
+      @cart.remove_accessory('1')
+      expect(@cart.contents).to eq({'2' => 3})
+    end
+    it '.decrease_quantity' do
+      @cart.decrease_quantity('1')
+      expect(@cart.contents).to eq('1' => 1, '2' => 3)
+    end
   end
 end
