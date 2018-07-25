@@ -14,6 +14,21 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def edit
+    @trip = Trip.find(params[:id])
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    if @trip.save
+      flash[:success] = "Trip ##{@trip.id} updated."
+      redirect_to trip_path(@trip)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     trip = Trip.destroy(params[:id])
     flash[:success] = "Successfully deleted trip ##{trip.id}."
