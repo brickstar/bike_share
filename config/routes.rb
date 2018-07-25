@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/cart', to: 'cart#show'
   post '/cart', to: 'cart#create'
   delete '/cart', to: 'cart#destroy'
-  
+
   resources :accessories, only: [:index, :show], path: 'bike-shop'
 
   resources :users, only: [:new, :create]
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :trips, except: [:index, :show]
+
+    resources :stations
+
     resources :dashboard, only: [:show]
   end
 

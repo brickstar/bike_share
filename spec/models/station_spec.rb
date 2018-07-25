@@ -8,6 +8,11 @@ describe Station, type: :model do
     it { should validate_presence_of(:installation_date) }
   end
 
+  describe "relationships" do
+    it { should respond_to(:start_trips) }
+    it { should respond_to(:end_trips) }
+  end
+
   describe "class methods" do
     before :each do
       @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: '8/6/2013')
@@ -63,11 +68,11 @@ describe Station, type: :model do
       @trip4 = Trip.create(duration: 150, start_date: '12/12/2015 12:12', start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
     end
 
-    xit 'find total number of trips that began here' do
+    it 'find total number of trips that began here' do
       expect(@station_1.total_trips_started).to eq(3)
     end
 
-    xit 'find total number of trips that ended here' do
+    it 'find total number of trips that ended here' do
       expect(@station_1.total_trips_ended).to eq(1)
     end
 
