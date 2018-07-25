@@ -14,6 +14,10 @@ class Cart
     @contents[accessory_id.to_s] += 1
   end
 
+  def remove_accessory(accessory_id)
+    @contents.delete(accessory_id.to_s)
+  end
+
   def unpack_contents
     content_objs = contents.keys.map do |accessory_id|
       Accessory.find(accessory_id)
@@ -27,7 +31,7 @@ class Cart
     end.sum
   end
 
-  def remove_accessory(accessory_id)
-    @contents.delete(accessory_id.to_s)
+  def decrease_quantity(accessory_id)
+    @contents[accessory_id.to_s] -= 1
   end
 end
