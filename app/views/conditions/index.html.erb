@@ -11,7 +11,7 @@
   <% if current_admin? %>
   <div id='condition-<%= condition.id %>'>
     <%= button_to 'Edit', edit_admin_condition_path(condition) %>
-    <%= button_to 'Delete', admin_condition_path(condition), method: 'delete', data: { confirm: 'Are you sure you want to delete this condition?' } %>
+    <%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: { confirm: 'Are you sure you want to delete this condition?' } %>
     <% end %>
   </div>
 </ul>
