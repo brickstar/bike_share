@@ -21,5 +21,7 @@ describe 'visits condition show' do
     expect(page).to have_content(condition.mean_visibility)
     expect(page).to have_content(condition.mean_wind_speed)
     expect(page).to have_content(condition.precipitation)
+    expect(page).to_not have_button('Edit')
+    expect(page).to_not have_button('Delete')
   end
 end
