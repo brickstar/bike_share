@@ -1,16 +1,5 @@
 require 'rails_helper'
 
-=begin
-As a admin user,
-When I visit admin condition new,
-I fill in a form with all condition attributes,
-When I click "Create Condition",
-I am directed to a that condition's show page.
-I also see a flash message that I have created that condition.
-
-** All Attributes must be present **
-=end
-
 describe 'admin user visits condition new' do
   describe 'fills in a form with condition attributes' do
     it 'should create a condition, land on show and see a flash success' do
