@@ -38,7 +38,7 @@ describe 'visiting trips index' do
   it 'does not see admin edit and delete buttons' do
     visit trips_path
 
-    expect(page).to have_button('Edit')
-    expect(page).to have_button('Delete')
+    expect(page).to_not have_button('Edit')
+    expect(page).to_not have_button('Delete')
   end
 end
