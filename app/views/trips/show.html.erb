@@ -11,4 +11,8 @@
   <li>Bike ID: <%= @trip.bike_id %></li>
   <li>Subscription Type: <%= @trip.subscription_type %></li>
   <li>Zip Code: <%= @trip.zip_code %></li>
+  <% if current_admin? %>
+    <%= button_to "Edit", edit_admin_trip_path(@trip) %>
+    <%= button_to "Delete", admin_trip_path(@trip), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
+  <% end %>
 </ul>
