@@ -15,12 +15,12 @@ describe Station, type: :model do
 
   describe "class methods" do
     before :each do
-      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: '8/6/2013')
-      @station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: '8/16/2014')
-      @station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 4, installation_date: '1/23/2016')
-      @station_4 = Station.create(name: 'San Francisco City Park', city: 'San Francisco', dock_count: 6, installation_date: '8/6/2013')
-      @station_5 = Station.create(name: 'Main at 2nd', city: 'San Francisco', dock_count: 6, installation_date: '8/16/2014')
-      @station_6 = Station.create(name: 'Market at 28th', city: 'San Francisco', dock_count: 4, installation_date: '12/23/2015')
+      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
+      @station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: Date.strptime('8/16/2014', '%m/%d/%Y'))
+      @station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 4, installation_date: Date.strptime('1/23/2016', '%m/%d/%Y'))
+      @station_4 = Station.create(name: 'San Francisco City Park', city: 'San Francisco', dock_count: 6, installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
+      @station_5 = Station.create(name: 'Main at 2nd', city: 'San Francisco', dock_count: 6, installation_date: Date.strptime('8/16/2014', '%m/%d/%Y'))
+      @station_6 = Station.create(name: 'Market at 28th', city: 'San Francisco', dock_count: 4, installation_date: Date.strptime('12/13/2015', '%m/%d/%Y'))
     end
 
     it 'calculate total count of all stations' do
@@ -60,8 +60,8 @@ describe Station, type: :model do
 
   describe "instance methods" do
     before :each do
-      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: '8/6/2013')
-      @station_2 = Station.create(name: 'San Fran Park', city: 'San Fransisco', dock_count: 12, installation_date: '6/2/2014')
+      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6,installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
+      @station_2 = Station.create(name: 'San Fran Park', city: 'San Fransisco', dock_count: 12, installation_date: Date.strptime('6/2/2014', '%m/%d/%Y'))
       @trip1 = Trip.create(duration: 120, start_date: '12/12/2015 12:12', start_station_name: 'San Fran Park', start_station_id: 2, end_date: '12/12/2015 12:42', end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
       @trip2 = Trip.create(duration: 130, start_date: '12/12/2015 12:12', start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
       @trip3 = Trip.create(duration: 140, start_date: '12/12/2015 12:12', start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 1, subscription_type: 'customer', zip_code: '32174')
