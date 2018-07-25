@@ -14,6 +14,10 @@ class Admin::ConditionsController < Admin::BaseController
     end
   end
 
+  def edit
+    @conditon = Condition.find(params[:id])
+  end
+
   def destroy
     condition = Condition.destroy(params[:id])
     flash[:success] = "Successfully deleted condition ##{condition.id}"
