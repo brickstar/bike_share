@@ -8,3 +8,7 @@
   <li> Mean Wind Speed: <%= @condition.mean_wind_speed %> mph </li>
   <li> Precipitation: <%= @condition.precipitation %> inches </li>
 </ul>
+<% if current_admin? %>
+  <%= button_to 'Edit', admin_condition_path(@condition) %>
+  <%= button_to 'Delete', admin_condition_path(@condition), method: 'delete', data: { confirm: 'Are you sure you want to delete this condition?' } %>
+<% end %>
