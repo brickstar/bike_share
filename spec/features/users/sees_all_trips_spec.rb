@@ -10,7 +10,6 @@ describe 'visiting trips index' do
     end
     user = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
   end
   it 'sees 30 trips per page' do
     visit trips_path
