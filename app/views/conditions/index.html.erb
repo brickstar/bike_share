@@ -8,5 +8,11 @@
   <li> Mean Visibility: <%= condition.mean_visibility %></li>
   <li> Mean Wind Speed: <%= condition.mean_wind_speed %> mph </li>
   <li> Precipitation: <%= condition.precipitation %> inches </li>
+  <% if current_admin? %>
+  <div id='condition-<%= condition.id %>'>
+    <%= button_to 'Edit', edit_admin_condition_path(condition) %>
+    <%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: { confirm: 'Are you sure you want to delete this condition?' } %>
+    <% end %>
+  </div>
 </ul>
 <% end %>

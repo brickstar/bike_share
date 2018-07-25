@@ -1,12 +1,16 @@
 require 'rails_helper'
 
 describe Station, type: :model do
-
   describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:dock_count) }
     it { should validate_presence_of(:city) }
     it { should validate_presence_of(:installation_date) }
+  end
+
+  describe "relationships" do
+    it { should respond_to(:start_trips) }
+    it { should respond_to(:end_trips) }
   end
 
   describe "class methods" do
@@ -51,6 +55,45 @@ describe Station, type: :model do
 
     it 'find oldest station' do
       expect(Station.oldest).to match_array [@station_1, @station_4]
+    end
+  end
+
+  describe "instance methods" do
+    before :each do
+      @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 6, installation_date: '8/6/2013')
+      @station_2 = Station.create(name: 'San Fran Park', city: 'San Fransisco', dock_count: 12, installation_date: '6/2/2014')
+      @trip1 = Trip.create(duration: 120, start_date: '12/12/2015 12:12', start_station_name: 'San Fran Park', start_station_id: 2, end_date: '12/12/2015 12:42', end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
+      @trip2 = Trip.create(duration: 130, start_date: '12/12/2015 12:12', start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+      @trip3 = Trip.create(duration: 140, start_date: '12/12/2015 12:12', start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 1, subscription_type: 'customer', zip_code: '32174')
+      @trip4 = Trip.create(duration: 150, start_date: '12/12/2015 12:12', start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+    end
+
+    it 'find total number of trips that began here' do
+      expect(@station_1.total_trips_started).to eq(3)
+    end
+
+    it 'find total number of trips that ended here' do
+      expect(@station_1.total_trips_ended).to eq(1)
+    end
+
+    xit 'find most frequent destination for rides beginning here' do
+      expect(@station_1.most_riders_went_to).to eq(@station_2)
+    end
+
+    xit 'find most frequent origination for rides that end here' do
+      expect(@station_1.most_riders_came_from).to eq(@station_2)
+    end
+
+    xit 'find the date with the highest number of trips started here' do
+      expect(@station_1.highest_start_volume_date).to eq('12/12/2015')
+    end
+
+    xit 'find the most frequent zip code for users starting trips here' do
+      expect(@station_1.most_users_from_zipcode).to eq('32174')
+    end
+
+    xit 'find the Bike ID that most frequently starts a trip here' do
+      expect(@station_1.most_started_bike_id).to eq(2)
     end
   end
 end

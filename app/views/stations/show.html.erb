@@ -1,7 +1,11 @@
 <h1><%= @station.name %></h1>
 <ul>
-  <li><%= @station.name %></li>
   <li><%= @station.dock_count %></li>
   <li><%= @station.city %></li>
   <li><%= @station.installation_date %></li>
 </ul>
+
+<% if current_admin? %>
+  <%= button_to "Edit", edit_admin_station_path(@station) %></p>
+  <%= button_to "Delete", admin_station_path(@station), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %></p>
+  <% end %>

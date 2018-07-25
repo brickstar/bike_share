@@ -11,6 +11,9 @@ class Trip < ApplicationRecord
                         :zip_code
   paginates_per 30
 
+  belongs_to :start_station, class_name: 'Station', optional: true
+  belongs_to :end_station, class_name: 'Station', optional: true
+
   def self.average_duration
     average(:duration)
   end
@@ -39,5 +42,17 @@ class Trip < ApplicationRecord
     .count(:end_station_name)
     .keys
     .first
+  end
+
+  def self.breakdown_by_month
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.breakdown_by_year
+    group("DATE_TRUNC('year', start_date)").count
+  end
+
+  def self.bike_id_table
+    select('trips.bike_id, count(trips.bike_id) AS number_of_rides').group(:bike_id).order('number_of_rides desc')
   end
 end
