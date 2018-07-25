@@ -15,7 +15,6 @@ class Admin::ConditionsController < Admin::BaseController
   end
 
   def edit
-    binding.pry
     @conditon = Condition.find(params[:id])
   end
 
