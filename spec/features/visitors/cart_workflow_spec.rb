@@ -64,5 +64,6 @@ describe 'a visitor accessing the bike shop' do
     click_button 'Decrease Quantity'
     expect(page).to have_content('Quantity: 2')
     expect(page).to have_content('Subtotal: $8')
+    expect(page).to have_content('Total: $8')
   end
 end
