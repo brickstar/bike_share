@@ -13,22 +13,15 @@ Rails.application.routes.draw do
   delete '/cart', to: 'cart#destroy'
 
   resources :accessories, only: [:index, :show], path: 'bike-shop'
-
   resources :users, only: [:new, :create]
-
   resources :stations, only: [:index, :show]
-
   resources :conditions, only: [:index, :show]
-
   resources :trips, only: [:index, :show]
 
   namespace :admin do
     resources :trips, except: [:index, :show]
-
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
-
     resources :dashboard, only: [:show]
-
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
