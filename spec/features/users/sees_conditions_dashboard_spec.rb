@@ -45,13 +45,6 @@ end
 thing
 end
 
-trip[:condition_id] = if Condition.find_by(date: Date.strptime(trip[:end_date], '%m/%d/%Y'), zipcode: trip[:zip_code]).nil?
-                        nil
-                        next if trip[:zip_code]
-                      else
-                      if
-                        Condition.find_by(date: Date.strptime(trip[:end_date], '%m/%d/%Y'), zipcode: trip[:zip_code]).id
-                      end
 =end
 
 describe 'registered user visits /conditions-dashboard' do
