@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
-  get '/dashboard', to: 'dashboard#show'
-  get '/admin/dashboard', to: 'admin/dashboard#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/cart', to: 'cart#show'
@@ -14,23 +12,18 @@ Rails.application.routes.draw do
   delete '/cart', to: 'cart#destroy'
 
   resources :accessories, only: [:index, :show], path: 'bike-shop'
-
-  resources :users, only: [:new, :create]
-
-  resources :stations
-
+  resources :users, only: [:new, :create, :edit, :update]
+  resources :stations, only: [:index, :show]
   resources :conditions, only: [:index, :show]
-
   resources :trips, only: [:index, :show]
 
   namespace :admin do
     resources :trips, except: [:index, :show]
-
-    resources :stations
-
+    resources :stations, only: [:new, :create, :edit, :update, :destroy]
+    resources :dashboard, only: [:show]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  get '/:station_name', to: 'stations#show'
+  get '/:id', to: 'stations#show'
 
 end

@@ -48,4 +48,30 @@ describe 'login workflow' do
     expect(page).to have_content('Login')
     expect(page).to_not have_content('logout')
   end
+
+  it 'deny user log in accordingly' do
+  user = User.create(first_name: 'Jeff',
+                     last_name: 'Casimir',
+                     street: '123 Main St',
+                     city: 'Denver',
+                     state: 'Colorado',
+                     zip_code: '80403',
+                     email: 'jeff@turing.com',
+                     password: 'password',
+                     role: 0)
+
+    visit '/'
+
+    click_on 'Login'
+
+    expect(current_path).to eq('/login')
+
+    fill_in 'Email', with: user.email
+
+    click_on 'Login'
+
+    expect(current_path).to eq('/login')
+    expect(page).to_not have_content('Logged in as Jeff')
+    expect(page).to_not have_content('Logout')
+  end
 end

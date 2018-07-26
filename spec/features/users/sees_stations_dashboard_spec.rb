@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'visiting the /stations-dashboard' do
   before :each do
     station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 4, installation_date: '8/6/2013')
-    station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: '8/16/2014')
-    station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 6, installation_date: '1/23/2016')
+    station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 5, installation_date: Date.strptime('8/16/2014', '%m/%d/%Y'))
+    station_3 = Station.create(name: 'Market at 10th', city: 'San Francisco', dock_count: 6, installation_date: Date.strptime('1/23/2016', '%m/%d/%Y'))
     visit stations_dashboard_path
   end
 

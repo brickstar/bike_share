@@ -12,7 +12,7 @@
     <li>Zip Code: <%= trip.zip_code %></li>
     <li class="trip_<%= trip.id %>">
       <% if current_admin? %>
-        <%= button_to "Edit", edit_admin_trip_path(trip) %>
+        <%= button_to "Edit", edit_admin_trip_path(trip), method: 'get' %>
         <%= button_to "Delete", admin_trip_path(trip), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
       <% end %>
     </li>
