@@ -50,7 +50,7 @@ describe 'admin user visits conditions edit' do
       click_on 'Update Condition'
 
       expect(current_path).to eq(condition_path(condition))
-      expect(page).to have_content("Weather condition for #{condition.date} updated.")
+      expect(page).to have_content("Weather condition for #{Condition.first.date} updated.")
       expect(page).to have_content(precipitation)
     end
   end
