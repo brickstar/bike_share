@@ -11,11 +11,11 @@
   <% end %>
 
 <% if user == current_user %>
-<p> Number of rides started at this station: <%=  %></p>
-<p> Number of rides ended at this station: <%=  %></p>
-<p> Most frequent destination station (for rides that began at this station): <%=  %></p>
-<p> Most frequent origination station (for rides that ended at this station): <%=  %></p>
-<p> Date with the highest number of trips started at this station: <%=  %></p>
-<p> Most frequent zip code for users starting trips at this station: <%=  %></p>
-<p> Bike ID most frequently starting a trip at this station: <%=  %></p>
+<p> Number of rides started at this station: <%= @total_trips_ended %></p>
+<p> Number of rides ended at this station: <%= @total_trips_started  %></p>
+<p> Most frequent destination station (for rides that began at this station): <%= @freq_destination %></p>
+<p> Most frequent origination station (for rides that ended at this station): <%= @freq_origination %></p>
+<p> Date with the highest number of trips started at this station: <%= @highest_volume %></p>
+<p> Most frequent zip code for users starting trips at this station: <%= @most_users_from %></p>
+<p> Bike ID most frequently starting a trip at this station: <%= @most_started_bike %></p>
 <% end %>

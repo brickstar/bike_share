@@ -13,6 +13,8 @@ describe 'station show page analysis' do
     @t_6 = Trip.create(duration: 170, start_date: '10/05/2014 12:12', start_station_name: 'San Fran Park', start_station_id: 2, end_date: '12/12/2015 12:42', end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 10, subscription_type: 'customer', zip_code: '55555')
     @t_5 = Trip.create(duration: 160, start_date: '12/12/2015 12:12', start_station_name: 'Market Street', start_station_id: 3, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 6, subscription_type: 'subscriber', zip_code: '77777')
     @t_8 = Trip.create(duration: 190, start_date: '12/12/2015 12:12', start_station_name: 'Market Street', start_station_id: 3, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 6, subscription_type: 'customer', zip_code: '77777')
+
+    visit stations_path
   end
 
 
@@ -22,30 +24,30 @@ describe 'station show page analysis' do
   end
 
   it 'can see the number of rides started here' do
-    expect(page).to have_content('Number of rides started at this station:')
+    expect(page).to have_content("Number of rides started at this station: 4")
   end
 
   it 'can see the number of rides ended here' do
-    expect(page).to have_content('Number of rides ended at this station:')
+    expect(page).to have_content("Number of rides ended at this station: 2")
   end
 
   xit 'can see the most frequent destination station for rides that begin here' do
-    expect(page).to have_content('Most frequent destination station:')
+    expect(page).to have_content("Most frequent destination station: San Fran Park")
   end
 
   xit 'can see the most frequent origination station for rides that end here' do
-    expect(page).to have_content('Most frequent origination station:')
+    expect(page).to have_content("Most frequent origination station: San Fran Park")
   end
 
   xit 'can see the date with the highest number of trips started here' do
-    expect(page).to have_content('Date with the highest number of trips started at this station:')
+    expect(page).to have_content("Date with the highest number of trips started at this station: 12/12/2015")
   end
 
   xit 'can see the most frequent zip code for users starting trips here' do
-    expect(page).to have_content('Most frequent zip code for users starting trips at this station:')
+    expect(page).to have_content("Most frequent zip code for users starting trips at this station: 33333")
   end
 
   xit 'can see the Bike ID that most frequently starts a trip here' do
-    expect(page).to have_content('Bike ID most frequently starting a trip at this station:')
+    expect(page).to have_content("Bike ID most frequently starting a trip at this station: 5")
   end
 end
