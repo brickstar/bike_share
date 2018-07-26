@@ -1,7 +1,7 @@
 class Admin::DashboardController < Admin::BaseController
 
   def show
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
 end
