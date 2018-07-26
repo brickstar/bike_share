@@ -43,7 +43,9 @@ describe 'visiting edit station and delete station from index page' do
   it 'can edit a station' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
+    visit stations_path
     click_on 'Edit'
+
     expect(current_path).to eq(edit_admin_station_path(@station_3))
     new_station_name = 'New Test Station'
     new_station_city = 'New Test City'
@@ -52,10 +54,10 @@ describe 'visiting edit station and delete station from index page' do
     fill_in :station_city, with: new_station_city
 
     click_on 'Update Station'
-    expect(current_path).to eq("/test-station")
+    expect(current_path).to eq("/new-test-station")
     expect(page).to have_content(new_station_name)
     expect(page).to have_content(new_station_city)
-    expect(page).to have_content(@station.dock_count)
-    expect(page).to have_content("Station ##{@station.id} updated.")
+    expect(page).to have_content(@station_3.dock_count)
+    expect(page).to have_content("Station ##{@station_3.id} updated.")
   end
 end
