@@ -8,6 +8,7 @@ describe 'a user accessing the cart show page' do
     @accessory2 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test2', description: 'this is a test', price: 4)
     @order1 = @user.orders.create(status: 'ordered')
     @order2 = @user.orders.create(status: 'paid')
+    @order2.created_at = 'Weds 24 Jul 2018'
     OrderAccessory.create(order_id: @order1.id, accessory_id: @accessory1.id, quantity: 2)
     OrderAccessory.create(order_id: @order1.id, accessory_id: @accessory2.id, quantity: 3)
     OrderAccessory.create(order_id: @order2.id, accessory_id: @accessory2.id, quantity: 1)
@@ -15,7 +16,7 @@ describe 'a user accessing the cart show page' do
   it 'can view order attributes' do
     visit dashboard_path
 
-    click_on (@order1.created_at.to_date)
+      click_on (@order1.created_at.strftime('%Y-%m-%d'))
 
     expect(current_path).to eq(order_path(@order1))
     expect(page).to have_content(@accessory1.title)

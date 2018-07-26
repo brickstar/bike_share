@@ -1,0 +1,13 @@
+<h1>Order: <%= @order.id %></h1>
+<table>
+  <% @order.unpack_contents.each do |accessory, quantity| %>
+    <tr>
+      <td>Image tag placeholder (THUMBNAIL ONLY)</td>
+      <td><%= accessory.title %></td>
+      <td>Price: $<%= accessory.price %></td>
+      <td>Quantity: <%= quantity %></td>
+      <td>Subtotal: $<%= accessory.price * quantity %></td>
+    </tr>
+  <% end %>
+<table>
+<p>Total: $<%= @order.total %></p>
