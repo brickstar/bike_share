@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'admin user visits trip new' do
   describe 'fills in a form with trip attributes' do
     it 'should create a trip, land on show and see a flash success' do
-      Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: 8/6/2013)
+      Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: Date.parse('12 March, 2018'))
       admin = User.create(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
