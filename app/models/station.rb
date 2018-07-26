@@ -56,9 +56,19 @@ class Station < ApplicationRecord
   end
 
   def most_riders_went_to
+    start_trips.select('end_station_name, count(end_station_name) as count_per_end')
+    .group(:end_station_name)
+    .order('count_per_end')
+    .last
+    .end_station_name
   end
 
   def most_riders_came_from
+    end_trips.select('start_station_name, count(start_station_name) as count_per_start')
+    .group(:start_station_name)
+    .order('count_per_start')
+    .last
+    .start_station_name
   end
 
   def highest_start_volume_date

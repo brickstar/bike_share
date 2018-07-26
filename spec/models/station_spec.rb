@@ -99,7 +99,7 @@ describe Station, type: :model do
     end
 
 #I see the Most frequent origination station (for rides that ended at this station),
-    xit 'find most frequent origination for rides that end here' do
+    it 'find most frequent origination for rides that end here' do
       expect(@station_1.most_riders_came_from).to eq('San Fran Park')
       expect(@station_2.most_riders_came_from).to eq('San Jose City Hall')
       expect(@station_3.most_riders_came_from).to eq('San Jose City Hall')
@@ -123,7 +123,7 @@ describe Station, type: :model do
     xit 'find the Bike ID that most frequently starts a trip here' do
       expect(@station_1.most_started_bike_id).to eq(5)
       expect(@station_2.most_started_bike_id).to eq(10)
-      expect(@station_3.most_started_bike_id).to eq(6)
+      expect(@station_3.most_started_bike_id).to eq(2)
     end
   end
 end
