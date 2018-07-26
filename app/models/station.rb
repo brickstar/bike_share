@@ -71,7 +71,6 @@ class Station < ApplicationRecord
     .start_station_name
   end
 
-
   def highest_start_volume_date
     start_trips.select('start_date, count(start_date) as count_per_date')
     .group(:start_date)
