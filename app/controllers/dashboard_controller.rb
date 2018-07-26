@@ -1,7 +1,5 @@
 class DashboardController < ApplicationController
   def show
-    if current_user.nil?
-      render file: '/public/404.html'
-    end
+    render file: '/public/404.html' unless current_user
   end
 end
