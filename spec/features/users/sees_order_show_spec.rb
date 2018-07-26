@@ -21,13 +21,13 @@ describe 'a user accessing the cart show page' do
     expect(current_path).to eq(order_path(@order1))
     expect(page).to have_content(@accessory1.title)
     expect(page).to have_content('Quantity: 2')
-    expect(page).to have_content('Subtotal: $8')
+    expect(page).to have_content('Subtotal: $8.00')
     expect(page).to have_content(@accessory2.title)
     expect(page).to have_content('Quantity: 3')
-    expect(page).to have_content('Subtotal: $12')
-    expect(page).to have_content('Total: $20')
+    expect(page).to have_content('Subtotal: $12.00')
+    expect(page).to have_content('Total: $20.00')
     expect(page).to have_content("Status: #{@order1.status}")
-    expect(page).to have_content("Submitted: #{@order1.created_at}")
-    expect(page).to have_content("Status Changed: #{@order1.updated_at}")
+    expect(page).to have_content("Submitted: #{@order1.created_at.to_date}")
+    expect(page).to have_content("Status Changed: #{@order1.updated_at.to_date}")
   end
 end

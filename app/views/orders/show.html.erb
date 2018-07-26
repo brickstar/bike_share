@@ -4,11 +4,13 @@
     <tr>
       <td>Image tag placeholder (THUMBNAIL ONLY)</td>
       <td><%= accessory.title %></td>
-      <td>Price: $<%= accessory.price %></td>
+      <td>Price: <%= number_to_currency(accessory.price) %></td>
       <td>Quantity: <%= quantity %></td>
-      <td>Subtotal: $<%= accessory.price * quantity %></td>
+      <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
     </tr>
   <% end %>
 <table>
-<p>Total: $<%= @order.total %></p>
+<p>Total: <%= number_to_currency(@order.total) %></p>
 <p>Status: <%= @order.status %></p>
+<p>Submitted: <%= @order.created_at.to_date %></p>
+<p>Status Changed: <%= @order.updated_at.to_date %></p>

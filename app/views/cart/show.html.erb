@@ -3,16 +3,16 @@
     <tr>
       <td>Image tag placeholder (THUMBNAIL ONLY)</td>
       <td><%= accessory.title %></td>
-      <td>Price: $<%= accessory.price %></td>
+      <td>Price: <%= number_to_currency(accessory.price) %></td>
       <td>Quantity: <%= quantity %></td>
       <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
       <td><%= button_to 'Decrease Quantity', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
-      <td>Subtotal: $<%= accessory.price * quantity %></td>
+      <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
       <td><%= button_to 'Remove Accessory', cart_path(accessory_id: accessory.id), method: 'delete' %></td>
     </tr>
   <% end %>
 <table>
-<p>Total: $<%= @cart.total %></p>
+<p>Total: <%= number_to_currency(@cart.total) %></p>
 <% if current_user %>
   <%= button_to 'Checkout', cart_path %>
 <% else %>

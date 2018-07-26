@@ -16,14 +16,14 @@ describe Order, type: :model do
       @order = user.orders.create(status: 'paid')
       @accessory1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
       @accessory2 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test2', description: 'this is a test', price: 4)
-      OrderItem.create(accessory_id: 1, order_id: 1, quantity: 2)
-      OrderItem.create(accessory_id: 2, order_id: 1, quantity: 3)
+      OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 2)
+      OrderAccessory.create(accessory_id: 2, order_id: 1, quantity: 3)
     end
     it '.unpack_contents' do
       expect(@order.unpack_contents).to eq({@accessory1 => 2, @accessory2 => 3})
     end
     it '.total' do
-      expect(@order.total).to eq(13)
+      expect(@order.total).to eq(20)
     end
   end
 end
