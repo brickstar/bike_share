@@ -14,6 +14,21 @@ class Admin::ConditionsController < Admin::BaseController
     end
   end
 
+  def edit
+    @condition = Condition.find(params[:id])
+  end
+
+  def update
+    @condition = Condition.find(params[:id])
+    @condition.update(condition_params)
+    if @condition.save
+      flash[:successs] = "Weather condition for #{@condition.date} updated."
+      redirect_to condition_path(@condition)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     condition = Condition.destroy(params[:id])
     flash[:success] = "Successfully deleted condition ##{condition.id}"
