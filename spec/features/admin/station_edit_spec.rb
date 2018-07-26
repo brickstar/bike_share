@@ -24,9 +24,9 @@ describe 'visiting station edit page' do
     click_on 'Update Station'
 
     expect(current_path).to eq("/test-station")
-    expect(page).to have_content(station_name)
-    expect(page).to have_content(station_city)
-    expect(page).to have_content(station_dock_count)
-    expect(page).to have_content("You have successfully updated #{station_name}.")
+    expect(page).to have_content(new_station_name)
+    expect(page).to have_content(new_station_city)
+    expect(page).to have_content(new_station_dock_count)
+    expect(page).to have_content("Station ##{station.id} updated.")
   end
 end

@@ -21,6 +21,7 @@ class Admin::StationsController < Admin::BaseController
   def update
     @station = Station.friendly.find(params[:id])
     @station.update(station_params)
+    @station.slug = @station.name.parameterize
      if @station.save
        flash[:success] = "Station ##{@station.id} updated."
        redirect_to "/#{@station.slug}"
@@ -32,6 +33,6 @@ class Admin::StationsController < Admin::BaseController
   private
 
   def station_params
-    params.require(:station).permit(:name, :city, :dock_count, :installation_date, :slug)
+    params.require(:station).permit(:name, :city, :dock_count, :installation_date)
   end
 end
