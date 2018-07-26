@@ -82,8 +82,18 @@ class Station < ApplicationRecord
   end
 
   def most_users_from_zipcode
+    start_trips.select('zip_code, count(zip_code) as count_per_zip_code')
+    .group(:zip_code)
+    .order('count_per_zip_code')
+    .last
+    .zip_code
   end
 
   def most_started_bike_id
+    start_trips.select('bike_id, count(bike_id) as count_per_bike_id')
+    .group(:bike_id)
+    .order('count_per_bike_id')
+    .last
+    .bike_id
   end
 end

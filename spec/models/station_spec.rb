@@ -114,17 +114,17 @@ describe Station, type: :model do
     end
 
 #I see the Most frequent zip code for users starting trips at this station,
-    xit 'find the most frequent zip code for users starting trips here' do
+    it 'find the most frequent zip code for users starting trips here' do
       expect(@station_1.most_users_from_zipcode).to eq('33333')
       expect(@station_2.most_users_from_zipcode).to eq('55555')
       expect(@station_3.most_users_from_zipcode).to eq('77777')
     end
 
 #I see the Bike ID most frequently starting a trip at this station.
-    xit 'find the Bike ID that most frequently starts a trip here' do
+    it 'find the Bike ID that most frequently starts a trip here' do
       expect(@station_1.most_started_bike_id).to eq(5)
       expect(@station_2.most_started_bike_id).to eq(10)
-      expect(@station_3.most_started_bike_id).to eq(2)
+      expect(@station_3.most_started_bike_id).to eq(6)
     end
   end
 end
