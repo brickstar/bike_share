@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :stations, only: [:index, :show]
 
-  resources :conditions
+  resources :conditions, only: [:index, :show]
 
   resources :trips, only: [:index, :show]
 
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
 
     resources :dashboard, only: [:show]
+    
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
   get '/:id', to: 'stations#show'
