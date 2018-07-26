@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
-  resources :stations
+  resources :stations, only: [:index, :show]
 
-  resources :conditions, only: [:index, :show]
+  resources :conditions
 
   resources :trips, only: [:index, :show]
 
@@ -27,11 +27,11 @@ Rails.application.routes.draw do
 
     resources :trips, except: [:index, :show]
 
-    resources :stations
+    resources :stations, only: [:new, :create, :edit, :update, :destroy]
 
-    resources :conditions, except: [:index, :show]
+    resources :dashboard, only: [:show]
   end
 
-  get '/:station_name', to: 'stations#show'
+  get '/:id', to: 'stations#show'
 
 end

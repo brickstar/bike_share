@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'a visitor visits /cart' do
   it 'sees all the bike accessory attributes for all accessories added to cart' do
-    accessory1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+    accessory1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
 
     visit accessories_path
 

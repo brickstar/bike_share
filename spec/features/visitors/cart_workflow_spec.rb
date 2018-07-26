@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'a visitor accessing the bike shop' do
   it 'add item to cart and sees a flash message for added accessory' do
-    accessory = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+    accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
 
     visit accessories_path
 
@@ -11,7 +11,7 @@ describe 'a visitor accessing the bike shop' do
     expect(page).to have_content("You have added #{accessory.title} to your cart.")
   end
   it 'shows cart total quantity' do
-    accessory = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+    accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
 
     visit accessories_path
  
@@ -22,7 +22,7 @@ describe 'a visitor accessing the bike shop' do
     expect(page).to have_content('Cart: 1')
   end
   it 'can click a button to remove an item from the cart' do
-    accessory = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+    accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
 
     visit accessories_path
  
@@ -45,7 +45,7 @@ describe 'a visitor accessing the bike shop' do
     expect(current_path).to eq(accessory_path(accessory))
   end
   it 'can click a button to add or remove 1 to the quantity' do
-    accessory = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+    accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
 
     visit accessories_path
  

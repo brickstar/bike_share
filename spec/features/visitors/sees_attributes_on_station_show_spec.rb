@@ -5,7 +5,7 @@ describe 'visits stations show' do
     station = Station.create!(name: "Embarcadero at Folsom",
                               dock_count: 19,
                               city: "San Francisco",
-                              installation_date: "2013-08-20")
+                              installation_date: Date.strptime('8/20/2013', '%m/%d/%Y'))
 
     visit "/#{station.name.parameterize}"
 
