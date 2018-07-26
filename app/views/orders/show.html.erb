@@ -1,0 +1,16 @@
+<h1>Order: <%= @order.id %></h1>
+<table>
+  <% @order.unpack_contents.each do |accessory, quantity| %>
+    <tr>
+      <td>Image tag placeholder (THUMBNAIL ONLY)</td>
+      <td><%= accessory.title %></td>
+      <td>Price: <%= number_to_currency(accessory.price) %></td>
+      <td>Quantity: <%= quantity %></td>
+      <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
+    </tr>
+  <% end %>
+<table>
+<p>Total: <%= number_to_currency(@order.total) %></p>
+<p>Status: <%= @order.status %></p>
+<p>Submitted: <%= @order.created_at.to_date %></p>
+<p>Status Changed: <%= @order.updated_at.to_date %></p>
