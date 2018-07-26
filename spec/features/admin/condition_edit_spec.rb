@@ -1,22 +1,10 @@
 require 'rails_helper'
 
-=begin
-
-As an admin user,
-When I visit admin condition edit,
-I fill in a form with all condition attributes,
-When I click "Update Condition",
-I am directed to that condition's show page,
-I see the updated condition's information,
-I also see a flash message that I have updated that condition.
-
-** All Attributes must be present **
-=end
 describe 'admin user visits conditions edit' do
   describe 'fills in a form with all condition attriubutes' do
     it 'should land on condition show, see updated info and flash message' do
-      admin = User.create!(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
-      condition = Condition.create!(date: 'Mon, 03 Jul 2014',
+      admin = User.create(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
+      condition = Condition.create(date: 'Mon, 03 Jul 2014',
                                     max_temp: 1,
                                     mean_temp: 2,
                                     min_temp: 3,
