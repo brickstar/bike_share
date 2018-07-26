@@ -10,6 +10,7 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:successs] = "Weather condition for #{@condition.date} created."
       redirect_to condition_path(@condition)
     else
+      flash[:alert] = "Missing required fields, condition was not created."
       render :new
     end
   end
