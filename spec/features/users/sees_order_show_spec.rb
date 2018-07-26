@@ -16,7 +16,7 @@ describe 'a user accessing the cart show page' do
   it 'can view order attributes' do
     visit dashboard_path
 
-      click_on (@order1.created_at.strftime('%Y-%m-%d'))
+    click_on (@order1.created_at.strftime('%Y-%m-%d'))
 
     expect(current_path).to eq(order_path(@order1))
     expect(page).to have_content(@accessory1.title)

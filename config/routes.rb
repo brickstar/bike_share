@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :create]
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
