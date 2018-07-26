@@ -9,3 +9,13 @@
   <%= button_to 'Edit', edit_admin_station_path(@station), method: 'get' %>
   <%= button_to 'Delete', admin_station_path(@station), method: "delete", data: {confirm: 'Are you sure you want to delete this station?'} %>
   <% end %>
+
+<% if user == current_user %>
+<p> Number of rides started at this station: <%=  %></p>
+<p> Number of rides ended at this station: <%=  %></p>
+<p> Most frequent destination station (for rides that began at this station): <%=  %></p>
+<p> Most frequent origination station (for rides that ended at this station): <%=  %></p>
+<p> Date with the highest number of trips started at this station: <%=  %></p>
+<p> Most frequent zip code for users starting trips at this station: <%=  %></p>
+<p> Bike ID most frequently starting a trip at this station: <%=  %></p>
+<% end %>
