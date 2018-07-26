@@ -34,7 +34,7 @@ describe 'admin user visits condition new' do
       expect(page).to have_content(Condition.last.precipitation)
     end
 
-    it 'should deny a condition, if invalid credentials provided' do
+    it 'deny a condition, if invalid credentials provided' do
       admin = User.create(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
 
       date            = 'Tue, 04 Aug 2015'
