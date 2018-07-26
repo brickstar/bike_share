@@ -1,3 +1,4 @@
+<h3>Account Profile:</h3>
 <ul>
   <li><%= current_user.first_name %> </li>
   <li><%= current_user.last_name %> </li>
@@ -7,5 +8,5 @@
   <li><%= current_user.zip_code %> </li>
   <li><%= current_user.email %> </li>
 </ul>
+
 <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
-<%= link_to 'Logout', logout_path %>

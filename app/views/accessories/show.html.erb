@@ -1,7 +1,7 @@
 <h1><%= @accessory.title %></h1>
 
 <ul>
-  <li>Image tag placeholder</li>
+  <li><%= image_tag @accessory.image_url, id: 'accessory-show-image' %></li>
   <li><%= @accessory.description %></li>
   <li><%= number_to_currency(@accessory.price) %></li>
   <% if @accessory.active? %>

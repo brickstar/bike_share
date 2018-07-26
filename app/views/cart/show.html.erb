@@ -1,7 +1,7 @@
 <table>
   <% @cart.unpack_contents.each do |accessory, quantity| %>
     <tr>
-      <td>Image tag placeholder (THUMBNAIL ONLY)</td>
+      <td><%= image_tag accessory.image_url, id: 'accessory-cart-image' %></td>
       <td><%= accessory.title %></td>
       <td>Price: <%= number_to_currency(accessory.price) %></td>
       <td>Quantity: <%= quantity %></td>

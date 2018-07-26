@@ -13,27 +13,21 @@ Rails.application.routes.draw do
   delete '/cart', to: 'cart#destroy'
 
   resources :accessories, only: [:index, :show], path: 'bike-shop'
-
   resources :users, only: [:new, :create, :edit, :update]
-
-  resources :stations
-
+  resources :stations, only: [:index, :show]
   resources :conditions, only: [:index, :show]
-
   resources :trips, only: [:index, :show]
 
   resources :orders, only: [:show]
 
   namespace :admin do
-    get '/dashboard', to: 'dashboard#show'
-
     resources :trips, except: [:index, :show]
-
-    resources :stations
-
-    resources :conditions, except: [:index, :show]
+    resources :stations, only: [:new, :create, :edit, :update, :destroy]
+    resources :dashboard, only: [:show]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  get '/:station_name', to: 'stations#show'
+  get '/:id', to: 'stations#show'
 
 end
+
