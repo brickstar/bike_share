@@ -51,7 +51,7 @@ describe Station, type: :model do
 
     it 'find newest station' do
       expect(Station.newest).to match_array [@station_3]
-    end
+  end
 
     it 'find oldest station' do
       expect(Station.oldest).to match_array [@station_1, @station_4]

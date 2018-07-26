@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'visiting station index page can see all stations with attributes' do
   before :each do
     @admin = User.create(first_name: 'Boss',last_name: 'Lady', street: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80304', email: 'Jeff@Turing.com', password: 'password', role: 1 )
-    @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: 8/6/2013)
-    @station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 17, installation_date: 8/16/2014)
+    @station_1 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
+    @station_2 = Station.create(name: 'Mountain View City Hall', city: 'Mountain View', dock_count: 17, installation_date: Date.strptime('8/16/2014', '%m/%d/%Y'))
   end
 
   it 'can see edit and delete buttons alongside each station' do

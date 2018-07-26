@@ -32,11 +32,11 @@ class Station < ApplicationRecord
   end
 
   def self.old_date
-    maximum(:installation_date)
+    minimum(:installation_date)
   end
 
   def self.new_date
-    minimum(:installation_date)
+    maximum(:installation_date)
   end
 
   def self.newest

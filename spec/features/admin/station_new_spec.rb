@@ -10,7 +10,7 @@ describe 'visiting station new page' do
     station_name = 'Test Station'
     station_city = 'Test City'
     station_dock_count = '5'
-    station_install_date = '8/6/2013'
+    station_install_date = Date.strptime('8/6/2013', '%m/%d/%Y')
 
     fill_in :station_name, with: station_name
     fill_in :station_city, with: station_city
