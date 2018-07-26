@@ -4,7 +4,7 @@
   <% @accessories.each do |accessory| %>
     <div id="accessory_<%= accessory.id %>">
       <li><%= image_tag accessory.image_url, id: 'accessory-index-image' %></li>
-      <li><%= accessory.title %></li>
+      <li><%= link_to accessory.title, accessory_path(accessory)%></li>
       <% if accessory.active? %>
         <li><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id) %></li>
       <% else %>
