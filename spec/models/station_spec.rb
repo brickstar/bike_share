@@ -106,10 +106,11 @@ describe Station, type: :model do
     end
 
 #I see the Date with the highest number of trips started at this station,
-    xit 'find the date with the highest number of trips started here' do
-      expect(@station_1.highest_start_volume_date).to eq('12/12/2015')
-      expect(@station_2.highest_start_volume_date).to eq('10/05/2014')
-      expect(@station_3.highest_start_volume_date).to eq('12/12/2015')
+    it 'find the date with the highest number of trips started here' do
+      # expect(@station_1.highest_start_volume_date).to eq(Date.strptime('12/12/2015', '%m/%d/%Y'))
+      expect(@station_1.highest_start_volume_date).to eq(('12/12/2015').to_date)
+      expect(@station_2.highest_start_volume_date).to eq(('10/05/2014').to_date)
+      expect(@station_3.highest_start_volume_date).to eq(('12/12/2015').to_date)
     end
 
 #I see the Most frequent zip code for users starting trips at this station,

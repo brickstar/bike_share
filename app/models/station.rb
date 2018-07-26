@@ -71,7 +71,14 @@ class Station < ApplicationRecord
     .start_station_name
   end
 
+
   def highest_start_volume_date
+    start_trips.select('start_date, count(start_date) as count_per_date')
+    .group(:start_date)
+    .order('count_per_date')
+    .last
+    .start_date
+    .to_date
   end
 
   def most_users_from_zipcode
