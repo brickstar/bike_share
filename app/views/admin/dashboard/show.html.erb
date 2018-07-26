@@ -8,5 +8,5 @@
   <li><%= current_user.zip_code %> </li>
   <li><%= current_user.email %> </li>
 </ul>
+
 <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
-<%= link_to 'Logout', logout_path %>

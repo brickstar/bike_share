@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
 
   namespace :admin do
-    get '/dashboard', to: 'dashboard#show'
     resources :trips, except: [:index, :show]
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
     resources :dashboard, only: [:show]
@@ -29,3 +28,4 @@ Rails.application.routes.draw do
   get '/:id', to: 'stations#show'
 
 end
+
