@@ -1,4 +1,5 @@
 class TripsDashboardController < ApplicationController
+
   def index
     @average_duration = Trip.average_duration
     @longest_duration = Trip.longest_duration
