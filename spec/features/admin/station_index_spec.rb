@@ -23,7 +23,7 @@ describe 'visiting station index page can see all stations with attributes' do
   end
 end
 
-describe 'visiting edit station and delete station from index page' do
+describe 'can edit station and delete station from index page' do
   before :each do
     @admin = User.create(first_name: 'Boss',last_name: 'Lady', street: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80304', email: 'Jeff@Turing.com', password: 'password', role: 1 )
     @station_3 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
