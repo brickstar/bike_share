@@ -18,6 +18,12 @@ high temps between fifty and sixty degrees
 283
 7 total
 
+range = (40..110)
+
+range.step(10).map do |range|
+  Condition.joins(:trips).where(max_temp: range).group(:condition_id).count(:condition_id)
+end
+
 joins(:trips)
      .where(max_temp: range)
      .group(:condition_id)
