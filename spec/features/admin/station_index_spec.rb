@@ -21,18 +21,41 @@ describe 'visiting station index page can see all stations with attributes' do
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
   end
+end
 
-  it 'can delete a station from the index page' do
-    admin = User.create(first_name: 'Boss',last_name: 'Lady', street: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80304', email: 'Jeff@Turing.com', password: 'password', role: 1 )
-    station_3 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+describe 'visiting edit station and delete station from index page' do
+  before :each do
+    @admin = User.create(first_name: 'Boss',last_name: 'Lady', street: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80304', email: 'Jeff@Turing.com', password: 'password', role: 1 )
+    @station_3 = Station.create(name: 'San Jose City Hall', city: 'San Jose', dock_count: 15, installation_date: Date.strptime('8/6/2013', '%m/%d/%Y'))
+  end
 
-    visit "/#{station_3.name.parameterize}"
+  it 'can delete a station' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
+    visit stations_path
     click_button 'Delete'
 
     expect(current_path).to eq(stations_path)
-    expect(page).to_not have_content('San Jose City Hall')
-    expect(page).to have_content("Successfully deleted trip ##{station_3.id}.")
+    expect(page).to_not have_content('Station Name: San Jose City Hall')
+    expect(page).to have_content("Successfully deleted station ##{@station_3.id}")
+  end
+
+  it 'can edit a station' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+
+    click_on 'Edit'
+    expect(current_path).to eq(edit_admin_station_path(@station_3))
+    new_station_name = 'New Test Station'
+    new_station_city = 'New Test City'
+
+    fill_in :station_name, with: new_station_name
+    fill_in :station_city, with: new_station_city
+
+    click_on 'Update Station'
+    expect(current_path).to eq("/test-station")
+    expect(page).to have_content(new_station_name)
+    expect(page).to have_content(new_station_city)
+    expect(page).to have_content(@station.dock_count)
+    expect(page).to have_content("Station ##{@station.id} updated.")
   end
 end
