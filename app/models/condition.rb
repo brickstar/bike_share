@@ -7,7 +7,8 @@ class Condition < ApplicationRecord
                         :mean_humidity,
                         :mean_visibility,
                         :mean_wind_speed,
-                        :precipitation
+                        :precipitation,
+                        :date
 
   validates :date, uniqueness: true
 end
