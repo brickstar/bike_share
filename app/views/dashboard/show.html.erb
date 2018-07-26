@@ -7,4 +7,5 @@
  <h4> Zip Code: <%= current_user.zip_code %> </h4>
  <h4> Email: <%= current_user.email %> </h4>
 
+<%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
 <%= link_to 'Logout', logout_path %>

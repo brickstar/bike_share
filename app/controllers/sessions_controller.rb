@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
   end
 
@@ -8,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       if current_admin?
-        redirect_to admin_dashboard_path(user)
+        redirect_to admin_dashboard_path
       else
         redirect_to dashboard_path
       end
