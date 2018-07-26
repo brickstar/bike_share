@@ -1,5 +1,6 @@
 class Condition < ApplicationRecord
   # has_many :trips, class_name: 'Trip', primary_key: :zip_code, foreign_key: :zip_code
+  has_many :trips
   validates_presence_of :max_temp,
                         :mean_temp,
                         :min_temp,
