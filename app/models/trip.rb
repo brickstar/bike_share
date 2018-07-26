@@ -1,5 +1,6 @@
 class Trip < ApplicationRecord
   # belongs_to :condition, class_name: 'Condition', foreign_key: :zip_code
+  belongs_to :condition, optional: true
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,
