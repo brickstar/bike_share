@@ -16,4 +16,10 @@ class Order < ApplicationRecord
       accessory.price * quantity
     end.sum
   end
+
+  def create_order_accessories(cart)
+    cart.each do |accessory_id, quantity|
+      order_accessories.create(accessory_id: accessory_id, quantity: quantity)
+    end
+  end
 end

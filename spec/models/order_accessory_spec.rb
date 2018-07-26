@@ -19,14 +19,14 @@ describe OrderAccessory, type: :model do
       @accessory1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
       @accessory2 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test2', description: 'this is a test', price: 7)
 
-      cart = {'1' => 2, '2', => 4}
+      cart = {'1' => 2, '2' => 4}
       
       @order.create_order_accessories(cart)
 
       expect(OrderAccessory.first.quantity).to eq(2)
-      expect(OrderAccessory.first.item.price).to eq(4)
+      expect(OrderAccessory.first.accessory.price).to eq(4)
       expect(OrderAccessory.last.quantity).to eq(4)
-      expect(OrderAccessory.last.item.price).to eq(7)
+      expect(OrderAccessory.last.accessory.price).to eq(7)
     end
   end
 end
