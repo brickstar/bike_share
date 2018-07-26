@@ -10,7 +10,7 @@ class Admin::StationsController < Admin::BaseController
       flash[:successs] = "You have successfully created #{@station.name}."
       redirect_to "/#{@station.slug}"
     else
-      flash[:alert] ="Missing required fields, station was not created."
+      flash[:alert] = "Missing required fields, station was not created."
       render :new
     end
   end
