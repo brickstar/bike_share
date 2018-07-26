@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def show
-    @order = Order.find(params[:id])
+    @order = Order.includes(:user).find(params[:id])
   end
 
   def create
