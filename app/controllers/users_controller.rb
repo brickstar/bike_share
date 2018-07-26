@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      render :new
+      flash[:alert] = "Invalid account credentials. Note: Password must be 8 characters."
+      redirect_to login_path
     end
   end
 
