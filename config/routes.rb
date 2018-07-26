@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get '/dashboard', to: 'dashboard#show'
+  get '/admin/dashboard', to: 'admin/dashboard#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/cart', to: 'cart#show'
@@ -27,8 +28,6 @@ Rails.application.routes.draw do
 
     resources :stations
 
-    resources :dashboard, only: [:show]
-    
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
