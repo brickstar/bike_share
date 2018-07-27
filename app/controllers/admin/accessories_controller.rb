@@ -11,7 +11,12 @@ class Admin::AccessoriesController < ApplicationController
 
   def update
     @accessory.update(admin_accessory_params)
-    redirect_to admin_accessories_path
+    if @accessory.save
+      flash[:success] = "Accessory #{@accessory.title} updated."
+      redirect_to admin_accessories_path
+    else
+      render :edit
+    end
   end
 
   private
