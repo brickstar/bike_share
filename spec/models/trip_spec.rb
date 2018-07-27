@@ -90,5 +90,17 @@ describe Trip, type: :model do
       expect(Trip.customers_total).to eq(3)
       expect(Trip.customers_percentage).to eq(75)
     end
+    it 'should find the date with the most rides and the ride count' do
+      expect(Trip.max_rides_date).to eq(@trip1.start_date)
+      expect(Trip.max_rides_count).to eq(2)
+    end
+    it 'should find the date with the most rides and the ride count' do
+      expect(Trip.max_rides_date).to eq(@trip1.start_date)
+      expect(Trip.max_rides_count).to eq(2)
+    end
+    it 'should find the date with the least rides and the ride count' do
+      expect(Trip.min_rides_date).to eq(@trip3.start_date)
+      expect(Trip.min_rides_count).to eq(1)
+    end
   end
 end
