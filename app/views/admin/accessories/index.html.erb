@@ -1,9 +1,10 @@
 <% @accessories.each do |accessory| %>
+<div id='accessory-<%= accessory.id %>'>
   <%= accessory.title %>
+  Price: <%= accessory.price %>
   <%= accessory.description %>
   <%= accessory.status %>
   <%= image_tag accessory.image_url, id: 'accessory-thumbnail' %>
-  <div id='accessory-<%= accessory.id %>'>
     <%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get %>
-  </div>
+</div>
 <% end %>
