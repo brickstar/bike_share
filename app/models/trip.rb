@@ -71,4 +71,8 @@ class Trip < ApplicationRecord
   def self.customers_percentage
     where(subscription_type: 'customer').count / Trip.count.to_f * 100
   end
+
+  def self.max_min_rides
+    select('CAST(trips.start_date AS DATE) AS date_mod, count(CAST(trips.start_date AS DATE)) AS date_count').group('CAST(trips.start_date AS DATE)').order('date_count desc')
+  end
 end
