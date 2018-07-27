@@ -1,25 +1,9 @@
 require 'rails_helper'
 
-=begin
-As an admin user,
-When I visit "/admin/dashboard",
-I see a link for viewing all accessories,
-When I click that link,
-My current path should be "/admin/bike-shop",
-I see a table with all accessories (active and inactive)
-
-Each accessory should have:
-
-A thumbnail of the image
-Description
-Status
-Ability to Edit accessory
-Ability to Retire/Reactivate accessory
-=end
 
 describe 'admin user visits /admin/dashboard' do
   before(:each) do
-    @admin = User.create!(first_name: 'pearl',
+    @admin = User.create(first_name: 'pearl',
                          last_name: 'girl',
                          street: '9th ave',
                          city: 'denver',
