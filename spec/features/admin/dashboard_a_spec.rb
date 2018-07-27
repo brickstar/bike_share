@@ -70,6 +70,7 @@ describe 'admin user visits /admin/dashboard' do
       expect(page).to have_content(title)
       expect(page).to have_content(description)
       # expect(@accessory1.status).to eq('retired')
+      expect(page).to have_content("Accessory #{title} updated.")
     end
   end
 end
