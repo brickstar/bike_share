@@ -11,16 +11,17 @@ Rails.application.routes.draw do
   get '/cart', to: 'cart#show'
   post '/cart', to: 'cart#create'
   delete '/cart', to: 'cart#destroy'
-  
+
   resources :accessories, only: [:index, :show], path: 'bike-shop'
   resources :users, only: [:new, :create, :edit, :update]
   resources :stations, only: [:index, :show]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
-  
+
   resources :orders, only: [:show, :create]
-  
+
   namespace :admin do
+    resources :accessories, only: [:index, :edit, :update], path: 'bike-shop'
     get '/dashboard', to: 'dashboard#show'
     resources :trips, except: [:index, :show]
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
@@ -30,4 +31,3 @@ Rails.application.routes.draw do
   get '/:id', to: 'stations#show'
 
 end
-
