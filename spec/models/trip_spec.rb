@@ -88,7 +88,7 @@ describe Trip, type: :model do
       expect(Trip.subscribers_total).to eq(1)
       expect(Trip.subscribers_percentage).to eq(25)
       expect(Trip.customers_total).to eq(3)
-      expect(Trip.customers_total).to eq(75)
+      expect(Trip.customers_percentage).to eq(75)
     end
   end
 end
