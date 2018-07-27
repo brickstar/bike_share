@@ -4,6 +4,10 @@ class Order < ApplicationRecord
   has_many :accessories, through: :order_accessories
   belongs_to :user
 
+  def self.amount_by_status(status)
+    where(status: status).count
+  end
+
   def unpack_contents
     order_accessories.inject(Hash.new(0)) do |hash, order_accessory|
       hash[Accessory.find(order_accessory.accessory_id)] = order_accessory.quantity
