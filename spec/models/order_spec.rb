@@ -37,15 +37,15 @@ describe Order, type: :model do
       order_1 = user.orders.create(status: 'paid')
       order_2 = user.orders.create(status: 'cancelled')
       order_3 = user.orders.create(status: 'ordered')
-      order_4 = user.orders.create(status: 'returned')
-      order_5 = user.orders.create(status: 'returned')
+      order_4 = user.orders.create(status: 'completed')
+      order_5 = user.orders.create(status: 'completed')
       order_6 = user.orders.create(status: 'paid')
     end
 
     it '#amount_by_status(status)' do
       expect(Order.amount_by_status('paid')).to eq(2)
       expect(Order.amount_by_status('ordered')).to eq(1)
-      expect(Order.amount_by_status('returned')).to eq(2)
+      expect(Order.amount_by_status('completed')).to eq(2)
       expect(Order.amount_by_status('cancelled')).to eq(1)
     end
   end

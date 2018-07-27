@@ -10,3 +10,10 @@
 </ul>
 
 <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
+
+<p>Order Statuses</p>
+
+<p>Ordered: <%= @ordered %></p>
+<p>Paid: <%= @paid %></p>
+<p>Completed: <%= @completed %></p>
+<p>Cancelled: <%= @cancelled %></p>

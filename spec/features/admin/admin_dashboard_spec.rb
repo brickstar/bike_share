@@ -24,13 +24,12 @@ describe 'admin user visits dashboard' do
     end
 
     it 'total number of orders for each status' do
+      visit admin_dashboard_path(@admin)
 
-      visit admin_dashboard
-
-      expect(page).to have_content("Ordered:#{}")
-      expect(page).to have_content("Paid:#{}")
-      expect(page).to have_content("Cancelled:#{}")
-      expect(page).to have_content("Completed:#{}")
+      expect(page).to have_content('Ordered: 1')
+      expect(page).to have_content('Paid: 1')
+      expect(page).to have_content('Cancelled: 0')
+      expect(page).to have_content('Completed: 0')
     end
 
     xit 'sees a list for each individual order' do
