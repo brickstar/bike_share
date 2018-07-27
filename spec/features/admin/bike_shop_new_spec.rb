@@ -17,6 +17,7 @@ describe 'visits bike shop' do
     new_accessory_title = 'Testing Setup Accessory'
     new_accessory_description = 'Testing Description'
     new_accessory_price = 10.00
+    new_status = 'active'
 
     visit accessories_path
     expect(page).to have_button('Create New Accessory')
@@ -26,8 +27,9 @@ describe 'visits bike shop' do
     fill_in :accessory_title, with: new_accessory_title
     fill_in :accessory_description, with: new_accessory_description
     fill_in :accessory_price, with: new_accessory_price
+    select new_status, from: 'accessory[status]'
 
-    click_button 'Submit'
+    click_button 'Create Accessory'
 
     expect(current_path).to eq(accessories_path)
 

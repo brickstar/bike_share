@@ -5,7 +5,7 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
   def create
-    @accessory = Accessory.new(station_params)
+    @accessory = Accessory.new(accessory_params)
     if @accessory.save
       flash[:successs] = "You have successfully created #{@accessory.name}."
       redirect_to accessories_path
@@ -18,6 +18,6 @@ class Admin::AccessoriesController < Admin::BaseController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:title, :description, :price, :image)
+    params.require(:accessory).permit(:title, :description, :price, :status, :image_url)
   end
 end
