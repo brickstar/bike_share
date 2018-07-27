@@ -5,10 +5,10 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
   def create
-    @accessory = Accessory.new(accessory_params)
+    @accessory = Accessory.create(accessory_params)
     if @accessory.save
-      flash[:successs] = "You have successfully created #{@accessory.name}."
-      redirect_to accessories_path
+      flash[:successs] = "You have successfully created #{@accessory.title}."
+      redirect_to accessory_path(@accessory)
     else
       flash[:alert] = "Missing required fields, accessory was not created."
       render :new

@@ -17,6 +17,7 @@ describe 'visits bike shop' do
     new_accessory_title = 'Testing Setup Accessory'
     new_accessory_description = 'Testing Description'
     new_accessory_price = 10.00
+    new_image_url = 'new image url'
     new_status = 'active'
 
     visit accessories_path
@@ -27,11 +28,12 @@ describe 'visits bike shop' do
     fill_in :accessory_title, with: new_accessory_title
     fill_in :accessory_description, with: new_accessory_description
     fill_in :accessory_price, with: new_accessory_price
+    fill_in :accessory_image_url, with: new_image_url
     select new_status, from: 'accessory[status]'
 
     click_button 'Create Accessory'
 
-    expect(current_path).to eq(accessories_path)
+    expect(current_path).to eq(accessory_path(Accessory.last))
 
     click_on 'Next'
 
