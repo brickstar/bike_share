@@ -1,5 +1,8 @@
 class Accessory < ApplicationRecord
 
+  has_many :order_accessories
+  has_many :orders, through: :order_accessories
+
   validates_uniqueness_of :title, presence: true
   validates_presence_of :description
   validates_numericality_of :price, greater_than: 0
