@@ -24,11 +24,24 @@ range.step(10).map do |range|
   .count(:condition_id)
 end
 
+Condition.maximum/minimum attribute .floor(-1) .ceil(-1)
+
+until min >= max
+ thing << [min..(min + 9.9)]
+ min += 10
+end
+
+(min..max).step(10) do |n|
+  ary << n
+end
+
 joins(:trips)
      .where(max_temp: range)
      .group(:condition_id)
      .count(:condition_id)
      .values
+
+Condition.joins(:trips).where(max_temp: 50..60).group(:condition_id).count.values
 
 Condition.select("conditions.max_temp, count(trips.id) as trip_count")
 .joins("inner join trips on conditions.zip_code=trips.zip_code")
