@@ -22,7 +22,7 @@ class Admin::AccessoriesController < ApplicationController
   private
 
   def admin_accessory_params
-    params.require(:accessory).permit(:title, :description, :status)
+    params.require(:accessory).permit(:title, :description, :status, :price)
   end
 
   def set_accessory
