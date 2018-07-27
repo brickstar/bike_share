@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @order = Order.includes(:user).find(params[:id])
+    render file: "/public/404" unless (current_admin? || current_user == @order.user)
   end
 
   def create
