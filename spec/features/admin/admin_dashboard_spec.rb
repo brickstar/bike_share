@@ -20,21 +20,20 @@ describe 'admin user visits dashboard' do
       @accessory_4 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test4', description: 'this is a test', price: 5)
       OrderAccessory.create(accessory_id: 3, order_id: 2, quantity: 4)
       OrderAccessory.create(accessory_id: 4, order_id: 2, quantity: 4)
+      visit admin_dashboard_path(@admin)
 
     end
 
     it 'total number of orders for each status' do
-      visit admin_dashboard_path(@admin)
-
       expect(page).to have_content('Ordered: 1')
       expect(page).to have_content('Paid: 1')
       expect(page).to have_content('Cancelled: 0')
       expect(page).to have_content('Completed: 0')
     end
 
-    xit 'sees a list for each individual order' do
-      # I see a link for each individual order,
-      expect(page).to have_link()
+    it 'sees link for each individual order' do
+      click_on '1'
+      expect(current_path).to eq(order_path(@order_1))
     end
 
     xit 'can filter orders to display by each status type' do

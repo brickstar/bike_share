@@ -11,9 +11,13 @@
 
 <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
 
-<p>Order Statuses</p>
-
+<h3>Order Count by Status</h3>
 <p>Ordered: <%= @ordered %></p>
 <p>Paid: <%= @paid %></p>
 <p>Completed: <%= @completed %></p>
 <p>Cancelled: <%= @cancelled %></p>
+
+<h3>All Orders</h3>
+<% @orders.each do |order| %>
+  <ul><%=link_to "#{order.id}", order_path(order)%></ul>
+<% end %>
