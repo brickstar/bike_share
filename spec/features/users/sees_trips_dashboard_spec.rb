@@ -57,14 +57,6 @@ describe 'visits trips dashboard' do
     expect(page).to have_content("Least Ridden Bike: ##{@trip4.bike_id} (1 rides)")
   end
   it 'sees user subscription type by count and percentage' do
-    total_trips = Trip.count
-    subscribers_total = Trip.where(subscription_type: 'subscriber').count
-    subscribers_percentage = ((subscribers_total / total_trips.to_f) * 100).to_i
-    customers_total = total_trips - subscribers_total
-    customers_percentage = 100 - subscribers_percentage
-
-    trip.subscribers_total
-
     expect(page).to have_content("Subscribers: #{Trip.subscribers_total} (#{Trip.subscribers_precentage}%)")
     expect(page).to have_content("Customers: #{Trip.customers_total} (#{Trip.customers_precentage}%)")
   end

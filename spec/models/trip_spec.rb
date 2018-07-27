@@ -84,5 +84,11 @@ describe Trip, type: :model do
       expect(bike_id_table[1].bike_id).to eq(3)
       expect(bike_id_table[1].number_of_rides).to eq(1)
     end
+    it 'should find the counts and percentages by subscription type' do
+      expect(Trip.subscribers_total).to eq(1)
+      expect(Trip.subscribers_percentage).to eq(25)
+      expect(Trip.customers_total).to eq(3)
+      expect(Trip.customers_total).to eq(75)
+    end
   end
 end
