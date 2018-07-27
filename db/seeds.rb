@@ -13,11 +13,6 @@ CSV.foreach('./../sf-bay-area-bike-share/trip.csv', headers: true, header_conver
     formatted_start_date = Date.strptime row[2], '%m/%d/%Y'
     formatted_end_date = Date.strptime row[2], '%m/%d/%Y'
     condition = Condition.find_by(date: formatted_start_date)
-    # if condition
-    #   condition_id = condition.id
-    # else
-    #   condition_id = nil
-    # end
     Trip.create(id: row[0],
                 duration: row[1],
                 start_date: formatted_start_date,

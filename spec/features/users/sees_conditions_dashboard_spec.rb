@@ -10,18 +10,18 @@ highest number of rides,
 and lowest number of rides
 on days with a high temperature
 in 10 degree chunks (e.g. average number of rides on days with
-high temps between fifty and sixty degrees
+high temps between fifty and sixty degrees)
 
 44-102
 
-60-70 382
-283
 7 total
 
 range = (40..110)
 
 range.step(10).map do |range|
-  Condition.joins(:trips).where(max_temp: range).group(:condition_id).count(:condition_id)
+  Condition.joins(:trips).where(max_temp: range)
+  .group(:condition_id)
+  .count(:condition_id)
 end
 
 joins(:trips)
@@ -35,6 +35,7 @@ Condition.select("conditions.max_temp, count(trips.id) as trip_count")
 .where("conditions.date=trips.start_date")
 .group(:max_temp,:id)
 
+ ary.map { |range| Condition.where(max_temp: range[0]..range[1]).joins(:trips).group(:date, :max_temp).order(:max_temp).count(:condition_id).values.max}
 
 Condition.joins("INNER JOIN trips ON conditions.date = trips.start_date")
 .select("conditions.date, count(trips.id) as trip_count")
@@ -50,6 +51,8 @@ Condition.select("conditions.id, conditions.date").where("max_temp >= ? AND max_
 end
 thing
 end
+
+ary = [[0.0, 0.5], [0.5, 1.0], [1.0, 70], [70, 80], [80, 90], [90, 100], [100, 110]]
 
 =end
 

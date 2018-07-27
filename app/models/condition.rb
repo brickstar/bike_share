@@ -11,4 +11,15 @@ class Condition < ApplicationRecord
                         :date
 
   validates :date, uniqueness: true
+
+  def self.within_max_temp_range(low, high)
+    where(max_temp: low..high)
+  end
+
+  def self.trips_per_day
+    joins(:trips)
+    .group(:condition_id)
+    .count.values
+  end
+
 end
