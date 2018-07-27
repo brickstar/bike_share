@@ -14,14 +14,22 @@ describe 'login workflow' do
 
     visit '/'
 
-    click_on 'Login'
+    within('.navbar-brand') do
+      click_on 'Login'
+    end
 
     expect(current_path).to eq('/login')
+
+    within('nav') do
+      expect(page).to_not have_content('Login')
+    end
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
 
-    click_on 'Login'
+    within('#existing-user-login') do
+      click_on 'Login'
+    end
 
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content('Logged in as Jeff')

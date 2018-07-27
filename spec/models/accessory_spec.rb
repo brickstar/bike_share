@@ -9,4 +9,8 @@ describe Accessory, type: :model do
     it {should validate_numericality_of(:price).
                   is_greater_than(0)}
   end
+  describe 'relationships' do
+    it {should have_many(:order_accessories)}
+    it {should have_many(:orders).through(:order_accessories)}
+  end
 end

@@ -53,7 +53,7 @@ describe 'visits bike shop' do
     expect(page).to have_content(@accessory13.title)
 
     click_on 'Prev'
-    
+
     expect(page).to have_content(@accessory12.title)
     expect(page).to_not have_content(@accessory13.title)
   end
@@ -67,5 +67,14 @@ describe 'visits bike shop' do
       expect(page).to_not have_button('Add to Cart')
       expect(page).to have_content('Accessory Retired')
     end
+  end
+  it 'can link to accessory show' do
+    visit accessories_path
+
+    within("#accessory_#{@accessory4.id}") do
+      click_link("#{@accessory4.title}")
+    end
+
+    expect(current_path).to eq(accessory_path(@accessory4))
   end
 end
