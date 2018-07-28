@@ -15,15 +15,21 @@ describe 'an admin user' do
 
     visit login_path
 
+    within('nav') do
+      expect(page).to_not have_content('Login')
+    end
+
     fill_in :email, with: admin.email
     fill_in :password, with: admin.password
 
     expect(admin.role).to eq('admin')
     expect(admin.admin?).to eq(true)
 
-    click_on 'Login'
+    within('#existing-user-login') do
+      click_on 'Login'
+    end
 
-    expect(current_path).to eq(admin_dashboard_path(admin))
+    expect(current_path).to eq(admin_dashboard_path)
 
     within('#admin-nav') do
       expect(page).to have_content("Logged in as Admin User: #{admin.first_name}")
@@ -55,7 +61,7 @@ describe 'default user' do
                          role: 0 )
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-   visit admin_dashboard_path(user)
+   visit admin_dashboard_path
 
    within('#admin-nav') do
      expect(page).to_not have_content("Logged in as Admin User: #{user.first_name}")

@@ -24,5 +24,8 @@ describe 'visiting the conditions index' do
     expect(page).to have_content(condition_2.mean_wind_speed)
     expect(page).to have_content(condition_1.precipitation)
     expect(page).to have_content(condition_2.precipitation)
+
+    expect(page).to_not have_button('Edit')
+    expect(page).to_not have_button('Delete')
   end
 end

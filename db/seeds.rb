@@ -34,6 +34,30 @@ CSV.foreach('./../sf-bay-area-bike-share/station.csv', headers: true, header_con
 end
 
 
-puts Trip.count
-puts Station.count
-puts Condition.count
+IMAGES = []
+100.times do
+  IMAGES << "https://robohash.org/#{rand(1000)}"
+end
+
+Accessory.create(image_url: IMAGES.sample, title: 'test1', description: 'this is a test', price: 1)
+Accessory.create(image_url: IMAGES.sample, title: 'test2', description: 'this is a test', price: 2)
+Accessory.create(image_url: IMAGES.sample, title: 'test3', description: 'this is a test', price: 3)
+Accessory.create(image_url: IMAGES.sample, title: 'test4', description: 'this is a test', price: 4)
+Accessory.create(image_url: IMAGES.sample, title: 'test5', description: 'this is a test', price: 5, status: 0)
+Accessory.create(image_url: IMAGES.sample, title: 'test5', description: 'this is a test', price: 5, status: 0)
+Accessory.create(image_url: IMAGES.sample, title: 'test6', description: 'this is a test', price: 6)
+Accessory.create(image_url: IMAGES.sample, title: 'test7', description: 'this is a test', price: 7)
+Accessory.create(image_url: IMAGES.sample, title: 'test8', description: 'this is a test', price: 8)
+Accessory.create(image_url: IMAGES.sample, title: 'test9', description: 'this is a test', price: 9)
+Accessory.create(image_url: IMAGES.sample, title: 'test10', description: 'this is a test', price: 10)
+Accessory.create(image_url: IMAGES.sample, title: 'test11', description: 'this is a test', price: 11)
+Accessory.create(image_url: IMAGES.sample, title: 'test12', description: 'this is a test', price: 12)
+
+User.create(first_name: 'admin', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'admin', password: 'adminadmin', role: 1)
+User.create(first_name: 'user', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'user', password: 'useruser', role: 0)
+
+puts Trip.count puts 'trips'
+puts Station.count puts 'stations'
+puts Condition.count puts 'conditions'
+puts Accessory.count puts 'accessories'
+puts User.count puts 'users'

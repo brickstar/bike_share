@@ -5,25 +5,29 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
-  get '/bike-shop', to: 'accessories#index'
-  get '/bike-shop/:id', to: 'accessories#show'
   get '/dashboard', to: 'dashboard#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/stations-dashboard', to: 'stations_dashboard#index'
-  resources :accessories, only: [:index, :show], path: 'bikeshop'
+  get '/cart', to: 'cart#show'
+  post '/cart', to: 'cart#create'
+  delete '/cart', to: 'cart#destroy'
 
-  resources :users, only: [:new, :create]
-
-  resources :stations
-
+  resources :accessories, only: [:index, :show], path: 'bike-shop'
+  resources :users, only: [:new, :create, :edit, :update]
+  resources :stations, only: [:index, :show]
   resources :conditions, only: [:index, :show]
-
   resources :trips, only: [:index, :show]
 
+  resources :orders, only: [:show, :create]
+
   namespace :admin do
-    resources :dashboard, only: [:show]
+    get '/dashboard', to: 'dashboard#show'
+    resources :trips, except: [:index, :show]
+    resources :stations, only: [:new, :create, :edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :accessories, only: [:new, :create, :edit, :update]
   end
 
-  get '/:station_name', to: 'stations#show'
+  get '/:id', to: 'stations#show'
 
 end

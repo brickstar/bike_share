@@ -35,4 +35,10 @@ describe 'visiting trips index' do
     expect(page).to have_content("Bike ID: #{Trip.first.bike_id}")
     expect(page).to_not have_content("Bike ID: #{Trip.last.bike_id}")
   end
+  it 'does not see admin edit and delete buttons' do
+    visit trips_path
+
+    expect(page).to_not have_button('Edit')
+    expect(page).to_not have_button('Delete')
+  end
 end

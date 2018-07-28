@@ -1,4 +1,4 @@
-<h1>Trip ID: <%= @trip.id %></h1>
+<h1>Started From Station: <%= @trip.start_station_name %></h1>
 
 <ul>
   <li>Duration: <%= @trip.duration %>s</li>
@@ -7,8 +7,11 @@
   <li>Start Station ID: <%= @trip.start_station_id %></li>
   <li>End Date: <%= @trip.end_date %></li>
   <li>End Station: <%= @trip.end_station_name %></li>
-  <li>End Station ID: <%= @trip.end_station_id %></li>
   <li>Bike ID: <%= @trip.bike_id %></li>
   <li>Subscription Type: <%= @trip.subscription_type %></li>
   <li>Zip Code: <%= @trip.zip_code %></li>
+  <% if current_admin? %>
+    <%= button_to "Edit", edit_admin_trip_path(@trip), method: 'get' %>
+    <%= button_to "Delete", admin_trip_path(@trip), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
+  <% end %>
 </ul>

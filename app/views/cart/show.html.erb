@@ -1,0 +1,20 @@
+<table>
+  <% @cart.unpack_contents.each do |accessory, quantity| %>
+    <tr>
+      <td><%= image_tag accessory.image_url, id: 'accessory-cart-image' %></td>
+      <td><%= accessory.title %></td>
+      <td>Price: <%= number_to_currency(accessory.price) %></td>
+      <td>Quantity: <%= quantity %></td>
+      <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
+      <td><%= button_to 'Decrease Quantity', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
+      <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
+      <td><%= button_to 'Remove Accessory', cart_path(accessory_id: accessory.id), method: 'delete' %></td>
+    </tr>
+  <% end %>
+<table>
+<p>Total: <%= number_to_currency(@cart.total) %></p>
+<% if current_user %>
+  <%= button_to 'Checkout', orders_path %>
+<% else %>
+  <%= link_to 'Create Account', new_user_path %>
+<% end %>
