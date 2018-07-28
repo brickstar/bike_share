@@ -54,4 +54,22 @@
 <br>
 
 <p>Date with the most rides: <%= @ride_days.first.date_mod %> (<%= @ride_days.first.date_count %> rides)</p>
+<p>Weather conditions:</p>
+<ul>
+  <li>High Temperature: <%= @condition_most_rides.max_temp %></li>
+  <li>Low Temperature: <%= @condition_most_rides.min_temp %></li>
+  <li>Mean Humidity: <%= @condition_most_rides.mean_humidity %></li>
+  <li>Mean Visibility: <%= @condition_most_rides.mean_visibility %></li>
+  <li>Mean Wind Speed: <%= @condition_most_rides.mean_wind_speed %></li>
+  <li>Precipitation: <%= @condition_most_rides.precipitation %></li>
+</ul>
 <p>Date with the least rides: <%= @ride_days.last.date_mod %> (<%= @ride_days.last.date_count %> rides)</p>
+<p>Weather conditions:</p>
+<ul>
+  <li>High Temperature: <%= @condition_least_rides.max_temp %></li>
+  <li>Low Temperature: <%= @condition_least_rides.min_temp %></li>
+  <li>Mean Humidity: <%= @condition_least_rides.mean_humidity %></li>
+  <li>Mean Visibility: <%= @condition_least_rides.mean_visibility %></li>
+  <li>Mean Wind Speed: <%= @condition_least_rides.mean_wind_speed %></li>
+  <li>Precipitation: <%= @condition_least_rides.precipitation %></li>
+</ul>
