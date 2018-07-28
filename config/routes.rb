@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :accessories, only: [:new, :create, :edit, :update]
-    resources :orders, only: [:edit, :update, :destroy]
+    resources :orders, only: [:edit, :update]
   end
 
   get '/:id', to: 'stations#show'
