@@ -15,5 +15,7 @@ class TripsDashboardController < ApplicationController
     @customers_total = Trip.customers_total
     @customers_percentage = Trip.customers_percentage
     @ride_days = Trip.max_min_rides
+    @condition_most_rides = Condition.most_rides
+    @condition_least_rides = Condition.least_rides
   end
 end
