@@ -22,4 +22,11 @@ class Condition < ApplicationRecord
     .count.values
   end
 
+  def self.most_rides
+    find_by(date: Trip.max_min_rides.first.date_mod)
+  end
+
+  def self.least_rides
+    find_by(date: Trip.max_min_rides.last.date_mod)
+  end
 end
