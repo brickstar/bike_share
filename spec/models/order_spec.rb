@@ -16,8 +16,8 @@ describe Order, type: :model do
     before :each do
       user = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
       @order = user.orders.create(status: 'paid')
-      @accessory1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
-      @accessory2 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test2', description: 'this is a test', price: 4)
+      @accessory1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
+      @accessory2 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test2', description: 'this is a test', price: 4)
       OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 2)
       OrderAccessory.create(accessory_id: 2, order_id: 1, quantity: 3)
     end

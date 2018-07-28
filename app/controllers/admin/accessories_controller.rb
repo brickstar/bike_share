@@ -1,31 +1,23 @@
-class Admin::AccessoriesController < ApplicationController
-  before_action :set_accessory, only: [:edit, :update]
+class Admin::AccessoriesController < Admin::BaseController
 
-  def index
-    @accessories = Accessory.all
+  def new
+    @accessory = Accessory.new
   end
 
-  def edit
-
-  end
-
-  def update
-    @accessory.update(admin_accessory_params)
+  def create
+    @accessory = Accessory.create(accessory_params)
     if @accessory.save
-      flash[:success] = "Accessory #{@accessory.title} updated."
-      redirect_to admin_accessories_path
+      flash[:successs] = "You have successfully created #{@accessory.title}."
+      redirect_to accessory_path(@accessory)
     else
-      render :edit
+      flash[:alert] = "Missing required fields, accessory was not created."
+      render :new
     end
   end
 
   private
 
-  def admin_accessory_params
-    params.require(:accessory).permit(:title, :description, :status, :price)
-  end
-
-  def set_accessory
-    @accessory = Accessory.find(params[:id])
+  def accessory_params
+    params.require(:accessory).permit(:title, :description, :price, :status, :image_url)
   end
 end
