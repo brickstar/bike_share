@@ -1,0 +1,20 @@
+<%= form_for [:admin, @accessory] do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.label :status %>
+  <%= f.select :status, ['active', 'retired'] %>
+
+  <%= f.submit %>
+
+<% end %>
