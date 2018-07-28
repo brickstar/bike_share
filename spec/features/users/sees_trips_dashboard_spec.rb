@@ -61,7 +61,7 @@ describe 'visits trips dashboard' do
     expect(page).to have_content("Customers: #{Trip.customers_total} (#{Trip.customers_percentage.to_i}%)")
   end
   it 'sees user subscription type by count and percentage' do
-    expect(page).to have_content("Date with most rides: #{Trip.max_rides_date} (#{Trip.max_rides_count})")
-    expect(page).to have_content("Date with least rides: #{Trip.min_rides_date} (#{Trip.min_rides_count})")
+    expect(page).to have_content("Date with the most rides: #{Trip.max_min_rides.first.date_mod} (#{Trip.max_min_rides.first.date_count} rides)")
+    expect(page).to have_content("Date with the least rides: #{Trip.max_min_rides.last.date_mod} (#{Trip.max_min_rides.last.date_count} rides)")
   end
 end

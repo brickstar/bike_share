@@ -50,3 +50,8 @@
 
 <p>Subscribers: <%= @subscribers_total %> (<%= @subscribers_percentage.to_i %>%)</p>
 <p>Customers: <%= @customers_total %> (<%= @customers_percentage.to_i %>%)</p>
+
+<br>
+
+<p>Date with the most rides: <%= @ride_days.first.date_mod %> (<%= @ride_days.first.date_count %> rides)</p>
+<p>Date with the least rides: <%= @ride_days.last.date_mod %> (<%= @ride_days.last.date_count %> rides)</p>

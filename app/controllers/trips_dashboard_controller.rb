@@ -14,5 +14,6 @@ class TripsDashboardController < ApplicationController
     @subscribers_percentage = Trip.subscribers_percentage
     @customers_total = Trip.customers_total
     @customers_percentage = Trip.customers_percentage
+    @ride_days = Trip.max_min_rides
   end
 end
