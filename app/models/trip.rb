@@ -55,4 +55,24 @@ class Trip < ApplicationRecord
   def self.bike_id_table
     select('trips.bike_id, count(trips.bike_id) AS number_of_rides').group(:bike_id).order('number_of_rides desc')
   end
+
+  def self.subscribers_total
+    where(subscription_type: 'subscriber').count
+  end
+
+  def self.customers_total
+    where(subscription_type: 'customer').count
+  end
+
+  def self.subscribers_percentage
+    where(subscription_type: 'subscriber').count / Trip.count.to_f * 100
+  end
+
+  def self.customers_percentage
+    where(subscription_type: 'customer').count / Trip.count.to_f * 100
+  end
+
+  def self.max_min_rides
+    select('CAST(trips.start_date AS DATE) AS date_mod, count(CAST(trips.start_date AS DATE)) AS date_count').group('CAST(trips.start_date AS DATE)').order('date_count desc')
+  end
 end

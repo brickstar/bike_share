@@ -22,7 +22,7 @@ describe Trip, type: :model do
   describe 'class methods' do
     before :each do
       @trip1 = Trip.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 2', start_station_id: 2, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
-      @trip2 = Trip.create(duration: 130, start_date: DateTime.strptime('10/13/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('10/13/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+      @trip2 = Trip.create(duration: 130, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
       @trip3 = Trip.create(duration: 140, start_date: DateTime.strptime('07/14/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('07/14/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
       @trip4 = Trip.create(duration: 150, start_date: DateTime.strptime('09/12/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('09/12/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 3, subscription_type: 'customer', zip_code: '32174')
     end
@@ -83,6 +83,20 @@ describe Trip, type: :model do
       expect(bike_id_table[0].number_of_rides).to eq(3)
       expect(bike_id_table[1].bike_id).to eq(3)
       expect(bike_id_table[1].number_of_rides).to eq(1)
+    end
+    it 'should find the counts and percentages by subscription type' do
+      expect(Trip.subscribers_total).to eq(1)
+      expect(Trip.subscribers_percentage).to eq(25)
+      expect(Trip.customers_total).to eq(3)
+      expect(Trip.customers_percentage).to eq(75)
+    end
+    it 'should find the date with the most rides and the ride count' do
+      expect(Trip.max_min_rides.first.date_mod).to eq(@trip1.start_date.to_date)
+      expect(Trip.max_min_rides.first.date_count).to eq(2)
+    end
+    it 'should find the date with the least rides and the ride count' do
+      expect(Trip.max_min_rides.last.date_mod).to eq(@trip3.start_date.to_date)
+      expect(Trip.max_min_rides.last.date_count).to eq(1)
     end
   end
 end
