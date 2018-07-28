@@ -8,16 +8,26 @@
   <li><%= current_user.zip_code %> </li>
   <li><%= current_user.email %> </li>
 </ul>
-
 <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
+</br>
+</br>
+<h3> Order Count by Status:</h3>
+<p><%= link_to 'Ordered', '/admin/dashboard?status=ordered' %>: <%= @ordered_status %> </p>
+<p><%= link_to 'Paid', '/admin/dashboard?status=paid' %>: <%= @paid_status %></p>
+<p><%= link_to 'Completed', '/admin/dashboard?status=completed' %>: <%= @completed_status %></p>
+<p><%= link_to 'Cancelled', '/admin/dashboard?status=cancelled' %>: <%= @cancelled_status %></p>
 
-<h3>Order Count by Status</h3>
-<p>Ordered: <%= @ordered %></p>
-<p>Paid: <%= @paid %></p>
-<p>Completed: <%= @completed %></p>
-<p>Cancelled: <%= @cancelled %></p>
+</br>
+</br>
 
 <h3>All Orders</h3>
-<% @orders.each do |order| %>
-  <ul><%=link_to "#{order.id}", order_path(order)%></ul>
-<% end %>
+<table>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.id, order_path(order) %></td>
+      <td><%= order.user.first_name %></td>
+      <td><%= order.created_at %></td>
+      <td><%= order.status %></td>
+    </tr>
+  <% end %>
+<table>
