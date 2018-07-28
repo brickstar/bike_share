@@ -17,11 +17,10 @@ describe 'admin user visits dashboard' do
       @accessory_4 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test4', description: 'this is a test', price: 5)
       OrderAccessory.create(accessory_id: 3, order_id: 2, quantity: 4)
       OrderAccessory.create(accessory_id: 4, order_id: 2, quantity: 4)
-
+      visit admin_dashboard_path
     end
 
     it 'total number of orders for each status' do
-      visit admin_dashboard_path
       expect(page).to have_content('Ordered: 1')
       expect(page).to have_content('Paid: 1')
       expect(page).to have_content('Cancelled: 0')
@@ -29,7 +28,6 @@ describe 'admin user visits dashboard' do
     end
 
     it 'sees all order attributes and link for each individual order' do
-      visit admin_dashboard_path
       expect(page).to have_content(@order_1.user.first_name)
       expect(page).to have_content(@order_1.created_at)
       expect(page).to have_content(@order_1.status)
@@ -40,7 +38,6 @@ describe 'admin user visits dashboard' do
     end
 
     it 'can filter orders to display by each status type' do
-      visit admin_dashboard_path
       expect(page).to have_link('Ordered')
       expect(page).to have_link('Paid')
       expect(page).to have_link('Cancelled')
@@ -52,8 +49,6 @@ describe 'admin user visits dashboard' do
     end
 
     it 'can see links to transition between statuses' do
-      visit admin_dashboard_path
-
       click_link 'Ordered'
       expect(page).to_not have_link(@order_1.id)
       expect(page).to have_link(@order_2.id)
@@ -71,14 +66,20 @@ describe 'admin user visits dashboard' do
       expect(page).to_not have_link(@order_2.id)
       click_button 'Back to Dashboard'
     end
+  end
 
-    xit 'can click \'cancel\' on an order that is \'paid or ordered\'' do
+  describe 'it can change the status of orders from the dashboard' do
+    it 'can click \'cancel\' an order that is \'paid' do
+          @order_1 = @user_1.orders.create(status: 'paid')
     end
 
-    xit 'can click \'mark as paid\' on an order that is marked \'ordered\'' do
+    it 'can click \'cancel\' an order that is \'ordered' do
     end
 
     xit 'can click \'mark as completed\' on an order that is \'paid\'' do
+    end
+
+    xit 'can click \'mark as paid\' on an order that is marked \'ordered\'' do
     end
   end
 end
