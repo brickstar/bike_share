@@ -68,18 +68,66 @@ describe 'admin user visits dashboard' do
     end
   end
 
-  describe 'it can change the status of orders from the dashboard' do
-    it 'can click \'cancel\' an order that is \'paid' do
-          @order_1 = @user_1.orders.create(status: 'paid')
+  describe 'it can change the status of and order from the dashboard' do
+    before :each do
+      @admin = User.create(first_name: 'Jeff', last_name: 'Casimir', street: '123 Main St', city: 'Denver', state: 'Colorado', zip_code: '80403', email: 'jeff@turing.com', password: 'password', role: 1)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+    end
+
+    it 'can click \'cancel\' on an order that is \'paid' do
+      user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
+      order_1 = user_1.orders.create(status: 'paid')
+      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+      OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
+
+      visit admin_dashboard_path
+      expect(page).to have_content('Paid: 1')
+      expect(page).to have_content('Cancelled: 0')
+      click_button 'Cancel'
+      expect(page).to have_content('Paid: 0')
+      expect(page).to have_content('Cancelled: 1')
     end
 
     it 'can click \'cancel\' an order that is \'ordered' do
+      user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
+      order_1 = user_1.orders.create(status: 'ordered')
+      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test3', description: 'this is a test', price: 5)
+      OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
+
+      visit admin_dashboard_path
+      expect(page).to have_content('Ordered: 1')
+      expect(page).to have_content('Cancelled: 0')
+      click_button 'Cancel'
+      expect(page).to have_content('Ordered: 0')
+      expect(page).to have_content('Cancelled: 1')
     end
 
-    xit 'can click \'mark as completed\' on an order that is \'paid\'' do
+    it 'can click \'mark as completed\' on an order that is \'paid\'' do
+      user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
+      order_1 = user_1.orders.create(status: 'paid')
+      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+      OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
+
+      visit admin_dashboard_path
+      expect(page).to have_content('Paid: 1')
+      expect(page).to have_content('Completed: 0')
+      click_button 'Mark as Complete'
+      expect(page).to have_content('Paid: 0')
+      expect(page).to have_content('Completed: 1')
     end
 
-    xit 'can click \'mark as paid\' on an order that is marked \'ordered\'' do
+    it 'can click \'mark as paid\' on an order that is marked \'ordered\'' do
+      user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
+      order_1 = user_1.orders.create(status: 'ordered')
+      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test3', description: 'this is a test', price: 5)
+      OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
+
+      visit admin_dashboard_path
+      expect(page).to have_content('Ordered: 1')
+      expect(page).to have_content('Paid: 0')
+      click_button 'Mark as Paid'
+      expect(page).to have_content('Ordered: 0')
+      expect(page).to have_content('Paid: 1')
     end
   end
 end
