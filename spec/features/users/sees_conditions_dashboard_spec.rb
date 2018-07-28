@@ -27,7 +27,7 @@ end
 Condition.maximum/minimum attribute .floor(-1) .ceil(-1)
 
 until min >= max
- thing << [min..(min + 9.9)]
+ thing << [min, (min + 9.9)]
  min += 10
 end
 
