@@ -3,7 +3,7 @@
   <% @order.unpack_contents.each do |accessory, quantity| %>
     <tr>
       <td>Image tag placeholder (THUMBNAIL ONLY)</td>
-      <td><%= accessory.title %></td>
+      <td><%= link_to accessory.title, accessory_path(accessory) %></td>
       <td>Price: <%= number_to_currency(accessory.price) %></td>
       <td>Quantity: <%= quantity %></td>
       <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
@@ -12,5 +12,9 @@
 <table>
 <p>Total: <%= number_to_currency(@order.total) %></p>
 <p>Status: <%= @order.status %></p>
-<p>Submitted: <%= @order.created_at.to_date %></p>
-<p>Status Changed: <%= @order.updated_at.to_date %></p>
+<p>Status Changed: <%= @order.updated_at.strftime("%d %b %Y %H:%M") %></p>
+<p>Submitted: <%= @order.created_at.strftime("%d %b %Y %H:%M") %></p>
+<% if current_admin? %>
+  <p>Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
+  <p>Customer Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
+<% end %>

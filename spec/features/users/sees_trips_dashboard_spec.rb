@@ -6,7 +6,7 @@ describe 'visits trips dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     @trip1 = Trip.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 2', start_station_id: 2, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
-    @trip2 = Trip.create(duration: 130, start_date: DateTime.strptime('10/13/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('10/13/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
+    @trip2 = Trip.create(duration: 130, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
     @trip3 = Trip.create(duration: 140, start_date: DateTime.strptime('07/14/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('07/14/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 2, subscription_type: 'customer', zip_code: '32174')
     @trip4 = Trip.create(duration: 150, start_date: DateTime.strptime('09/12/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('09/12/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 3, subscription_type: 'customer', zip_code: '32174')
 
@@ -55,5 +55,13 @@ describe 'visits trips dashboard' do
   end
   it 'sees the least ridden bike with the number of rides for that bike' do
     expect(page).to have_content("Least Ridden Bike: ##{@trip4.bike_id} (1 rides)")
+  end
+  it 'sees user subscription type by count and percentage' do
+    expect(page).to have_content("Subscribers: #{Trip.subscribers_total} (#{Trip.subscribers_percentage.to_i}%)")
+    expect(page).to have_content("Customers: #{Trip.customers_total} (#{Trip.customers_percentage.to_i}%)")
+  end
+  it 'sees user subscription type by count and percentage' do
+    expect(page).to have_content("Date with the most rides: #{Trip.max_min_rides.first.date_mod} (#{Trip.max_min_rides.first.date_count} rides)")
+    expect(page).to have_content("Date with the least rides: #{Trip.max_min_rides.last.date_mod} (#{Trip.max_min_rides.last.date_count} rides)")
   end
 end
