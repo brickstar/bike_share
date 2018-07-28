@@ -15,7 +15,7 @@ describe 'admin user visits trip new' do
       duration = 123456789
 
       fill_in 'trip[duration]', with: duration
-
+      
       click_on 'Update Trip'
 
       expect(current_path).to eq(trip_path(@trip1))
