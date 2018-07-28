@@ -10,5 +10,10 @@ class TripsDashboardController < ApplicationController
     @breakdown_by_month = Trip.breakdown_by_month
     @most_ridden_bike = Trip.bike_id_table.first
     @least_ridden_bike = Trip.bike_id_table.last
+    @subscribers_total = Trip.subscribers_total
+    @subscribers_percentage = Trip.subscribers_percentage
+    @customers_total = Trip.customers_total
+    @customers_percentage = Trip.customers_percentage
+    @ride_days = Trip.max_min_rides
   end
 end
