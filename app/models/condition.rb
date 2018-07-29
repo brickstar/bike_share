@@ -29,4 +29,12 @@ class Condition < ApplicationRecord
   def self.least_rides
     find_by(date: Trip.max_min_rides.last.date_mod)
   end
+
+
+
+  
+  
+  def self.rides_by_max_temp
+    select('CAST(trips.start_date AS DATE) AS date, conditions.max_temp AS max_temp, count(CAST(trips.start_date AS DATE)) AS rides').joins(:trips).group('CAST(trips.start_date AS DATE), conditions.max_temp').order('max_temp')
+  end
 end

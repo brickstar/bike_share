@@ -70,8 +70,24 @@ ary = [[0.0, 0.5], [0.5, 1.0], [1.0, 70], [70, 80], [80, 90], [90, 100], [100, 1
 =end
 
 describe 'registered user visits /conditions-dashboard' do
+  before(:each) do
+    @user = User.create(first_name: 'Pearl', last_name: 'Girl', street: '333 E 9th Ave', city: 'Denver', state: 'CO', zip_code: '12345', email: 'pearl@pearl.com', password: 'lovelove', role: 1)
+    @condition_1 = Condition.create(date: 'Tue, 04 Aug 2015', max_temp: 74.0, mean_temp: 68.0, min_temp: 61.0, mean_humidity: 61.0, mean_visibility: 58.0 , mean_wind_speed: 56.0, precipitation: 93.0)
+    @condition_2 = Condition.create(date: 'Wed, 05 Jan 2013', max_temp: 61.0, mean_temp: 58.0, min_temp: 46.0, mean_humidity: 50.0, mean_visibility: 45.0 , mean_wind_speed: 41.0, precipitation: 0.0)
+    @trip_1 = @condition_1.trips.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 1, subscription_type: 'subscriber', zip_code: '32174')
+    @trip_2 = @condition_1.trips.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 1, subscription_type: 'subscriber', zip_code: '32174')
+    @trip_3 = @condition_1.trips.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 1, subscription_type: 'subscriber', zip_code: '32174')
+    @trip_4 = @condition_2.trips.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'San Jose City Hall', start_station_id: 1, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'San Jose City Hall', end_station_id: 1, bike_id: 1, subscription_type: 'subscriber', zip_code: '32174')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    visit 
+  end
   describe 'on days with high temperature in 10 degree chunks' do
     it 'should see highest number of rides' do
+      visit conditions_dashboard_path
+
+      expect(page).to have_content('Number of rides by maximum temperature:')
+      expect(page).to have_content('60-69.9: 1')
+      expect(page).to have_content('70-79.9: 3')
     end
     it 'should see lowest number of rides' do
     end
