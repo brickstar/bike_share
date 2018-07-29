@@ -34,18 +34,7 @@
     <%= link_to 'View Cart', cart_path %>
   </nav>
   <body>
-  <section class="hero is-link">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-        BIKESHARE
-        </h1>
-        <h2 class="subtitle">
-        Because Ian Made Us
-        </h2>
-      </div>
-    </div>
-  </section>
+  
     <% flash.each do |type, message| %>
       <%= content_tag :div, message.html_safe, class: type %>
     <% end %>

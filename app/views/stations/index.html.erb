@@ -1,6 +1,6 @@
 <% @stations.each do |station| %>
 <ul>
-  <li> Name: <%= station.name %>
+  <li> Name: <%= link_to station.name, station_path(station)%>
   <li> City: <%= station.city %>
   <li> Dock Count: <%= station.dock_count %>
   <li> Installation Date:<%= station.installation_date %>
