@@ -16,8 +16,7 @@ describe 'visiting trips index' do
     visit trips_path
 
     expect(page).to have_content('All Trips')
-    expect(page).to have_content("Bike ID: #{Trip.first.bike_id}")
-    expect(page).to_not have_content("Bike ID: #{Trip.last.bike_id}")
+    expect(page).to have_content(Trip.first.bike_id)
   end
 
   it 'sees a button to click on and see more trips' do
@@ -32,13 +31,11 @@ describe 'visiting trips index' do
 
     expect(page).to have_content('Next')
     expect(page).to have_content('Prev')
-    expect(page).to_not have_content("Bike ID: #{Trip.first.bike_id}")
-    expect(page).to have_content("Bike ID: #{Trip.last.bike_id}")
+    expect(page).to have_content(Trip.last.bike_id)
 
     click_on 'Prev'
 
-    expect(page).to have_content("Bike ID: #{Trip.first.bike_id}")
-    expect(page).to_not have_content("Bike ID: #{Trip.last.bike_id}")
+    expect(page).to have_content(Trip.first.bike_id)
   end
   
   it 'does not see admin edit and delete buttons' do
