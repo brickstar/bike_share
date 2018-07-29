@@ -1,47 +1,58 @@
-  <section class="hero is-link">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-        All Trips
-        </h1>
+<section class="hero is-link">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+      Trip Analytics
+      </h1>
+    </div>
+  </div>
+</section>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <p>Average Duration: <%= format_time(@average_duration) %></p>
+          <p>Longest Duration: <%= format_time(@longest_duration) %></p>
+          <p>Shortest Duration: <%= format_time(@shortest_duration) %></p>
+        </article>
+        <article class="tile is-child box">
+          <p>Subscribers: <%= @subscribers_total %> (<%= @subscribers_percentage.to_i %>%)</p>
+          <p>Customers: <%= @customers_total %> (<%= @customers_percentage.to_i %>%)</p>
+        </article>
+        <article class="tile is-child box">
+          <p>Date with the most rides: <%= @ride_days.first.date_mod %> (<%= @ride_days.first.date_count %> rides)</p>
+          <p>Date with the least rides: <%= @ride_days.last.date_mod %> (<%= @ride_days.last.date_count %> rides)</p>
+        </article>
+        <article class="tile is-child box">
+          <p>Most Ridden Bike: #<%= @most_ridden_bike.bike_id %> (<%= @most_ridden_bike.number_of_rides %> rides)</p>
+          <p>Least Ridden Bike: #<%= @least_ridden_bike.bike_id %> (<%= @least_ridden_bike.number_of_rides %> rides)</p>
+        </article>
+        <article class="tile is-child box">
+          <p>Station with Most Starting Trips: <%= @station_most_starts %></p>
+          <p>Station with Most Ending Trips: <%= @station_most_ends %></p>
+        </article>
       </div>
     </div>
-  </section>
-
-
-<h1>Trip's Dashboard</h1>
-
-<p>Average Duration: <%= format_time(@average_duration) %></p>
-
-<p>Longest Duration: <%= format_time(@longest_duration) %></p>
-
-<p>Shortest Duration: <%= format_time(@shortest_duration) %></p>
-
-<p>Station with Most Starting Trips: <%= @station_most_starts %></p>
-
-<p>Station with Most Ending Trips: <%= @station_most_ends %></p>
-
-<p>Breakdown of Rides per Year:</p>
-<ul>
-  <% @breakdown_by_year.sort.each do |year, rides| %>
-    <li><%= year.strftime('%Y') %>: <%= rides %> rides</li>
-  <% end %>
-</ul>
-
-<br>
-
-<p>Breakdown of Rides per Month:</p>
-<ul>
-  <% @breakdown_by_month.sort.each do |month, rides| %>
-    <li><%= month.strftime('%b %Y') %>: <%= rides %> rides</li>
-  <% end %>
-</ul>
-
-<p>Most Ridden Bike: #<%= @most_ridden_bike.bike_id %> (<%= @most_ridden_bike.number_of_rides %> rides)</p>
-
-<p>Least Ridden Bike: #<%= @least_ridden_bike.bike_id %> (<%= @least_ridden_bike.number_of_rides %> rides)</p>
-
-<p>Subscribers: <%= @subscribers_total %> (<%= @subscribers_percentage.to_i %>%)</p>
-<p>Customers: <%= @customers_total %> (<%= @customers_percentage.to_i %>%)</p>
-<p>Date with the most rides: <%= @ride_days.first.date_mod %> (<%= @ride_days.first.date_count %> rides)</p>
-<p>Date with the least rides: <%= @ride_days.last.date_mod %> (<%= @ride_days.last.date_count %> rides)</p>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p>Breakdown per Year:</p>
+          <ul>
+            <% @breakdown_by_year.sort.each do |year, rides| %>
+              <li><%= year.strftime('%Y') %>: <%= rides %> rides</li>
+            <% end %>
+          </ul>
+      </article>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <p>Breakdown per Month:</p>
+      <ul>
+        <% @breakdown_by_month.sort.each do |month, rides| %>
+          <li><%= month.strftime('%b %Y') %>: <%= rides %> rides</li>
+        <% end %>
+      </ul>
+    </article>
+  </div>
+</div>
