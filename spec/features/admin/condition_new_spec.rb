@@ -27,7 +27,7 @@ describe 'admin user visits condition new' do
       fill_in 'condition[mean_wind_speed]', with: mean_wind_speed
       fill_in 'condition[precipitation]', with: precipitation
 
-      click_on 'Create Condition'
+      click_on 'Submit'
 
       expect(current_path).to eq(condition_path(Condition.last))
       expect(page).to have_content("Weather condition for #{Condition.last.date} created.")
@@ -57,7 +57,7 @@ describe 'admin user visits condition new' do
       fill_in 'condition[mean_wind_speed]', with: mean_wind_speed
       fill_in 'condition[precipitation]', with: precipitation
 
-      click_on 'Create Condition'
+      click_on 'Submit'
 
       expect(current_path).to eq(admin_conditions_path)
       expect(page).to have_content("Missing required fields, condition was not created.")

@@ -27,11 +27,11 @@ describe 'station show page analysis' do
   end
 
   it 'can see the number of rides started here' do
-    expect(page).to have_content("Number of rides started at this station: 4")
+    expect(page).to have_content("\nno. of rides started\n4")
   end
 
   it 'can see the number of rides ended here' do
-    expect(page).to have_content("Number of rides ended at this station: 2")
+    expect(page).to have_content("no. of rides ended\n2")
   end
 
   it 'can see the most frequent destination station for rides that begin here' do
@@ -43,7 +43,7 @@ describe 'station show page analysis' do
   end
 
   it 'can see the date with the highest number of trips started here' do
-    expect(page).to have_content("Date with the highest number of trips started at this station: 2015-12-12")
+    expect(page).to have_content("\nDay with Highest Trip Starts\nDecember 12, 2015\n")
   end
 
   it 'can see the most frequent zip code for users starting trips here' do
@@ -51,6 +51,6 @@ describe 'station show page analysis' do
   end
 
   it 'can see the Bike ID that most frequently starts a trip here' do
-    expect(page).to have_content("Bike ID most frequently starting a trip at this station: 5")
+    expect(page).to have_content("Most Popular Bike ID Start\n5")
   end
 end

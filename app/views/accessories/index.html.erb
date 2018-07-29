@@ -1,7 +1,7 @@
 <h1>Bike Shop</h1>
-
 <% if current_admin? %>
-  <%= button_to 'Create New Accessory', new_admin_accessory_path, method: 'get' %>
+<br>
+  <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-danger"%></p>
 <% end %>
 
 <ul>

@@ -1,14 +1,45 @@
-<ul>
-  <li> Date: <%= @condition.date %> </li>
-  <li> Max Temperature: <%= @condition.max_temp %></li>
-  <li> Mean Temperature: <%= @condition.mean_temp %></li>
-  <li> Min Temperature:<%= @condition.min_temp %></li>
-  <li> Mean Humidity: <%= @condition.mean_humidity %></li>
-  <li> Mean Visibility: <%= @condition.mean_visibility %></li>
-  <li> Mean Wind Speed: <%= @condition.mean_wind_speed %> mph </li>
-  <li> Precipitation: <%= @condition.precipitation %> inches </li>
-</ul>
-<% if current_admin? %>
-  <%= button_to 'Edit', edit_admin_condition_path(@condition) %>
-  <%= button_to 'Delete', admin_condition_path(@condition), method: 'delete', data: { confirm: 'Are you sure you want to delete this condition?' } %>
-<% end %>
+<section class="hero is-warning">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Condition Info
+      </h1>
+    </div>
+  </div>
+</section>
+<br>
+<div class="tile is-ancestor is-centered">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="sub-title">
+            &nbsp &nbsp &nbsp &nbsp Date: <%= @condition.date %> </p><br>
+            &nbsp &nbsp &nbsp &nbsp Max Temperature: <%= @condition.max_temp %></p><br>
+            &nbsp &nbsp &nbsp &nbsp Mean Temperature: <%= @condition.mean_temp %></p><br>
+            &nbsp &nbsp &nbsp &nbsp Min Temperature:<%= @condition.min_temp %></p><br>
+            &nbsp &nbsp &nbsp &nbsp Mean Humidity: <%= @condition.mean_humidity %></p><br>
+            &nbsp &nbsp &nbsp &nbsp Mean Visibility: <%= @condition.mean_visibility %></p><br>
+            &nbsp &nbsp &nbsp &nbsp Mean Wind Speed: <%= @condition.mean_wind_speed %> mph </p><br>
+            &nbsp &nbsp &nbsp &nbsp Precipitation: <%= @condition.precipitation %> inches </p><br>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <div class="container is-fluid">
+        <div class='field is-grouped'>
+          <% if current_admin? %>
+          <a class="control"><%= button_to 'Edit', edit_admin_condition_path(@condition), method: 'get', class: "button is-outlined is-medium is-primary" %></a>
+          <a class="control"><%= button_to 'Delete', admin_condition_path(@condition), method: "delete",  class: "button is-outlined is-medium is-danger", data: {confirm: 'Are you sure you want to delete this station?'} %></a>
+          <% end %>
+          <a class="control"><%= button_to 'Back', conditions_path, method: :get, class: "button is-outlined is-medium is-link"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

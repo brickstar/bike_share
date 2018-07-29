@@ -1,17 +1,39 @@
-<h1>Started From Station: <%= @trip.start_station_name %></h1>
+  <section class="hero is-info">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Trip Info
+        </h1>
+      </div>
+    </div>
+  </section>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="sub-title">
+            <p>Duration: <%= @trip.duration %>s</p>
+            <p>Start Date: <%= @trip.start_date %></p>
+            <p>Start Station: <%= @trip.start_station_name %></p>
+            <p>Start Station ID: <%= @trip.start_station_id %></p>
+            <p>End Date: <%= @trip.end_date %></p>
+            <p>End Station: <%= @trip.end_station_name %></p>
+            <p>Bike ID: <%= @trip.bike_id %></p>
+            <p>Subscription Type: <%= @trip.subscription_type %></p>
+            <p>Zip Code: <%= @trip.zip_code %></p>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <li>Duration: <%= @trip.duration %>s</li>
-  <li>Start Date: <%= @trip.start_date %></li>
-  <li>Start Station: <%= @trip.start_station_name %></li>
-  <li>Start Station ID: <%= @trip.start_station_id %></li>
-  <li>End Date: <%= @trip.end_date %></li>
-  <li>End Station: <%= @trip.end_station_name %></li>
-  <li>Bike ID: <%= @trip.bike_id %></li>
-  <li>Subscription Type: <%= @trip.subscription_type %></li>
-  <li>Zip Code: <%= @trip.zip_code %></li>
-  <% if current_admin? %>
-    <%= button_to "Edit", edit_admin_trip_path(@trip), method: 'get' %>
-    <%= button_to "Delete", admin_trip_path(@trip), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
-  <% end %>
-</ul>
+<% if current_admin? %>
+  <%= button_to "Edit", edit_admin_trip_path(@trip), method: 'get' %>
+  <%= button_to "Delete", admin_trip_path(@trip), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
+<% end %>
+
+<% if current_admin? %>
+<%= button_to 'See All Accessories', admin_accessories_path, method: 'get' %>
+<% end %>

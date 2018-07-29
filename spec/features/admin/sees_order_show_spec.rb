@@ -14,6 +14,7 @@ describe 'a user accessing the cart show page' do
     @admin = User.create(first_name: 'Admin', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret', role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
+
   it 'can view order attributes along with additional admin only information' do
     visit order_path(@order1)
 
@@ -27,8 +28,8 @@ describe 'a user accessing the cart show page' do
     expect(page).to have_content("Status: #{@order1.status}")
     expect(page).to have_content("Submitted: #{@order1.created_at.strftime("%d %b %Y %H:%M")}")
     expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime("%d %b %Y %H:%M")}")
-    expect(page).to have_content("Customer Name: #{@user.first_name} #{@user.last_name}")
-    expect(page).to have_content("Customer Address: #{@user.street} #{@user.city}, #{@user.state} #{@user.zip_code}")
+    expect(page).to have_content("Name: #{@user.first_name.capitalize} #{@user.last_name.capitalize}")
+    expect(page).to have_content("Address: #{@user.street} #{@user.city}, #{@user.state} #{@user.zip_code}")
 
     click_on @accessory1.title
 

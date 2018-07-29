@@ -1,29 +1,61 @@
-<%= form_for [:admin, @condition] do |f| %>
-
-  <%= f.label :date %>
-  <%= f.date_field :date %>
-
-  <%= f.label :max_temp %>
-  <%= f.number_field :max_temp %>
-
-  <%= f.label :mean_temp %>
-  <%= f.number_field :mean_temp %>
-
-  <%= f.label :min_temp %>
-  <%= f.number_field :min_temp %>
-
-  <%= f.label :mean_humidity %>
-  <%= f.number_field :mean_humidity %>
-
-  <%= f.label :mean_visibility %>
-  <%= f.number_field :mean_visibility %>
-
-  <%= f.label :mean_wind_speed %>
-  <%= f.number_field :mean_wind_speed %>
-
-  <%= f.label :precipitation %>
-  <%= f.number_field :precipitation %>
-
-  <%= f.submit %>
-
-<% end %>
+<section class="hero is-white is-small">
+<div class="hero-body">
+  <div class="container">
+    <%= form_for [:admin, @condition] do |f| %>
+    <div class="field">
+      <div class="control">
+        <%= f.label :date %>
+        <%= f.date_field :date, class: "input is-medium is-grey" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= f.label :max_temp %>
+        <%= f.number_field :max_temp, class: "input is-medium is-grey" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= f.label :mean_temp %>
+        <%= f.number_field :mean_temp, class: "input is-medium is-grey" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= f.label :min_temp %>
+        <%= f.number_field :min_temp, class: "input is-medium is-grey" %>
+      </div>
+    </div>
+  <div class="field">
+    <div class="control">
+      <%= f.label :mean_humidity %>
+      <%= f.number_field :mean_humidity, class: "input is-medium is-grey" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= f.label :mean_visibility %>
+      <%= f.number_field :mean_visibility, class: "input is-medium is-grey" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= f.label :mean_wind_speed %>
+      <%= f.number_field :mean_wind_speed, class: "input is-medium is-grey" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= f.label :precipitation %>
+      <%= f.number_field :precipitation, class: "input is-medium is-grey" %>
+    </div>
+  </div>
+  <div class="field">
+    <p class="control"><%= f.submit 'Submit', class: "button is-primary is-outlined"%></p>
+  </div>
+  <% end %>
+  <br>
+    <p class="control"><%= button_to 'Back', :back, method: :get, class: "button is-outlined is-small is-link"%></p>
+  </div>
+</div>
+</section>

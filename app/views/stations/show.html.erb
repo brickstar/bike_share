@@ -1,22 +1,82 @@
-<h1><%= @station.name %></h1>
-<ul>
-  <li><%= @station.dock_count %></li>
-  <li><%= @station.city %></li>
-  <li><%= @station.installation_date %></li>
-</ul>
-
+<section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Station Info
+        </h1>
+      </div>
+    </div>
+</section>
+<br>
+<nav class="level">
 <% if current_user && @station.total_trips_started > 0 %>
-  <p>Number of rides started at this station: <%= @station.total_trips_started %></p>
-  <p>Number of rides ended at this station: <%= @station.total_trips_ended %></p>
-  <p>Most frequent destination station: <%= @station.most_riders_went_to %></p>
-  <p>Most frequent origination station: <%= @station.most_riders_came_from %></p>
-  <p>Date with the highest number of trips started at this station: <%= @station.highest_start_volume_date %></p>
-  <p>Most frequent zip code for users starting trips at this station: <%= @station.most_users_from_zipcode %></p>
-  <p>Bike ID most frequently starting a trip at this station: <%= @station.most_started_bike_id %></p>
-<% end %>
-
-<% if current_admin? %>
-<%= button_to 'Edit', edit_admin_station_path(@station), method: 'get' %>
-<%= button_to 'Delete', admin_station_path(@station), method: "delete", data: {confirm: 'Are you sure you want to delete this station?'} %>
-<% end %>
-<p class="control"><%= button_to 'Back', stations_path, method: :get, class: "button is-outlined is-small is-link"%></p>
+  <div class="level-item has-text-centered">
+    <div id='rides-started'>
+      <p class="heading">no. of rides started</p><br></p>
+      <p class="title"><%= @station.total_trips_started %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">no. of rides ended</p><br></p>
+      <p class="title"> <%= @station.total_trips_ended %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Day with Highest Trip Starts</p><br></p>
+      <p class="title"><%= @station.highest_start_volume_date.to_time.strftime('%B %e, %Y') %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Most Popular Bike ID Start </p><br></p>
+      <p class="title"><%= @station.most_started_bike_id %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Current Dock Count</p><br></p>
+      <p class="title"><%= @station.dock_count %></p>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</nav>
+<hr>
+<div class="tile is-ancestor is-centered">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="sub-title">
+            &nbsp &nbsp &nbsp &nbsp Station Name: <%= @station.name %> </p><br>
+            &nbsp &nbsp &nbsp &nbsp Dock Count: <%= @station.dock_count %></p><br>
+            &nbsp &nbsp &nbsp &nbsp City: <%= @station.city %></p><br>
+            &nbsp &nbsp &nbsp &nbsp Install Date:<%= @station.installation_date %></p><br>
+            <% if current_user && @station.total_trips_started > 0 %>
+            &nbsp &nbsp  &nbsp &nbsp Most frequent destination station: <%= @station.most_riders_went_to %></p><br>
+            &nbsp &nbsp  &nbsp &nbsp Most frequent origination station: <%= @station.most_riders_came_from %></p><br>
+            &nbsp &nbsp  &nbsp &nbsp Most frequent zip code for users starting trips at this station: <%= @station.most_users_from_zipcode %></p>
+            <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <div class="container is-fluid">
+        <div class='field is-grouped'>
+          <% if current_admin? %>
+          <a class="control"><%= button_to 'Edit', edit_admin_station_path(@station), method: 'get', class: "button is-outlined is-medium is-primary" %></a>
+          <a class="control"><%= button_to 'Delete', admin_station_path(@station), method: "delete",  class: "button is-outlined is-medium is-danger", data: {confirm: 'Are you sure you want to delete this station?'} %></a>
+          <% end %>
+          <a class="control"><%= button_to 'Back', stations_path, method: :get, class: "button is-outlined is-medium is-link"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

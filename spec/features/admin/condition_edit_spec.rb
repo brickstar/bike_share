@@ -35,7 +35,7 @@ describe 'admin user visits conditions edit' do
       fill_in 'condition[mean_wind_speed]', with: mean_wind_speed
       fill_in 'condition[precipitation]', with: precipitation
 
-      click_on 'Update Condition'
+      click_on 'Submit'
 
       expect(current_path).to eq(condition_path(condition))
       expect(page).to have_content("Weather condition for #{Condition.first.date} updated.")

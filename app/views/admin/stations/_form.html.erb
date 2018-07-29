@@ -1,17 +1,37 @@
-  <%= form_for [:admin, @station] do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-
-  <%= f.label :dock_count %>
-  <%= f.number_field :dock_count %>
-
-  <%= f.label :installation_date %>
-  <%= f.date_field :installation_date %>
-
-  <%= f.submit %>
-
-<% end %>
+<section class="hero is-white is-small">
+  <div class="hero-body">
+    <div class="container">
+      <%= form_for [:admin, @station] do |f| %>
+      <div class="field">
+        <div class="control">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :city %>
+          <%= f.text_area :city, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :dock_count %>
+          <%= f.number_field :dock_count, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+        <%= f.label :installation_date %>
+        <%= f.date_field :installation_date, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+    <div class="field">
+      <p class="control"><%= f.submit 'Submit', class: "button is-primary is-outlined"%></p>
+    </div>
+    <% end %>
+    <br>
+    <p class="control"><%= button_to 'Back', :back, method: :get, class: "button is-outlined is-small is-link"%></p>
+  </div>
+</div>
+</section>
