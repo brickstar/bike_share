@@ -16,7 +16,6 @@ describe 'a user accessing the cart show page' do
     visit cart_path
 
     click_button 'Checkout'
-
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Successfully submitted your order totaling $8.00.")
   end

@@ -13,8 +13,12 @@
   <% end %>
 <table>
 <p>Total: <%= number_to_currency(@cart.total) %></p>
-<% if current_user %>
-  <%= button_to 'Checkout', orders_path %>
+
+<% if current_user && @cart.total == 0 %>
+<p>You will need to add an item to your cart in order to checkout.</p>
+<%= link_to 'Go Shopping', '/bike-shop' %>
+<% elsif current_user && @cart.total > 0 %>
+<%= button_to 'Checkout', orders_path %>
 <% else %>
-  <%= link_to 'Create Account', new_user_path %>
+<%= link_to 'Create Account', new_user_path %>
 <% end %>

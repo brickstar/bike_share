@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def create
     order = current_user.orders.new(status: 'ordered')
-    unless order.total == 0
       if order.save
         order.create_order_accessories(session[:cart])
         session[:cart] = nil
@@ -17,6 +16,6 @@ class OrdersController < ApplicationController
         flash[:failure] = "Failed to submit your order."
         redirect_to cart_path
       end
-    end
+    # end
   end
 end
