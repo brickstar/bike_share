@@ -9,7 +9,10 @@
   </head>
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-menu">
-      <% if current_user %>
+      <% if current_admin? %>
+        <%= link_to 'Logout', logout_path %>
+        <%= button_to 'Back to Dashboard', admin_dashboard_path, method: :get%>
+      <% elsif current_user %>
         <%= link_to 'Logout', logout_path %>
         <%= button_to 'Back to Dashboard', dashboard_path, method: :get%>
       <% else %>

@@ -12,6 +12,7 @@
     </tr>
   <% end %>
 <table>
+  
 <p>Total: <%= number_to_currency(@cart.total) %></p>
 
 <% if current_user && @cart.total == 0 %>
