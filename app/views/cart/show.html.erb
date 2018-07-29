@@ -1,25 +1,51 @@
-<table>
-  <% @cart.unpack_contents.each do |accessory, quantity| %>
-    <tr>
-      <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
-      <td><%= accessory.title %></td>
-      <td>Price: <%= number_to_currency(accessory.price) %></td>
-      <td>Quantity: <%= quantity %></td>
-      <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
-      <td><%= button_to 'Decrease Quantity', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
-      <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
-      <td><%= button_to 'Remove Accessory', cart_path(accessory_id: accessory.id), method: 'delete' %></td>
-    </tr>
-  <% end %>
-<table>
-  
-<p>Total: <%= number_to_currency(@cart.total) %></p>
+<section class='hero is-primary'>
+  <div class='hero-body'>
+    <div class='container'>
+      <h1 class='title'>
+        Cart
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr class="is-selected is-primary">
+            <th>Accessory</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>+1</th>
+            <th>-1</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.unpack_contents.each do |accessory, quantity| %>
+            <tr>
+              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %><%= accessory.title %></td>
+              <td><%= number_to_currency(accessory.price) %></td>
+              <td><%= quantity %></td>
+              <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
+              <td><%= button_to 'Decrease Quantity', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
+              <td><%= button_to 'Remove Accessory', cart_path(accessory_id: accessory.id), method: 'delete' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-<% if current_user && @cart.total == 0 %>
-<p>You will need to add an item to your cart in order to checkout.</p>
-<%= link_to 'Go Shopping', '/bike-shop' %>
-<% elsif current_user && @cart.total > 0 %>
-<%= button_to 'Checkout', orders_path %>
-<% else %>
-<%= link_to 'Create Account', new_user_path %>
-<% end %>
+<div class='centered'>
+  <p>Total: <%= number_to_currency(@cart.total) %></p>
+  <% if current_user && @cart.total == 0 %>
+    <p>You will need to add an item to your cart in order to checkout.</p>
+    <%= link_to 'Go Shopping', '/bike-shop' %>
+  <% elsif current_user && @cart.total > 0 %>
+    <%= button_to 'Checkout', orders_path %>
+  <% else %>
+    <%= link_to 'Create Account', new_user_path %>
+  <% end %>
+</div>

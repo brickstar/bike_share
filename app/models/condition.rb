@@ -7,4 +7,5 @@ class Condition < ApplicationRecord
                         :mean_visibility,
                         :mean_wind_speed,
                         :precipitation
+  paginates_per 30
 end

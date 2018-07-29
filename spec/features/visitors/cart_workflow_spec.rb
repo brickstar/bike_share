@@ -57,14 +57,14 @@ describe 'a visitor accessing the bike shop' do
 
     expect(page).to have_button('Increase Quantity')
     expect(page).to have_button('Decrease Quantity')
-    expect(page).to have_content('Quantity: 2')
-    expect(page).to have_content('Subtotal: $8.00')
+    expect(page).to have_content('2')
+    expect(page).to have_content('$8.00')
     click_button 'Increase Quantity'
-    expect(page).to have_content('Quantity: 3')
-    expect(page).to have_content('Subtotal: $12.00')
+    expect(page).to have_content('3')
+    expect(page).to have_content('$12.00')
     click_button 'Decrease Quantity'
-    expect(page).to have_content('Quantity: 2')
-    expect(page).to have_content('Subtotal: $8.00')
+    expect(page).to have_content('2')
+    expect(page).to have_content('$8.00')
     expect(page).to have_content('Total: $8.00')
   end
 end

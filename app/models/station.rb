@@ -6,6 +6,7 @@ class Station < ApplicationRecord
 
   friendly_id :name, use: :slugged
   validates_presence_of :name, :dock_count, :city, :installation_date
+  paginates_per 30
 
   def self.total_count
     count
