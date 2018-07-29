@@ -1,3 +1,4 @@
+<%= button_to 'Back to Dashboard', admin_dashboard_path, method: 'get' %>
 <% @accessories.each do |accessory| %>
 <div id='accessory-<%= accessory.id %>'>
   <%= accessory.title %>

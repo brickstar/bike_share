@@ -28,8 +28,7 @@ describe 'admin user visits dashboard' do
     end
 
     it 'sees all order attributes and link for each individual order' do
-      expect(page).to have_content(@order_1.user.first_name)
-      expect(page).to have_content(@order_1.created_at)
+      expect(page).to have_content(@order_1.created_at.strftime('%b %d, %Y at %I:%M%p'))
       expect(page).to have_content(@order_1.status)
 
       click_on '1'

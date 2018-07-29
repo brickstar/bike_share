@@ -1,5 +1,9 @@
 class Admin::AccessoriesController < Admin::BaseController
 
+  def index
+    @accessories = Accessory.all
+  end
+
   def new
     @accessory = Accessory.new
   end
@@ -12,6 +16,21 @@ class Admin::AccessoriesController < Admin::BaseController
     else
       flash[:alert] = "Missing required fields, accessory was not created."
       render :new
+    end
+  end
+
+  def edit
+    @accessory = Accessory.find(params[:id])
+  end
+
+  def update
+    @accessory = Accessory.find(params[:id])
+    @accessory.update(accessory_params)
+    if @accessory.save
+      flash[:success] = "Accessory #{@accessory.title} updated."
+      redirect_to admin_accessories_path
+    else
+      render :edit
     end
   end
 

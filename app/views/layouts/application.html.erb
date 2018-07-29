@@ -3,13 +3,12 @@
   <head>
     <title>BikeShare</title>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all' %>
+      <%= javascript_include_tag 'application' %>
   </head>
-
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
+    <div class="navbar-menu">
       <% if current_user %>
         <%= link_to 'Logout', logout_path %>
       <% else %>
@@ -25,11 +24,24 @@
         <% end %>
       </div>
     </div>
-    <p>Cart: <%= @cart.total_count %></p>
+    <p class="control">
+      <a class="button is-primary is-small is-end">Cart: <%= @cart.total_count %></a>
+    </p>
     <%= link_to 'View Cart', cart_path %>
   </nav>
-
   <body>
+  <section class="hero is-link">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+        BIKESHARE
+        </h1>
+        <h2 class="subtitle">
+        Because Ian Made Us
+        </h2>
+      </div>
+    </div>
+  </section>
     <% flash.each do |type, message| %>
       <%= content_tag :div, message.html_safe, class: type %>
     <% end %>

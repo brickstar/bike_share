@@ -30,7 +30,6 @@ describe User, type: :model do
                          password: 'lovelove',
                          role: 1)
 
-
       expect(user.role).to eq('admin')
       expect(user.admin?).to eq(true)
     end

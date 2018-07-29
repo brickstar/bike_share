@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create]
 
   namespace :admin do
-    resources :accessories, only: [:index, :edit, :update], path: 'bike-shop'
+    resources :accessories, only: [:index, :edit, :update, :create], path: 'bike-shop'
     get '/dashboard', to: 'dashboard#show'
     resources :trips, except: [:index, :show]
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
