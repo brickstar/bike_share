@@ -9,6 +9,7 @@ describe 'visiting trip index page can see all trips with attributes' do
     @trip4 = Trip.create(duration: 150, start_date: DateTime.strptime('09/12/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('09/12/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 3, subscription_type: 'customer', zip_code: '32174')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
+
   it 'can see edit and delete buttons alongside each trip' do
     visit trips_path
 
@@ -24,6 +25,7 @@ describe 'visiting trip index page can see all trips with attributes' do
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
   end
+  
   it 'can delete a trip from the index page' do
     visit trips_path
 

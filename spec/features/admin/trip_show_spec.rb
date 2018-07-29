@@ -6,6 +6,7 @@ describe 'visiting trip show page can see all attributes' do
     @trip1 = Trip.create(duration: 120, start_date: DateTime.strptime('10/12/2015 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 2', start_station_id: 2, end_date: DateTime.strptime('10/12/2015 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 2', end_station_id: 2, bike_id: 2, subscription_type: 'subscriber', zip_code: '32174')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
+
   it 'can see edit and delete buttons' do
 
     visit trip_path(@trip1)
@@ -24,6 +25,7 @@ describe 'visiting trip show page can see all attributes' do
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
   end
+  
   it 'can delete a trip from the show page' do
     visit trip_path(@trip1)
 
