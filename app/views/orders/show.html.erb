@@ -14,9 +14,8 @@
 <p>Status: <%= @order.status %></p>
 <p>Status Changed: <%= @order.updated_at.strftime("%d %b %Y %H:%M") %></p>
 <p>Submitted: <%= @order.created_at.strftime("%d %b %Y %H:%M") %></p>
+
 <% if current_admin? %>
   <p>Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
   <p>Customer Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
 <% end %>
-
-<%= button_to 'Back to Dashboard', dashboard_path, method: :get%>
