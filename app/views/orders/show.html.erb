@@ -2,7 +2,7 @@
 <table>
   <% @order.unpack_contents.each do |accessory, quantity| %>
     <tr>
-      <td>Image tag placeholder (THUMBNAIL ONLY)</td>
+      <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
       <td><%= link_to accessory.title, accessory_path(accessory) %></td>
       <td>Price: <%= number_to_currency(accessory.price) %></td>
       <td>Quantity: <%= quantity %></td>
@@ -18,3 +18,5 @@
   <p>Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
   <p>Customer Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
 <% end %>
+
+<%= button_to 'Back to Dashboard', dashboard_path, method: :get%>

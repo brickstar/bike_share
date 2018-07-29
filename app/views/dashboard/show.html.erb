@@ -1,16 +1,34 @@
-<h3>Account Profile:</h3>
-<h4> First Name: <%= current_user.first_name.capitalize %> </h4>
-<h4> Last Name: <%= current_user.last_name.capitalize %> </h4>
-<h4> Street: <%= current_user.street %> </h4>
-<h4> City: <%= current_user.city.capitalize %> </h4>
-<h4> State: <%= current_user.state %> </h4>
-<h4> Zip Code: <%= current_user.zip_code %> </h4>
-<h4> Email: <%= current_user.email %> </h4>
+</br>
+<p><%= link_to 'Bike-Shop', '/bike-shop' %></p>
+<p><%= link_to 'Trips Dashboard', trips_dashboard_path %></p>
+<p><%= link_to 'Stations Dashboard', stations_dashboard_path %></p>
+</br>
 
-<%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title">My Profile</p>
+          <p class="sub-title">
+            First Name: <%= current_user.first_name.capitalize %></br>
+            Last Name: <%= current_user.last_name.capitalize %></br>
+            Street: <%= current_user.street %></br>
+            City: <%= current_user.city.capitalize %></br>
+            State: <%= current_user.state %></br>
+            Zip Code: <%= current_user.zip_code %></br>
+            Email: <%= current_user.email %></br>
+              <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2>Orders:</h2>
+
 <% if @orders %>
+<h2>Orders:</h2>
   <% @orders.each do |order| %>
     <%= link_to order.created_at.to_date, order_path(order), class: "order_#{order.id}"%><br>
   <% end %>
