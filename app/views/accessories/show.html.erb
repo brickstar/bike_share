@@ -1,14 +1,26 @@
-<h1><%= @accessory.title %></h1>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title"><%= @accessory.title %></p>
+          <p class="sub-title">
+          <%= image_tag @accessory.image_url, id: 'accessory-show-image' %></li>
+          <li>Product Description: <%= @accessory.description %></li>
+          <li>Unit Price: <%= number_to_currency(@accessory.price) %></li>
+          <li>Status: <%= @accessory.status %></li>
+          <% if @accessory.active? %>
+            <%= button_to 'Add to Cart', cart_path(accessory_id: @accessory.id) %>
+          <% else %>
+            <p>Accessory Retired</p>
+          <% end %>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <li><%= image_tag @accessory.image_url, id: 'accessory-show-image' %></li>
-  <li>Product Description: <%= @accessory.description %></li>
-  <li>Unit Price: <%= number_to_currency(@accessory.price) %></li>
-  <li>Status: <%= @accessory.status %></li>
-
-  <% if @accessory.active? %>
-    <li><%= button_to 'Add to Cart', cart_path(accessory_id: @accessory.id) %></li>
-  <% else %>
-    <li>Accessory Retired</li>
-  <% end %>
-</ul>
+<% if current_admin? %>
+<%= button_to 'See All Accessories', admin_accessories_path, method: 'get' %>
+<% end %>

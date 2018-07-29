@@ -25,7 +25,7 @@ describe 'visits bike shop' do
     fill_in :accessory_image_url, with: new_image_url
     select new_status, from: 'accessory[status]'
 
-    click_button 'Create Accessory'
+    click_button 'Submit'
 
     expect(current_path).to eq(accessory_path(Accessory.last))
 

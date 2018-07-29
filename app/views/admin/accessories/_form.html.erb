@@ -1,19 +1,43 @@
-<%= form_for [:admin, @accessory] do |f| %>
-
-<%= f.label :title %>
-<%= f.text_field :title %>
-
-<%= f.label :price %>
-<%= f.number_field :price %>
-
-<%= f.label :description %>
-<%= f.text_area :description %>
-
-<%= f.label :status %>
-<%= f.select :status, ['retired', 'active'] %>
-
-<%= f.label :image_url %>
-<%= f.text_field :image_url %>
-
-<%= f.submit %>
-<% end %>
+<section class="hero is-white is-small">
+  <div class="hero-body">
+    <div class="container">
+      <%= form_for [:admin, @accessory] do |f| %>
+      <div class="field">
+        <div class="control">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :price %>
+          <%= f.number_field :price, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+        <%= f.label :status %>
+          <%= f.select :status, ['retired', 'active'], class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :image_url %>
+          <%= f.text_field :image_url, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+    <div class="field">
+      <p class="control"><%= f.submit 'Submit', class: "button is-primary is-outlined"%></p>
+    </div>
+    <% end %>
+    <br>
+    <p class="control"><%= button_to 'Back', admin_accessories_path, method: :get, class: "button is-outlined is-small is-link"%></p>
+  </div>
+</div>
+</section>

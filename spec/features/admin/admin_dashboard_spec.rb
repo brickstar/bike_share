@@ -181,7 +181,7 @@ describe 'admin user visits /admin/dashboard' do
       fill_in 'accessory[description]', with: description
       select 'retired', from: 'accessory[status]'
 
-      click_on 'Update Accessory'
+      click_on 'Submit'
 
       expect(current_path).to eq(admin_accessories_path)
 
