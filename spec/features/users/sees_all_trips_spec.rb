@@ -11,6 +11,7 @@ describe 'visiting trips index' do
     user = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
+
   it 'sees 30 trips per page' do
     visit trips_path
 
@@ -18,11 +19,13 @@ describe 'visiting trips index' do
     expect(page).to have_content("Bike ID: #{Trip.first.bike_id}")
     expect(page).to_not have_content("Bike ID: #{Trip.last.bike_id}")
   end
+
   it 'sees a button to click on and see more trips' do
     visit trips_path
 
     expect(page).to have_content('Next ›')
   end
+
   it 'can go forward and back in trips on second trips page' do
     visit trips_path
     click_on 'Next'
@@ -33,10 +36,11 @@ describe 'visiting trips index' do
     expect(page).to have_content("Bike ID: #{Trip.last.bike_id}")
 
     click_on 'Prev'
-    
+
     expect(page).to have_content("Bike ID: #{Trip.first.bike_id}")
     expect(page).to_not have_content("Bike ID: #{Trip.last.bike_id}")
   end
+  
   it 'does not see admin edit and delete buttons' do
     visit trips_path
 
