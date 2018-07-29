@@ -10,6 +10,7 @@ describe 'when on the dashboard as a logged in user' do
                      zip_code: '80403',
                      email: 'jeff@turing.com',
                      password: 'password')
+
     visit '/'
     click_on 'Login'
     fill_in 'Email', with: user.email

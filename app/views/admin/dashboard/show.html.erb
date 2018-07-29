@@ -1,25 +1,50 @@
-<h3>Account Profile:</h3>
-<ul>
-  <li><%= current_user.first_name %> </li>
-  <li><%= current_user.last_name %> </li>
-  <li><%= current_user.street %> </li>
-  <li><%= current_user.city %> </li>
-  <li><%= current_user.state %> </li>
-  <li><%= current_user.zip_code %> </li>
-  <li><%= current_user.email %> </li>
-</ul>
-<%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
 </br>
+<p><%= link_to 'View all Accessories', admin_accessories_path %></p>
+<p><%= link_to 'View all Trips', trips_path %></p>
+<p><%= link_to 'View all Stations', stations_path %></p>
+<p><%= link_to 'View all Conditions', conditions_path %></p>
 </br>
-<h3> Order Count by Status:</h3>
-<p><%= link_to 'Ordered', '/admin/dashboard?status=ordered' %>: <%= @ordered_status %> </p>
-<p><%= link_to 'Paid', '/admin/dashboard?status=paid' %>: <%= @paid_status %></p>
-<p><%= link_to 'Completed', '/admin/dashboard?status=completed' %>: <%= @completed_status %></p>
-<p><%= link_to 'Cancelled', '/admin/dashboard?status=cancelled' %>: <%= @cancelled_status %></p>
 
-<h3>All Orders</h3>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title">My Profile</p>
+          <p class="sub-title">
+              First Name:<%= current_user.first_name %><br>
+              Last Name:<%= current_user.last_name %><br>
+              Street: <%= current_user.street %><br>
+              City: <%= current_user.city %><br>
+              State: <%= current_user.state %><br>
+              ZipCode:<%= current_user.zip_code %><br>
+              Email Address:<%= current_user.email %><br>
+              <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title">Order Details</p>
+          <p class="sub-title">
+          <p><%= link_to 'Ordered', '/admin/dashboard?status=ordered' %>: <%= @ordered_status %> |
+          <%= link_to 'Paid', '/admin/dashboard?status=paid' %>: <%= @paid_status %> |
+          <%= link_to 'Completed', '/admin/dashboard?status=completed' %>: <%= @completed_status %> |
+          <%= link_to 'Cancelled', '/admin/dashboard?status=cancelled' %>: <%= @cancelled_status %>
+        </p>
+      </article>
+    </div>
+  </div>
+</div>
+</div>
 <section class="section">
-  <div class="columns is-centered">
+  <div class="columns is-left">
     <div class="column is-narrow">
       <table class="table is-hoverable is-centered">
         <thead>
@@ -35,11 +60,10 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-                <td><%= link_to order.id, order_path(order) %></td>
-                <td><%= order.created_at.strftime('%b %d, %Y at %I:%M%p') %></td>
-                <td><%= order.updated_at.strftime('%b %d, %Y at %I:%M%p') %></td>
-                <td><%= order.status %> </td>
-
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.created_at.strftime('%b %d, %Y at %I:%M%p') %></td>
+          <td><%= order.updated_at.strftime('%b %d, %Y at %I:%M%p') %></td>
+          <td><%= order.status %> </td>
             <% if order.status == 'ordered' %>
               <td class='control'><%= button_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :patch, class: "button is-link is-outlined is-small", data: {confirm: 'Are you sure you want to update this order?'} %></td>
               <td class='control'><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch, class: "button is-danger is-outlined is-small", data: {confirm: 'Are you sure you want to cancel this order?'} %></td>
@@ -48,7 +72,7 @@
               <td class='control'><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch, class: "button is-danger is-outlined is-small", data: {confirm: 'Are you sure you want to cancel this order?'} %></td>
             <% elsif order.status == 'completed' || order.status == 'cancelled' %>
               <td>-</td>
-            <td>-</td>
+              <td>-</td>
             <% end %>
           <% end %>
           </tr>
@@ -57,6 +81,3 @@
     </div>
   </div>
 </section>
-
-<%= link_to 'View all Accessories', admin_accessories_path %>
-

@@ -32,6 +32,6 @@ class Cart
   end
 
   def decrease_quantity(accessory_id)
-    @contents[accessory_id.to_s] -= 1
+  @contents[accessory_id.to_s] -= 1 if @contents[accessory_id.to_s] > 0
   end
 end

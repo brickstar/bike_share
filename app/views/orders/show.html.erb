@@ -1,20 +1,43 @@
-<h1>Order: <%= @order.id %></h1>
-<table>
-  <% @order.unpack_contents.each do |accessory, quantity| %>
-    <tr>
-      <td>Image tag placeholder (THUMBNAIL ONLY)</td>
-      <td><%= link_to accessory.title, accessory_path(accessory) %></td>
-      <td>Price: <%= number_to_currency(accessory.price) %></td>
-      <td>Quantity: <%= quantity %></td>
-      <td>Subtotal: <%= number_to_currency(accessory.price * quantity) %></td>
-    </tr>
-  <% end %>
-<table>
-<p>Total: <%= number_to_currency(@order.total) %></p>
-<p>Status: <%= @order.status %></p>
-<p>Status Changed: <%= @order.updated_at.strftime("%d %b %Y %H:%M") %></p>
-<p>Submitted: <%= @order.created_at.strftime("%d %b %Y %H:%M") %></p>
-<% if current_admin? %>
-  <p>Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
-  <p>Customer Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
-<% end %>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title">Order No. <%= @order.id %></p>
+          <p class="sub-title">
+            First Name: <%= current_user.first_name.capitalize %></br>
+            <% @order.unpack_contents.each do |accessory, quantity| %>
+                <p><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></p>
+                <p><%= link_to accessory.title, accessory_path(accessory) %></p>
+                <p>Price: <%= number_to_currency(accessory.price) %></p>
+                <p>Quantity: <%= quantity %></p>
+                <p>Subtotal: <%= number_to_currency(accessory.price * quantity) %></p>
+                <% end %>
+            <p>Total: <%= number_to_currency(@order.total) %></p>
+            <p>Status: <%= @order.status %></p>
+            <p>Status Changed: <%= @order.updated_at.strftime("%d %b %Y %H:%M") %></p>
+            <p>Submitted: <%= @order.created_at.strftime("%d %b %Y %H:%M") %></p>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title">Customer Information:</p>
+          <p class="sub-title">
+          <% if current_admin? %>
+            <p>Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
+            <p>Customer Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
+            <p class="control"><%= button_to 'Back', dashboard_path, method: :get, class: "button is-outlined is-small is-link"%></p>
+          <% end %>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
