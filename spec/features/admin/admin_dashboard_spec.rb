@@ -8,13 +8,13 @@ describe 'admin user visits dashboard' do
       @user_2 = User.create(first_name: 'Jeff', last_name: 'Casimir', street: '123 Market Street', city: 'Denver', state: 'CO', zip_code: '90234', email: 'Jeff@gmail.com', password: 'topsecret')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
       @order_1 = @user_1.orders.create(status: 'paid')
-      @accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
-      @accessory_2 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test2', description: 'this is a test', price: 4)
+      @accessory_1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
+      @accessory_2 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test2', description: 'this is a test', price: 4)
       OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
       OrderAccessory.create(accessory_id: 2, order_id: 1, quantity: 4)
       @order_2 = @user_2.orders.create(status: 'ordered')
-      @accessory_3 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test3', description: 'this is a test', price: 5)
-      @accessory_4 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test4', description: 'this is a test', price: 5)
+      @accessory_3 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test3', description: 'this is a test', price: 5)
+      @accessory_4 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test4', description: 'this is a test', price: 5)
       OrderAccessory.create(accessory_id: 3, order_id: 2, quantity: 4)
       OrderAccessory.create(accessory_id: 4, order_id: 2, quantity: 4)
       visit admin_dashboard_path
@@ -76,7 +76,7 @@ describe 'admin user visits dashboard' do
     it 'can click \'cancel\' on an order that is \'paid' do
       user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
       order_1 = user_1.orders.create(status: 'paid')
-      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+      accessory_1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
       OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
 
       visit admin_dashboard_path
@@ -90,7 +90,7 @@ describe 'admin user visits dashboard' do
     it 'can click \'cancel\' an order that is \'ordered' do
       user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
       order_1 = user_1.orders.create(status: 'ordered')
-      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test3', description: 'this is a test', price: 5)
+      accessory_1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test3', description: 'this is a test', price: 5)
       OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
 
       visit admin_dashboard_path
@@ -104,7 +104,7 @@ describe 'admin user visits dashboard' do
     it 'can click \'mark as completed\' on an order that is \'paid\'' do
       user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
       order_1 = user_1.orders.create(status: 'paid')
-      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test1', description: 'this is a test', price: 4)
+      accessory_1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
       OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
 
       visit admin_dashboard_path
@@ -118,7 +118,7 @@ describe 'admin user visits dashboard' do
     it 'can click \'mark as paid\' on an order that is marked \'ordered\'' do
       user_1 = User.create(first_name: 'Bob', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret')
       order_1 = user_1.orders.create(status: 'ordered')
-      accessory_1 = Accessory.create(image_url: 'www.insertrealpics.com', title: 'test3', description: 'this is a test', price: 5)
+      accessory_1 = Accessory.create(image_url: 'https://robohash.org/1', title: 'test3', description: 'this is a test', price: 5)
       OrderAccessory.create(accessory_id: 1, order_id: 1, quantity: 4)
 
       visit admin_dashboard_path

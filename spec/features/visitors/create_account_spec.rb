@@ -30,7 +30,7 @@ describe 'registration workflow' do
 
     click_on 'Create Account'
     expect(current_path).to eq('/dashboard')
-    expect(page).to have_content('Logged in as Jeff')
+    expect(page).to have_content('Logged in as: Jeff')
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)
     expect(page).to have_content(street)
@@ -73,7 +73,7 @@ describe 'registration workflow' do
 
     click_on 'Create Account'
     expect(current_path).to eq('/login')
-    expect(page).to_not have_content('Logged in as Jeff')
+    expect(page).to_not have_content('Logged in as: Jeff')
     expect(page).to_not have_content('Logout')
     expect(page).to_not have_content('Login')
   end
