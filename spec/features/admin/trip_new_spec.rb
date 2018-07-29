@@ -28,7 +28,7 @@ describe 'admin user visits trip new' do
       select subscription_type, from: 'trip[subscription_type]'
       fill_in 'trip[zip_code]', with: zip_code
 
-      click_on 'Create Trip'
+      click_on 'Submit'
 
       expect(current_path).to eq(trip_path(Trip.last))
       expect(page).to have_content(duration)

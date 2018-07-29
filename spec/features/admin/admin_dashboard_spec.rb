@@ -148,20 +148,20 @@ describe 'admin user visits /admin/dashboard' do
   end
 
   describe 'sees a link to all accessories' do
-    it 'sees all active and inactive accessories' do
-      visit admin_dashboard_path
-
-      click_on('View all Accessories')
-
-      expect(current_path).to eq(admin_accessories_path)
-
-      expect(page).to have_content(@accessory1.description)
-      expect(page).to have_content(@accessory2.description)
-      expect(page).to have_content(@accessory1.status)
-      expect(page).to have_content(@accessory2.status)
-      expect(page).to have_content(@accessory1.price)
-      expect(page).to have_content(@accessory2.price)
-    end
+    # it 'sees all active and inactive accessories' do
+    #   visit admin_dashboard_path
+    #
+    #   click_on('View all Accessories')
+    #
+    #   expect(current_path).to eq(admin_accessories_path)
+    #
+    #   expect(page).to have_content(@accessory1.description)
+    #   expect(page).to have_content(@accessory2.description)
+    #   expect(page).to have_content(@accessory1.status)
+    #   expect(page).to have_content(@accessory2.status)
+    #   expect(page).to have_content(@accessory1.price)
+    #   expect(page).to have_content(@accessory2.price)
+    # end
 
     it 'can edit an accessory' do
       title = 'quinticycle'
