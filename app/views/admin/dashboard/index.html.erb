@@ -1,10 +1,26 @@
-<table>
-  <% @orders.each do |order| %>
-    <tr>
-      <td><%= link_to order.id, order_path(order) %></td>
-      <td><%= order.user.first_name %></td>
-      <td><%= order.created_at %></td>
-      <td><%= order.status %></td>
-    </tr>
-  <% end %>
-<table>
+<section class="section">
+  <div class="columns is-left">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr class="is-selected is-primary">
+            <th>ID</th>
+            <th>Order Created</th>
+            <th>Order Updated</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.created_at.strftime('%b %d, %Y at %I:%M%p') %></td>
+          <td><%= order.updated_at.strftime('%b %d, %Y at %I:%M%p') %></td>
+          <td><%= order.status %> </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
