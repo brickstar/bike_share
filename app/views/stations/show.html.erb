@@ -25,7 +25,7 @@
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Day with Highest Trip Starts</p><br></p>
-      <p class="title"><%= @station.highest_start_volume_date%></p>
+      <p class="title"><%= @station.highest_start_volume_date.to_time.strftime('%B %e, %Y') %></p>
     </div>
   </div>
   <div class="level-item has-text-centered">

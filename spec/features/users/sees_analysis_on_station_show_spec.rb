@@ -43,7 +43,7 @@ describe 'station show page analysis' do
   end
 
   it 'can see the date with the highest number of trips started here' do
-    expect(page).to have_content("Day with Highest Trip Starts\n2015-12-12")
+    expect(page).to have_content("\nDay with Highest Trip Starts\nDecember 12, 2015\n")
   end
 
   it 'can see the most frequent zip code for users starting trips here' do

@@ -17,7 +17,7 @@ describe 'visiting station new page' do
     fill_in :station_dock_count, with: station_dock_count
     fill_in :station_installation_date, with: station_install_date
 
-    click_on 'Create Station'
+    click_on 'Submit'
 
     expect(current_path).to eq("/test-station")
     expect(page).to have_content(station_name)
@@ -42,7 +42,7 @@ describe 'visiting station new page' do
     fill_in :station_dock_count, with: station_dock_count
     fill_in :station_installation_date, with: station_install_date
 
-    click_on 'Create Station'
+    click_on 'Submit'
 
     expect(current_path).to eq(admin_stations_path)
     expect(page).to have_content("Missing required fields, station was not created.")
