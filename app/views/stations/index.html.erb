@@ -3,6 +3,11 @@
     <div class='container'>
       <h1 class='title'>
         All Stations
+        <h2 class='sub-title'>
+          <% if current_admin? %>
+          <p class="control"><%= button_to 'Create New Station', new_admin_station_path, method: :get, class: "button is-small is-link"%></p>
+          <% end %>
+        </h2>
       </h1>
     </div>
   </div>

@@ -4,6 +4,11 @@
       <h1 class='title'>
         All Conditions
       </h1>
+      <h2 class='sub-title'>
+        <% if current_admin? %>
+        <p class="control"><%= button_to 'Create New Condition', new_admin_condition_path, method: :get, class: "button is-small is-danger"%></p>
+        <% end %>
+      </h2>
     </div>
   </div>
 </section>
@@ -53,8 +58,3 @@
 </section>
 
 <%= paginate @conditions %>
-
-
-
-
-

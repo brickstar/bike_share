@@ -1,9 +1,14 @@
-<section class="hero is-link">
+<section class="hero is-info">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
       Trip Analytics
       </h1>
+      <h2 class='sub-title'>
+        <% if current_admin? %>
+        <p class="control"><%= button_to 'Create New Trip', new_admin_trip_path, method: :get, class: "button is-small is-warning"%></p>
+        <% end %>
+      </h2>
     </div>
   </div>
 </section>

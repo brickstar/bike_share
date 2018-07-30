@@ -1,35 +1,49 @@
-<h1>Stations Dashboard</h1>
-
-</br>
-
-<p>Total Number of Stations: <%= @stations_total_count %><p>
-
-</br>
-
-<p>Average Bikes Available per Station: <%= @stations_average_bikes.round %><p>
-
-</br>
-
-<p>Inventory Level (Low): <%= @stations_lowest_bike_total %></p>
-<p>Stations with Lowest Inventory: <% @stations_with_lowest_inventory.each do |station| %>
-<p><%= station.name %></p>
-<% end %>
-
-</br>
-
-<p>Inventory Level (High): <%= @stations_highest_bike_total %></p>
-<p>Stations with Highest Inventory: <% @stations_with_highest_inventory.each do |station| %>
-<p><%= station.name %></p>
-<% end %>
-
-</br>
-
-<p>Newest Stations: <% @newest_stations.each do |station| %>
-<p><%= station.name %></p>
-<% end %>
-
-</br>
-
-<p>Oldest Stations: <% @oldest_stations.each do |station| %>
-<p><%= station.name %></p>
-<% end %>
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+      Stations Dashboard
+      </h1>
+      <h2 class='sub-title'>
+        <% if current_admin? %>
+        <p class="control"><%= button_to 'Create New Station', new_admin_station_path, method: :get, class: "button is-small is-link"%></p>
+        <% end %>
+      </h2>
+    </div>
+  </div>
+</section>
+<br>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <p>Total Number of Stations: <%= @stations_total_count %><p>
+          <p>Average Bikes Available per Station: <%= @stations_average_bikes.round %><p>
+          <p>Inventory Level (Low): <%= @stations_lowest_bike_total %></p>
+        </article>
+        <article class="tile is-child box">
+          <p>Stations with Lowest Inventory: <% @stations_with_lowest_inventory.each do |station| %>
+          <p><%= station.name %></p>
+          <% end %>
+        </article>
+        <article class="tile is-child box">
+          <p>Inventory Level (High): <%= @stations_highest_bike_total %></p>
+          <p>Stations with Highest Inventory: <% @stations_with_highest_inventory.each do |station| %>
+          <p><%= station.name %></p>
+          <% end %>
+        </article>
+        <article class="tile is-child box">
+          <p>Newest Stations: <% @newest_stations.each do |station| %>
+          <p><%= station.name %></p>
+          <% end %>
+        </article>
+        <article class="tile is-child is box">
+          <p>Oldest Stations: <% @oldest_stations.each do |station| %>
+          <p><%= station.name %></p>
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@ describe 'a user accessing the cart show page' do
     OrderAccessory.create(order_id: @order1.id, accessory_id: @accessory2.id, quantity: 3)
     OrderAccessory.create(order_id: @order2.id, accessory_id: @accessory2.id, quantity: 1)
   end
-  
+
   it 'can view order attributes' do
     visit dashboard_path
 
@@ -21,14 +21,10 @@ describe 'a user accessing the cart show page' do
 
     expect(current_path).to eq(order_path(@order1))
     expect(page).to have_content(@accessory1.title)
-    expect(page).to have_content('Quantity: 2')
-    expect(page).to have_content('Subtotal: $8.00')
     expect(page).to have_content(@accessory2.title)
-    expect(page).to have_content('Quantity: 3')
-    expect(page).to have_content('Subtotal: $12.00')
-    expect(page).to have_content('Total: $20.00')
-    expect(page).to have_content("Status: #{@order1.status}")
-    expect(page).to have_content("Submitted: #{@order1.created_at.strftime("%d %b %Y %H:%M")}")
-    expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime("%d %b %Y %H:%M")}")
+    expect(page).to have_content("\nItem Title Price Quantity Sub-Total")
+    expect(page).to have_content("test1 $4.00 2 $8.00 test2 $4.00 3 $12.00\n")
+    expect(page).to have_content("Submitted: #{@order1.created_at.strftime('%m/%d/%y at%l:%M %p')}")
+    expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime('%m/%d/%y at%l:%M %p')}")
   end
 end
