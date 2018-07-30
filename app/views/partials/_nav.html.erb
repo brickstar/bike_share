@@ -1,5 +1,10 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <i class="fas fa-bicycle"></i>
+  <% if current_user %>
+    <%= link_to 'Home', dashboard_path, id: 'home' %>
+  <% else %>
+    <%= link_to 'Home', root_path, id: 'home' %>
+    <% end %>
   <div class="navbar-item has-dropdown is-hoverable">
     <a class="navbar-link" id="bikeshare-dropdown" href="/">
       Bikeshare
