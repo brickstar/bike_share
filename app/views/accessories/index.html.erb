@@ -1,3 +1,17 @@
+<section class="hero is-danger">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+      All Accessories
+      </h1>
+      <h2 class='sub-title'>
+        <% if current_admin? %>
+        <p class="control"><%= button_to 'Create New Station', new_admin_station_path, method: :get, class: "button is-small is-link"%></p>
+        <% end %>
+      </h2>
+    </div>
+  </div>
+</section>
 <h1>Bike Shop</h1>
 <% if current_admin? %>
 <br>
