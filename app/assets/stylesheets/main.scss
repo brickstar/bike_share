@@ -1,4 +1,7 @@
-@import 'shared_values';
+
+.centered {
+  text-align: center;
+}
 
 #accessory-index-image {
   height: 6em
@@ -9,11 +12,7 @@
 }
 
 #accessory-thumbnail {
-  height: 2em
-}
-
-.centered {
-  text-align: center;
+  height: 3em
 }
 
 #existing-user-login {
