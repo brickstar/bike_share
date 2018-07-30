@@ -1,21 +1,35 @@
-/* line 4, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
+/* line 3, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
 #accessory-index-image {
   height: 6em;
 }
 
-/* line 8, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
+/* line 7, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
 #accessory-show-image {
   height: 9em;
 }
 
-/* line 12, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
+/* line 11, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
 #accessory-thumbnail {
   height: 2em;
 }
 
-/* line 16, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
+/* line 15, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
 .centered {
   text-align: center;
+}
+
+/* line 19, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
+#existing-user-login {
+  position: fixed;
+  top: 150px;
+  left: 150px;
+}
+
+/* line 25, /Users/jp/turing/2module/projects/bike_share/app/assets/stylesheets/main.scss */
+#new-user-login {
+  position: fixed;
+  top: 90px;
+  left: 150px;
 }
 @import 'shared_values';
 
@@ -81,6 +95,12 @@ footer {
 
 #login-logout-button {
   color: white;
+}
+
+#home {
+  color: white;
+  align-self: center;
+  margin-left: 1em;
 }
 @charset "UTF-8";
 /*

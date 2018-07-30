@@ -10,7 +10,7 @@ describe 'an admin' do
     it 'should see a nav bar with a Home button that links to the admin dashboard page' do
       visit stations_path
       within('nav') do
-        click_on 'Home'
+        click_on 'Bikeshare'
       end
 
       expect(current_path).to eq(admin_dashboard_path)

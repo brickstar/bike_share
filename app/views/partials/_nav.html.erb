@@ -1,16 +1,20 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <i class="fas fa-bicycle"></i>
-  <% if current_admin? %>
-    <%= link_to 'Home', admin_dashboard_path, id: 'home' %>
-  <% elsif current_user %>
-    <%= link_to 'Home', dashboard_path, id: 'home' %>
-  <% else %>
-    <%= link_to 'Home', root_path, id: 'home' %>
-  <% end %>
   <div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link" id="bikeshare-dropdown" href="/">
-      Bikeshare
-    </a>
+    <% if current_admin? %>
+      <a class="navbar-link" id="bikeshare-dropdown" href="/admin/dashboard">
+        Bikeshare
+      </a>
+    <% elsif current_user %>
+      <a class="navbar-link" id="bikeshare-dropdown" href="/dashboard">
+        Bikeshare
+      </a>
+      <%= link_to 'Home', dashboard_path, id: 'home' %>
+    <% else %>
+      <a class="navbar-link" id="bikeshare-dropdown" href="/">
+        Bikeshare
+      </a>
+    <% end %>
     <div class="navbar-dropdown is-boxed">
       <a class="navbar-item" href="/conditions">
         Condition Index
