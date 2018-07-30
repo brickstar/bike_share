@@ -1,10 +1,14 @@
 class DashboardController < ApplicationController
 
   def index
+    
   end
 
   def show
-    @orders = current_user.orders
-    render file: '/public/404.html' unless current_user
+    if current_user.nil?
+      render file: '/public/404.html' unless current_user
+    else
+      @orders = current_user.orders
+    end
   end
 end
