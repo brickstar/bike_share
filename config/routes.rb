@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/stations-dashboard', to: 'stations_dashboard#index'
+  get '/conditions-dashboard', to: 'conditions_dashboard#index'
   get '/cart', to: 'cart#show'
   post '/cart', to: 'cart#create'
   delete '/cart', to: 'cart#destroy'
