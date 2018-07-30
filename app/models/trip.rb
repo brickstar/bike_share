@@ -88,8 +88,8 @@ class Trip < ApplicationRecord
     if values.length == 0
       avg = 0
     else
-      avg = values.sum / values.length
+      avg = values.sum.to_f / values.length
     end
-    {min: min, max: max, avg: avg.to_f}
+    {min: min, max: max, avg: avg}
   end
 end
