@@ -34,6 +34,7 @@
                 <div id='station-<%= station.id %>'>
                   <td class='control'><%= button_to 'Edit', edit_admin_station_path(station), method: :get, class: "button is-primary is-outlined is-small" %></td>
                   <td class='control'><%= button_to 'Delete', admin_station_path(station), method: :delete, class: "button is-danger is-outlined is-small", data: {confirm: 'Are you sure you want to delete this station?'} %></td>
+                  <p class="control"><%= button_to 'Create New Station', new_admin_station_path, method: :get, class: "button is-outlined is-small is-link"%></p>
                 </div>
               <% end %>
             </tr>
