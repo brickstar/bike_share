@@ -1,43 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BikeShare</title>
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-      <%= csrf_meta_tags %>
-      <%= stylesheet_link_tag    'application', media: 'all' %>
-      <%= javascript_include_tag 'application' %>
-  </head>
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-menu">
-      <% if current_admin? %>
-        <%= link_to 'Logout', logout_path %>
-        <%= button_to 'Back to Dashboard', admin_dashboard_path, method: :get%>
-      <% elsif current_user %>
-        <%= link_to 'Logout', logout_path %>
-        <%= button_to 'Back to Dashboard', dashboard_path, method: :get%>
-      <% else %>
-        <% unless login_path? %>
-          <%= link_to 'Login', login_path %>
-        <% end %>
-      <% end %>
-      <div id="admin-nav">
-        <% if current_admin? %>
-          Administrator Logged in as: <%= current_user.first_name %>
-        <% elsif current_user %>
-          Logged in as: <%= current_user.first_name.capitalize %>
-        <% end %>
-      </div>
-    </div>
-    <p class="control">
-      <a class="button is-primary is-small is-end">Cart: <%= @cart.total_count %></a>
-    </p>
-    <%= link_to 'View Cart', cart_path %>
-  </nav>
-  <body>
-  
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, message.html_safe, class: type %>
-    <% end %>
-    <%= yield %>
-  </body>
+<head>
+  <title>BikeShare</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Rubik" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+<body>
+  <% flash.each do |type, message| %>
+    <%= content_tag :div, message.html_safe, class: type %>
+  <% end %>
+  <%= render partial: '/partials/nav' %>
+  <%= yield %>
+  <%= render partial: '/partials/footer' %>
+</body>
 </html>
