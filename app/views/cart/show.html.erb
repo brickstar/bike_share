@@ -24,7 +24,7 @@
         <tbody>
           <% @cart.unpack_contents.each do |accessory, quantity| %>
             <tr>
-              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %><%= accessory.title %></td>
+              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %><%= link_to accessory.title, accessory_path(accessory) %></td>
               <td><%= number_to_currency(accessory.price) %></td>
               <td><%= quantity %></td>
               <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
