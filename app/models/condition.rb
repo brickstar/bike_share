@@ -12,16 +12,6 @@ class Condition < ApplicationRecord
 
   validates :date, uniqueness: true
 
-  def self.within_max_temp_range(low, high)
-    where(max_temp: low..high)
-  end
-
-  def self.trips_per_day
-    joins(:trips)
-    .group(:condition_id)
-    .count.values
-  end
-
   def self.most_rides
     find_by(date: Trip.max_min_rides.first.date_mod)
   end
@@ -64,37 +54,5 @@ class Condition < ApplicationRecord
     remainder = max % step
     max = max + (step - remainder) if remainder != 0
     (min..max).step(step).to_a
-  end
-
-  def self.temp_all_rides
-    temp_ranges.map do |r|
-      joins(:trips)
-      .where("max_temp >= #{r[0]} AND max_temp <= #{r[1]}")
-      .group(:condition_id)
-      .count(:condition_id)
-      .values
-    end
-  end
-
-  def self.mean_wind_speed_ranges
-    range = []
-    min = minimum(:mean_wind_speed)
-    max = maximum(:mean_wind_speed)
-    until min >= max
-      range << [min, (min + 3.9)]
-      min += 4
-    end
-    range
-  end
-
-  def self.mean_visibility_ranges
-    range = []
-    min = minimum(:mean_visibility)
-    max = maximum(:mean_visibility)
-    until min >= max
-      range << [min, (min + 3.9)]
-      min += 4
-    end
-    range
   end
 end
