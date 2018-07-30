@@ -35,11 +35,7 @@ end
   ary << n
 end
 
-joins(:trips)
-     .where(max_temp: range)
-     .group(:condition_id)
-     .count(:condition_id)
-     .values
+joins(:trips).where(max_temp: range).group(:condition_id).count(:condition_id).values
 
 Condition.joins(:trips).where(max_temp: 50..60).group(:condition_id).count.values
 
