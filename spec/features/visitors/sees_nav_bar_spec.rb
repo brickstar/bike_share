@@ -5,15 +5,7 @@ describe 'a visitor' do
     it 'should see a nav bar with a Home button that links to the root page' do
       visit stations_path
       within('nav') do
-        click_on 'Home'
-      end
-
-      expect(current_path).to eq(root_path)
-    end
-    it 'should allow to link to conditions index' do
-      visit root_path
-      within('nav') do
-        click_on 'Home'
+        click_on 'Bikeshare'
       end
 
       expect(current_path).to eq(root_path)
