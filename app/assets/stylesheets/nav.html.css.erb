@@ -1,0 +1,71 @@
+@import 'shared_values';
+
+
+.has-bg-img {
+  background: url(<%= asset_path("bike-splash.jpg") %>) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+
+footer {
+  height: 4em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.fa-bicycle:before {
+  margin-left: .5em;
+  margin-top: .15em;
+  content: "\f206";
+  font-size: 2.5em;
+  display: flex;
+  align-items: center;
+}
+
+#bikeshare-dropdown {
+  color: white;
+}
+
+#admin-nav {
+  display: flex;
+  align-items: center;
+}
+
+#cart-viewcart-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 1em;
+}
+
+#cart-button {
+  margin-right: .5em;
+}
+
+#colon {
+  padding: .5em
+}
+
+#view-cart-button {
+  margin-left: 1em;
+}
+
+#login-logout-box {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+#login-logout-button {
+  color: white;
+}
+
+#home {
+  color: white;
+  align-self: center;
+  margin-left: 1em;
+}

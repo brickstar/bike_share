@@ -18,17 +18,17 @@ Rails.application.routes.draw do
   resources :stations, only: [:index, :show]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
-
   resources :orders, only: [:show, :create]
 
   namespace :admin do
+    resources :accessories, only: [:index, :edit, :update, :create], path: 'bike-shop'
     get '/dashboard', to: 'dashboard#show'
     resources :trips, except: [:index, :show]
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :accessories, only: [:new, :create, :edit, :update]
+    resources :orders, only: [:edit, :update]
   end
 
   get '/:id', to: 'stations#show'
-
 end

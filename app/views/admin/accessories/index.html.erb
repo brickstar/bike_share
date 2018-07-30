@@ -1,0 +1,15 @@
+<% if current_admin? %>
+<br>
+  <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-danger"%></p>
+<% end %>
+
+<% @accessories.each do |accessory| %>
+<div id='accessory-<%= accessory.id %>'>
+  <%= link_to accessory.title, accessory_path(accessory)%>
+  Price: <%= accessory.price %>
+  <%= accessory.description %>
+  <%= accessory.status %>
+  <%= image_tag accessory.image_url, id: 'accessory-thumbnail' %>
+    <p class="control"><%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get, class: "button is-outlined is-small is-primary"%></p>
+</div>
+<% end %>

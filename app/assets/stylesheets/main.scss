@@ -1,3 +1,5 @@
+@import 'shared_values';
+
 #accessory-index-image {
   height: 6em
 }
@@ -6,6 +8,22 @@
   height: 9em
 }
 
-#accessory-cart-image {
+#accessory-thumbnail {
   height: 2em
+}
+
+.centered {
+  text-align: center;
+}
+
+#existing-user-login {
+  position: fixed;
+  top: 150px;
+  left: 150px;
+}
+
+#new-user-login {
+  position: fixed;
+  top: 90px;
+  left: 150px;
 }

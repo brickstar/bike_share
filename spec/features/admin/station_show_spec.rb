@@ -47,7 +47,7 @@ describe 'can edit station and delete station from show page' do
     fill_in :station_name, with: new_station_name
     fill_in :station_city, with: new_station_city
 
-    click_on 'Update Station'
+    click_on 'Submit'
     expect(current_path).to eq("/new-test-station")
     expect(page).to have_content(new_station_name)
     expect(page).to have_content(new_station_city)

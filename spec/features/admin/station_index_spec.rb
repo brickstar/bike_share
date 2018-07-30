@@ -53,11 +53,36 @@ describe 'can edit station and delete station from index page' do
     fill_in :station_name, with: new_station_name
     fill_in :station_city, with: new_station_city
 
-    click_on 'Update Station'
+    click_on 'Submit'
     expect(current_path).to eq("/new-test-station")
     expect(page).to have_content(new_station_name)
     expect(page).to have_content(new_station_city)
     expect(page).to have_content(@station_3.dock_count)
     expect(page).to have_content("Station ##{@station_3.id} updated.")
+  end
+
+  it 'can create a station' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+    station_name = 'Test Station'
+    station_city = 'Test City'
+    station_dock_count = '5'
+    station_install_date = Date.strptime('8/6/2013', '%m/%d/%Y')
+
+    visit stations_path
+    click_on 'Create New Station'
+
+    fill_in :station_name, with: station_name
+    fill_in :station_city, with: station_city
+    fill_in :station_dock_count, with: station_dock_count
+    fill_in :station_installation_date, with: station_install_date
+
+    click_on 'Submit'
+
+    expect(current_path).to eq("/test-station")
+    expect(page).to have_content(station_name)
+    expect(page).to have_content(station_city)
+    expect(page).to have_content(station_dock_count)
+    expect(page).to have_content(station_install_date)
+    expect(page).to have_content("You have successfully created #{station_name}.")
   end
 end

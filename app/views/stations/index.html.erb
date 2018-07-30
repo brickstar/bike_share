@@ -1,12 +1,52 @@
-<% @stations.each do |station| %>
-<ul>
-  <li> Name: <%= station.name %>
-  <li> City: <%= station.city %>
-  <li> Dock Count: <%= station.dock_count %>
-  <li> Installation Date:<%= station.installation_date %>
-  <% if current_admin? %>
-    <%= button_to 'Edit', edit_admin_station_path(station), method: 'get' %>
-    <%= button_to 'Delete', admin_station_path(station), method: 'delete', data: {confirm: 'Are you sure you want to delete this station?'} %>
-  <% end %>
-</ul>
-<% end %>
+<section class='hero is-primary'>
+  <div class='hero-body'>
+    <div class='container'>
+      <h1 class='title'>
+        All Stations
+        <h2 class='sub-title'>
+          <% if current_admin? %>
+          <p class="control"><%= button_to 'Create New Station', new_admin_station_path, method: :get, class: "button is-small is-link"%></p>
+          <% end %>
+        </h2>
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr class="is-selected is-primary">
+            <th>Name</th>
+            <th>City</th>
+            <th>Dock Count</th>
+            <th>Installation Date</th>
+            <% if current_admin? %>
+              <th>Admin Edit</th>
+              <th>Admin Delete</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stations.each do |station| %>
+            <tr>
+              <td><%= link_to station.name, station_path(station) %></td>
+              <td><%= station.city %></td>
+              <td><%= station.dock_count %></td>
+              <td><%= station.installation_date %></td>
+              <% if current_admin? %>
+                <div id='station-<%= station.id %>'>
+                  <td class='control'><%= button_to 'Edit', edit_admin_station_path(station), method: :get, class: "button is-primary is-outlined is-small" %></td>
+                  <td class='control'><%= button_to 'Delete', admin_station_path(station), method: :delete, class: "button is-danger is-outlined is-small", data: {confirm: 'Are you sure you want to delete this station?'} %></td>
+                </div>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<%= paginate @stations %>

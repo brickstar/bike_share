@@ -14,7 +14,7 @@ describe 'login workflow' do
 
     visit '/'
 
-    within('.navbar-brand') do
+    within('nav') do
       click_on 'Login'
     end
 
@@ -32,7 +32,7 @@ describe 'login workflow' do
     end
 
     expect(current_path).to eq('/dashboard')
-    expect(page).to have_content('Logged in as Jeff')
+    expect(page).to have_content('Logged in as: Jeff')
     expect(page).to have_content(user.first_name)
     expect(page).to have_content(user.last_name)
     expect(page).to have_content(user.street)
@@ -71,7 +71,7 @@ describe 'login workflow' do
     click_on 'Login'
 
     expect(current_path).to eq('/login')
-    expect(page).to_not have_content('Logged in as Jeff')
+    expect(page).to_not have_content('Logged in as: Jeff')
     expect(page).to_not have_content('Logout')
   end
 end

@@ -10,6 +10,7 @@ describe 'visits accessory show page' do
     expect(page).to have_content(accessory.description)
     expect(page).to have_content(accessory.price)
   end
+
   it 'can click a link for add to cart' do
     accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test1', price: 4, status: 1)
 
@@ -18,6 +19,7 @@ describe 'visits accessory show page' do
     expect(page).to have_button('Add to Cart')
     click_on 'Add to Cart'
   end
+  
   it 'sees Accessory Retired instead of Add to Cart for retired accessories' do
     accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test1', price: 4, status: 0)
 

@@ -1,4 +1,8 @@
 <h1>Bike Shop</h1>
+<% if current_admin? %>
+<br>
+  <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-danger"%></p>
+<% end %>
 
 <ul>
   <% @accessories.each do |accessory| %>
@@ -13,9 +17,5 @@
     </div>
   <% end %>
 </ul>
-
-<% if current_admin? %>
-  <%= button_to 'Create New Accessory', new_admin_accessory_path, method: 'get' %>
-<% end %>
 
 <%= paginate @accessories %>

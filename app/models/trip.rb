@@ -59,19 +59,19 @@ class Trip < ApplicationRecord
   end
 
   def self.subscribers_total
-    where(subscription_type: 'subscriber').count
+    where(subscription_type: 'Subscriber').count
   end
 
   def self.customers_total
-    where(subscription_type: 'customer').count
+    where(subscription_type: 'Customer').count
   end
 
   def self.subscribers_percentage
-    where(subscription_type: 'subscriber').count / Trip.count.to_f * 100
+    where(subscription_type: 'Subscriber').count / Trip.count.to_f * 100
   end
 
   def self.customers_percentage
-    where(subscription_type: 'customer').count / Trip.count.to_f * 100
+    where(subscription_type: 'Customer').count / Trip.count.to_f * 100
   end
 
   def self.max_min_rides

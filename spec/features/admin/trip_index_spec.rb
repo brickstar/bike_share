@@ -9,14 +9,15 @@ describe 'visiting trip index page can see all trips with attributes' do
     @trip4 = Trip.create(duration: 150, start_date: DateTime.strptime('09/12/2016 12:12', '%m/%d/%Y %H:%M'), start_station_name: 'Test Station 1', start_station_id: 1, end_date: DateTime.strptime('09/12/2016 12:42', '%m/%d/%Y %H:%M'), end_station_name: 'Test Station 3', end_station_id: 3, bike_id: 3, subscription_type: 'customer', zip_code: '32174')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
+
   it 'can see edit and delete buttons alongside each trip' do
     visit trips_path
 
     expect(page).to have_content(@trip1.duration)
-    expect(page).to have_content(@trip1.start_date)
+    expect(page).to have_content(@trip1.start_date.to_time.strftime('%m/%d/%y at %l:%M %p') )
     expect(page).to have_content(@trip1.start_station_name)
     expect(page).to have_content(@trip1.start_station_id)
-    expect(page).to have_content(@trip1.end_date)
+    expect(page).to have_content(@trip1.end_date.to_time.strftime('%m/%d/%y at %l:%M %p') )
     expect(page).to have_content(@trip1.end_station_name)
     expect(page).to have_content(@trip1.bike_id)
     expect(page).to have_content(@trip1.subscription_type)
@@ -24,20 +25,21 @@ describe 'visiting trip index page can see all trips with attributes' do
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
   end
+  
   it 'can delete a trip from the index page' do
     visit trips_path
 
-    expect(page).to have_content("Start Station: #{@trip1.start_station_name}")
-    expect(page).to have_content("Start Station: #{@trip2.start_station_name}")
-    expect(page).to have_content("Start Station: #{@trip3.start_station_name}")
-    expect(page).to have_content("Start Station: #{@trip4.start_station_name}")
+    expect(page).to have_content(@trip1.start_station_name)
+    expect(page).to have_content(@trip2.start_station_name)
+    expect(page).to have_content(@trip3.start_station_name)
+    expect(page).to have_content(@trip4.start_station_name)
 
     within(".trip_1") do
       click_button 'Delete'
     end
 
     expect(current_path).to eq(trips_path)
-    expect(page).to_not have_content("Trip: #{@trip1.start_station_name}")
+    expect(page).to_not have_content(@trip1.start_station_name)
     expect(page).to have_content("Successfully deleted trip ##{@trip1.id}.")
   end
 end

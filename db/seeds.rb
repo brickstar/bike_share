@@ -39,6 +39,9 @@ IMAGES = []
   IMAGES << "https://robohash.org/#{rand(1000)}"
 end
 
+User.create(first_name: 'admin', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'admin', password: 'adminadmin', role: 1)
+User.create(first_name: 'user', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'user', password: 'useruser', role: 0)
+
 Accessory.create(image_url: IMAGES.sample, title: 'test1', description: 'this is a test', price: 1)
 Accessory.create(image_url: IMAGES.sample, title: 'test2', description: 'this is a test', price: 2)
 Accessory.create(image_url: IMAGES.sample, title: 'test3', description: 'this is a test', price: 3)
@@ -53,8 +56,32 @@ Accessory.create(image_url: IMAGES.sample, title: 'test10', description: 'this i
 Accessory.create(image_url: IMAGES.sample, title: 'test11', description: 'this is a test', price: 11)
 Accessory.create(image_url: IMAGES.sample, title: 'test12', description: 'this is a test', price: 12)
 
-User.create(first_name: 'admin', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'admin', password: 'adminadmin', role: 1)
-User.create(first_name: 'user', last_name: 'girl', street: '9th ave', city: 'denver', state: 'CO', zip_code: '12345', email: 'user', password: 'useruser', role: 0)
+Order.create(user_id: 1, status: 'paid')
+Order.create(user_id: 1, status: 'cancelled')
+Order.create(user_id: 1, status: 'paid')
+Order.create(user_id: 1, status: 'ordered')
+Order.create(user_id: 1, status: 'paid')
+Order.create(user_id: 1, status: 'ordered')
+Order.create(user_id: 1, status: 'paid')
+Order.create(user_id: 1, status: 'cancelled')
+Order.create(user_id: 1, status: 'paid')
+Order.create(user_id: 1, status: 'paid')
+Order.create(user_id: 1, status: 'completed')
+Order.create(user_id: 1, status: 'completed')
+Order.create(user_id: 1, status: 'completed')
+
+OrderAccessory.create(order_id: 1, accessory_id: 1, quantity: 5)
+OrderAccessory.create(order_id: 2, accessory_id: 2, quantity: 4)
+OrderAccessory.create(order_id: 3, accessory_id: 3, quantity: 3)
+OrderAccessory.create(order_id: 4, accessory_id: 4, quantity: 5)
+OrderAccessory.create(order_id: 7, accessory_id: 7, quantity: 2)
+OrderAccessory.create(order_id: 8, accessory_id: 8, quantity: 1)
+OrderAccessory.create(order_id: 9, accessory_id: 9, quantity: 2)
+OrderAccessory.create(order_id: 10, accessory_id: 10, quantity: 5)
+OrderAccessory.create(order_id: 11, accessory_id: 11, quantity: 3)
+OrderAccessory.create(order_id: 12, accessory_id: 12, quantity: 1)
+OrderAccessory.create(order_id: 13, accessory_id: 13, quantity: 4)
+
 
 puts Trip.count puts 'trips'
 puts Station.count puts 'stations'

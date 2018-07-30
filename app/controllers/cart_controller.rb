@@ -18,7 +18,7 @@ class CartController < ApplicationController
   def destroy
     accessory = Accessory.find(params[:accessory_id])
     @cart = Cart.new(session[:cart])
-    if params[:quantity] == 'one'
+    if params[:quantity] == 'one' && @cart.contents[accessory.id.to_s] > 1
       @cart.decrease_quantity(accessory.id)
     else
       @cart.remove_accessory(accessory.id)

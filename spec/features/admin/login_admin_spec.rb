@@ -32,7 +32,7 @@ describe 'an admin user' do
     expect(current_path).to eq(admin_dashboard_path)
 
     within('#admin-nav') do
-      expect(page).to have_content("Logged in as Admin User: #{admin.first_name}")
+      expect(page).to have_content("Administrator Logged in as: #{admin.first_name}")
     end
 
     expect(page).to have_content(admin.first_name)
@@ -64,7 +64,7 @@ describe 'default user' do
    visit admin_dashboard_path
 
    within('#admin-nav') do
-     expect(page).to_not have_content("Logged in as Admin User: #{user.first_name}")
+     expect(page).to_not have_content("Administrator Logged in as: #{user.first_name}")
    end
 
    expect(page).to have_content("The page you were looking for doesn't exist.")

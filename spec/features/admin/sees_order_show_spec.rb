@@ -14,21 +14,19 @@ describe 'a user accessing the cart show page' do
     @admin = User.create(first_name: 'Admin', last_name: 'Santos', street: '123 Main Street', city: 'Cranford', state: 'NJ', zip_code: '07016', email: 'Bob@gmail.com', password: 'secretsecret', role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
+
   it 'can view order attributes along with additional admin only information' do
     visit order_path(@order1)
 
+    expect(current_path).to eq(order_path(@order1))
     expect(page).to have_content(@accessory1.title)
-    expect(page).to have_content('Quantity: 2')
-    expect(page).to have_content('Subtotal: $8.00')
     expect(page).to have_content(@accessory2.title)
-    expect(page).to have_content('Quantity: 3')
-    expect(page).to have_content('Subtotal: $12.00')
-    expect(page).to have_content('Total: $20.00')
-    expect(page).to have_content("Status: #{@order1.status}")
-    expect(page).to have_content("Submitted: #{@order1.created_at.strftime("%d %b %Y %H:%M")}")
-    expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime("%d %b %Y %H:%M")}")
-    expect(page).to have_content("Customer Name: #{@user.first_name} #{@user.last_name}")
-    expect(page).to have_content("Customer Address: #{@user.street} #{@user.city}, #{@user.state} #{@user.zip_code}")
+    expect(page).to have_content("\nItem Title Price Quantity Sub-Total")
+    expect(page).to have_content("test1 $4.00 2 $8.00 test2 $4.00 3 $12.00\n")
+    expect(page).to have_content("Submitted: #{@order1.created_at.strftime('%m/%d/%y at%l:%M %p')}")
+    expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime('%m/%d/%y at%l:%M %p')}")
+    expect(page).to have_content("Name: #{@user.first_name.capitalize} #{@user.last_name.capitalize}")
+    expect(page).to have_content("Address: #{@user.street} #{@user.city}, #{@user.state} #{@user.zip_code}")
 
     click_on @accessory1.title
 

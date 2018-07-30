@@ -9,6 +9,7 @@ describe 'admin user visits trip new' do
       @admin = User.create(first_name: 'Boss',last_name: 'Lady', street: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80304', email: 'Jeff@Turing.com', password: 'password', role: 1 )
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
     end
+
     it 'should create a trip, land on show and see a flash success' do
       visit edit_admin_trip_path(@trip1)
 
@@ -16,7 +17,7 @@ describe 'admin user visits trip new' do
 
       fill_in 'trip[duration]', with: duration
 
-      click_on 'Update Trip'
+      click_on 'Submit'
 
       expect(current_path).to eq(trip_path(@trip1))
       expect(page).to have_content(duration)
