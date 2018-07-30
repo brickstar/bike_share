@@ -79,21 +79,22 @@ describe 'visits trips dashboard' do
     expect(page).to have_content("Date with the least rides: #{Trip.max_min_rides.last.date_mod} (#{Trip.max_min_rides.last.date_count} rides)")
   end
   it 'sees weather condition on day with most rides' do
-    expect(page).to have_content("Weather conditions:")
-    expect(page).to have_content("High Temperature: #{@condition1.max_temp}")
-    expect(page).to have_content("Low Temperature: #{@condition1.min_temp}")
+    expect(page).to have_content("Max Temp(F): #{@condition1.max_temp}")
+    expect(page).to have_content("Mean Temp(F): #{@condition1.mean_temp}")
+    expect(page).to have_content("Min Temp(F): #{@condition1.min_temp}")
     expect(page).to have_content("Mean Humidity: #{@condition1.mean_humidity}")
-    expect(page).to have_content("Mean Visibility: #{@condition1.mean_visibility}")
-    expect(page).to have_content("Mean Wind Speed: #{@condition1.mean_wind_speed}")
-    expect(page).to have_content("Precipitation: #{@condition1.precipitation}")
+    expect(page).to have_content("Mean Visibility(mi): #{@condition1.mean_visibility}")
+    expect(page).to have_content("Mean Wind Speed(mph): #{@condition1.mean_wind_speed}")
+    expect(page).to have_content("Precipitation(in): #{@condition1.precipitation}")
   end
+
   it 'sees weather condition on day with least rides' do
-    expect(page).to have_content("Weather conditions:")
-    expect(page).to have_content("High Temperature: #{@condition2.max_temp}")
-    expect(page).to have_content("Low Temperature: #{@condition2.min_temp}")
+    expect(page).to have_content("Max Temp(F): #{@condition2.max_temp}")
+    expect(page).to have_content("Mean Temp(F): #{@condition2.mean_temp}")
+    expect(page).to have_content("Min Temp(F): #{@condition2.min_temp}")
     expect(page).to have_content("Mean Humidity: #{@condition2.mean_humidity}")
-    expect(page).to have_content("Mean Visibility: #{@condition2.mean_visibility}")
-    expect(page).to have_content("Mean Wind Speed: #{@condition2.mean_wind_speed}")
-    expect(page).to have_content("Precipitation: #{@condition2.precipitation}")
+    expect(page).to have_content("Mean Visibility(mi): #{@condition2.mean_visibility}")
+    expect(page).to have_content("Mean Wind Speed(mph): #{@condition2.mean_wind_speed}")
+    expect(page).to have_content("Precipitation(in): #{@condition2.precipitation}")
   end
 end
