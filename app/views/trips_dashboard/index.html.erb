@@ -37,6 +37,24 @@
           <p>Station with Most Starting Trips: <%= @station_most_starts %></p>
           <p>Station with Most Ending Trips: <%= @station_most_ends %></p>
         </article>
+        <article class="tile is-child box">
+          <p>Conditions on the Day with the Most Trips: (<%= @ride_days.first.condition.date.to_date %>)
+          <p>Max Temp(F): <%= @ride_days.first.condition.max_temp %></p>
+          <p>Mean Temp(F): <%= @ride_days.first.condition.mean_temp %></p>
+          <p>Min Temp(F): <%= @ride_days.first.condition.min_temp %></p>
+          <p>Mean Humidity: <%= @ride_days.first.condition.mean_humidity %></p>
+          <p>Mean Visibility(mi): <%= @ride_days.first.condition.mean_visibility %></p>
+          <p>Mean Wind Speed(mph): <%= @ride_days.first.condition.mean_wind_speed %></p>
+          <p>Precipitation(in): <%= @ride_days.first.condition.precipitation %></p>
+          <p>Conditions on the Day with the Leasr Trips: <%= @ride_days.last.condition %></p>
+          <p>Max Temp(F): <%= @ride_days.last.condition.max_temp %></p>
+          <p>Mean Temp(F): <%= @ride_days.last.condition.mean_temp %></p>
+          <p>Min Temp(F): <%= @ride_days.last.condition.min_temp %></p>
+          <p>Mean Humidity: <%= @ride_days.last.condition.mean_humidity %></p>
+          <p>Mean Visibility(mi): <%= @ride_days.last.condition.mean_visibility %></p>
+          <p>Mean Wind Speed(mph): <%= @ride_days.last.condition.mean_wind_speed %></p>
+          <p>Precipitation(in): <%= @ride_days.last.condition.precipitation %></p>
+        </article>
       </div>
     </div>
     <div class="tile is-parent">

@@ -20,7 +20,6 @@ describe 'a visitor visits /cart' do
     expect(page).to have_content(accessory1.price)
     expect(page).to have_content("$12.00")
     expect(page).to have_content("Total: $#{subtotal1}")
-    expect(page).to have_content('Create Account')
     expect(page).to_not have_button('Checkout')
   end
 end

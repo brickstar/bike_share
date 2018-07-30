@@ -45,7 +45,10 @@
     <%= link_to 'Go Shopping', '/bike-shop' %>
   <% elsif current_user && @cart.total > 0 %>
     <%= button_to 'Checkout', orders_path %>
+  <% elsif @cart.total == 0 %>
+    <p>You will need to add an item to your cart in order to checkout.</p>
+    <%= link_to 'Go Shopping', '/bike-shop' %>
   <% else %>
-    <%= link_to 'Create Account', new_user_path %>
+    <%= link_to 'Checkout', login_path %>
   <% end %>
 </div>
