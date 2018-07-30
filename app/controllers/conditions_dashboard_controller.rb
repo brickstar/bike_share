@@ -1,32 +1,15 @@
 class ConditionsDashboardController < ApplicationController
   def index
-    wind_ranges = Condition.wind_range
-    wind_ranges.inject(Hash.new) do |acc, num|
-      sequel = "conditions.mean_wind_speed >= #{num} AND conditions.mean_wind_speed < #{num + 4}"
-      metrics = Trip.trip_calculator(sequel)
-      acc[num] = metrics
-      acc
-    end
-    prec = Condition.precipitation_range
-    prec.inject(Hash.new) do |acc, num|
-      sequel = "conditions.precipitation >= #{num} AND conditions.precipitation < #{num + 0.5}"
-      metrics = Trip.trip_calculator(sequel)
-      acc[num] = metrics
-      acc
-    end
-    vis = Condition.visibility_range
-    vis.inject(Hash.new) do |acc, num|
-      sequel = "conditions.mean_visibility >= #{num} AND conditions.mean_visibility < #{num + 4}"
-      metrics = Trip.trip_calculator(sequel)
-      acc[num] = metrics
-      acc
-    end
-    temp = Condition.max_temp_range
-    temp.inject(Hash.new) do |acc, num|
-      sequel = "conditions.max_temp >= #{num} AND conditions.max_temp < #{num + 10}"
-      metrics = Trip.trip_calculator(sequel)
-      acc[num] = metrics
-      acc
-    end
+    wind_range = Condition.wind_range
+    visibility_range = Condition.visibility_range
+    precipitation_range = Condition.precipitation_range
+    max_temp_range = Condition.max_temp_range
+
+    cc = ConditionCalculator.new
+
+    @wind_data = cc.wind_data(wind_range)
+    @precipitation_data = cc.precipitation_data(precipitation_range)
+    @temp_data = cc.temp_data(max_temp_range)
+    @visibility_data = cc.visibility_data(visibility_range)
   end
 end
