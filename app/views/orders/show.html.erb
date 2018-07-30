@@ -39,9 +39,9 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-white">
-          <p class="title">Customer Information:</p>
           <p class="sub-title">
           <% if current_admin? %>
+          <p class="title">Customer Information:</p>
             <p>Name: <%= @order.user.first_name.capitalize %> <%= @order.user.last_name.capitalize %></p>
             <p>Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p><br><br>
             <p class="control"><%= button_to 'Back', admin_dashboard_path, method: :get, class: "button is-outlined is-small is-link"%></p>
