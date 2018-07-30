@@ -15,14 +15,14 @@ describe 'a visitor accessing the bike shop' do
 
     visit accessories_path
 
-    within('.nav') do
+    within('nav') do
       expect(page).to have_content('0')
     end
 
     click_button 'Add to Cart'
 
-    within('.nav') do
-      expect(page).to have_content('Cart: 1')
+    within('nav') do
+      expect(page).to have_content('1')
     end
   end
 
@@ -36,11 +36,15 @@ describe 'a visitor accessing the bike shop' do
     visit cart_path
 
     expect(page).to have_button('Remove Accessory')
-    expect(page).to have_content('Cart: 1')
+    within('nav') do
+      expect(page).to have_content('1')
+    end
 
     click_button 'Remove Accessory'
 
-    expect(page).to have_content('Cart: 0')
+    within('nav') do
+      expect(page).to have_content('0')
+    end
     expect(page).to_not have_content(accessory.price)
     expect(page).to have_content("Successfully removed #{accessory.title} from your cart.")
 
@@ -70,5 +74,19 @@ describe 'a visitor accessing the bike shop' do
     expect(page).to have_content('2')
     expect(page).to have_content('$8.00')
     expect(page).to have_content('Total: $8.00')
+  end
+
+  it 'redirected to login page when you trying to check out' do
+    accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
+
+    visit accessories_path
+
+    click_button 'Add to Cart'
+    click_button 'Add to Cart'
+
+    visit cart_path
+    click_on 'Checkout'
+
+    expect(current_path).to eq(login_path)
   end
 end

@@ -14,7 +14,7 @@ describe 'login workflow' do
 
     visit '/'
 
-    within('.navbar-menu') do
+    within('nav') do
       click_on 'Login'
     end
 

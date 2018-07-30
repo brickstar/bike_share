@@ -1,20 +1,31 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <i class="fas fa-bicycle"></i>
-  <% if current_user %>
+  <% if current_admin? %>
+    <%= link_to 'Home', admin_dashboard_path, id: 'home' %>
+  <% elsif current_user %>
     <%= link_to 'Home', dashboard_path, id: 'home' %>
   <% else %>
     <%= link_to 'Home', root_path, id: 'home' %>
-    <% end %>
+  <% end %>
   <div class="navbar-item has-dropdown is-hoverable">
     <a class="navbar-link" id="bikeshare-dropdown" href="/">
       Bikeshare
     </a>
     <div class="navbar-dropdown is-boxed">
+      <a class="navbar-item" href="/conditions">
+        Condition Index
+      </a>
+      <a class="navbar-item" href="/stations">
+        Station Index
+      </a>
       <a class="navbar-item" href="/stations-dashboard">
-        Stations
+        Station Analytics
+      </a>
+      <a class="navbar-item" href="/trips">
+        Trip Index
       </a>
       <a class="navbar-item" href="/trips-dashboard">
-        Trips
+        Trip Analytics
       </a>
     </div>
   </div>
@@ -29,8 +40,7 @@
   </div>
 </div>
 <span class="control" id='cart-viewcart-box'>
-  <a class="bd-tw-button button is-primary is-small is-end" id="cart-button"><i class="fas fa-shopping-cart"><span id='colon'> : </span></i><%= @cart.total_count %></a></i>
-  <%= link_to 'View Cart', cart_path, class: "bd-tw-button button is-primary is-small", id: 'view-cart-button' %>
+  <%= link_to "View Cart: #{@cart.total_count}", cart_path, class: "bd-tw-button button is-primary is-small", id: 'view-cart-button' %>
 </span>
 <div id="login-logout-box">
   <span class="button is-link is-small" id="login-logout">
