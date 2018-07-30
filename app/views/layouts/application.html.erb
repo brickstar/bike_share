@@ -9,11 +9,10 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
+  <%= render partial: '/partials/nav' %>
   <% flash.each do |type, message| %>
     <%= content_tag :div, message.html_safe, class: type %>
   <% end %>
-  <%= render partial: '/partials/nav' %>
   <%= yield %>
-  <%= render partial: '/partials/footer' %>
 </body>
 </html>

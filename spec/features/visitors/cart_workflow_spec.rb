@@ -15,11 +15,15 @@ describe 'a visitor accessing the bike shop' do
 
     visit accessories_path
 
-    expect(page).to have_content('Cart: 0')
+    within('.nav') do
+      expect(page).to have_content('0')
+    end
 
     click_button 'Add to Cart'
 
-    expect(page).to have_content('Cart: 1')
+    within('.nav') do
+      expect(page).to have_content('Cart: 1')
+    end
   end
 
   it 'can click a button to remove an item from the cart' do
