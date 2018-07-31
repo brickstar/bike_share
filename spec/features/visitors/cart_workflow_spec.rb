@@ -63,14 +63,14 @@ describe 'a visitor accessing the bike shop' do
 
     visit cart_path
 
-    expect(page).to have_button('Increase Quantity')
-    expect(page).to have_button('Decrease Quantity')
+    expect(page).to have_button('Increase QTY')
+    expect(page).to have_button('Decrease QTY')
     expect(page).to have_content('2')
     expect(page).to have_content('$8.00')
-    click_button 'Increase Quantity'
+    click_button 'Increase QTY'
     expect(page).to have_content('3')
     expect(page).to have_content('$12.00')
-    click_button 'Decrease Quantity'
+    click_button 'Decrease QTY'
     expect(page).to have_content('2')
     expect(page).to have_content('$8.00')
     expect(page).to have_content('Total: $8.00')
