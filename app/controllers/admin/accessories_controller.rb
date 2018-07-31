@@ -1,7 +1,7 @@
 class Admin::AccessoriesController < Admin::BaseController
 
   def index
-    @accessories = Accessory.all
+    @accessories = Accessory.order(:price)
   end
 
   def new
@@ -25,7 +25,11 @@ class Admin::AccessoriesController < Admin::BaseController
 
   def update
     @accessory = Accessory.find(params[:id])
-    @accessory.update(accessory_params)
+    if params[:status]
+      @accessory.update(status: params[:status])
+    else
+      @accessory.update(accessory_params)
+    end
     if @accessory.save
       flash[:success] = "Accessory #{@accessory.title} updated."
       redirect_to admin_accessories_path
