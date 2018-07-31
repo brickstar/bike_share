@@ -1,5 +1,9 @@
 require 'csv'
 
+ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+ActiveRecord::Base.connection.reset_pk_sequence!('conditions')
+
 CSV.foreach('./../sf-bay-area-bike-share/weather.csv', headers: true, header_converters: :symbol).with_index do |row, index|
   formatted_date = Date.strptime row[0], '%m/%d/%Y'
   Condition.create(date:formatted_date, max_temp:row[1], mean_temp:row[2], min_temp:row[3], mean_humidity:row[8], mean_visibility:row[14], mean_wind_speed:row[17], precipitation:row[19], zip_code:row[23])

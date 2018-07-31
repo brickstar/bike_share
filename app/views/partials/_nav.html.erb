@@ -1,16 +1,19 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <i class="fas fa-bicycle"></i>
-  <% if current_admin? %>
-    <%= link_to 'Home', admin_dashboard_path, id: 'home' %>
-  <% elsif current_user %>
-    <%= link_to 'Home', dashboard_path, id: 'home' %>
-  <% else %>
-    <%= link_to 'Home', root_path, id: 'home' %>
-  <% end %>
   <div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link" id="bikeshare-dropdown" href="/">
-      Bikeshare
-    </a>
+    <% if current_admin? %>
+      <a class="navbar-link" id="bikeshare-dropdown" href="/admin/dashboard">
+        Bikeshare
+      </a>
+    <% elsif current_user %>
+      <a class="navbar-link" id="bikeshare-dropdown" href="/dashboard">
+        Bikeshare
+      </a>
+    <% else %>
+      <a class="navbar-link" id="bikeshare-dropdown" href="/">
+        Bikeshare
+      </a>
+    <% end %>
     <div class="navbar-dropdown is-boxed">
       <a class="navbar-item" href="/bike-shop">
         BikeShop
@@ -19,19 +22,19 @@
         Condition Index
       </a>
       <a class="navbar-item" href="/conditions-dashboard">
-        Condition Analytics
+        Conditions Dashboard
       </a>
       <a class="navbar-item" href="/stations">
         Station Index
       </a>
       <a class="navbar-item" href="/stations-dashboard">
-        Station Analytics
+        Stations Dashboard
       </a>
       <a class="navbar-item" href="/trips">
         Trip Index
       </a>
       <a class="navbar-item" href="/trips-dashboard">
-        Trip Analytics
+        Trips Dashboard
       </a>
     </div>
   </div>
