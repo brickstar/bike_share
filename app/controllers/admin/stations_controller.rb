@@ -24,7 +24,7 @@ class Admin::StationsController < Admin::BaseController
     @station.update(station_params)
     @station.slug = @station.name.parameterize
      if @station.save
-       flash[:success] = "Station ##{@station.id} updated."
+       flash[:success] = "Station ##{@station.name} updated."
        redirect_to "/#{@station.slug}"
      else
        render :edit
@@ -34,7 +34,7 @@ class Admin::StationsController < Admin::BaseController
   def destroy
     station = Station.friendly.find(params[:id])
     station.destroy
-    flash[:success] = "Successfully deleted station ##{station.id}"
+    flash[:success] = "Successfully deleted station ##{station.name}"
     redirect_to stations_path
   end
 
