@@ -31,7 +31,7 @@ describe 'can edit station and delete station from show page' do
 
     expect(current_path).to eq(stations_path)
     expect(page).to_not have_content('Station Name: San Jose City Hall')
-    expect(page).to have_content("Successfully deleted station ##{@station_1.id}")
+    expect(page).to have_content("Successfully deleted #{@station_1.name}")
   end
 
   it 'can edit a station' do
@@ -52,6 +52,6 @@ describe 'can edit station and delete station from show page' do
     expect(page).to have_content(new_station_name)
     expect(page).to have_content(new_station_city)
     expect(page).to have_content(@station_1.dock_count)
-    expect(page).to have_content("Station ##{@station_1.id} updated.")
+    expect(page).to have_content("#{new_station_name} updated.")
   end
 end

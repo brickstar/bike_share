@@ -28,7 +28,7 @@
         </thead>
         <tbody>
           <% @accessories.each do |accessory| %>
-            <tr>
+            <tr class="accessory-<%= accessory.id %>">
               <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
               <td><%= link_to accessory.title, accessory_path(accessory)%></td>
               <td><%= accessory.description %></td>

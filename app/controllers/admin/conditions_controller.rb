@@ -32,7 +32,7 @@ class Admin::ConditionsController < Admin::BaseController
 
   def destroy
     condition = Condition.destroy(params[:id])
-    flash[:success] = "Successfully deleted condition ##{condition.date}"
+    flash[:success] = "Successfully deleted condition #{condition.date}"
     redirect_to conditions_path
   end
 

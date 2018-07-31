@@ -34,7 +34,7 @@ class Admin::StationsController < Admin::BaseController
   def destroy
     station = Station.friendly.find(params[:id])
     station.destroy
-    flash[:success] = "Successfully deleted station ##{station.name}"
+    flash[:success] = "Successfully deleted #{station.name}"
     redirect_to stations_path
   end
 
