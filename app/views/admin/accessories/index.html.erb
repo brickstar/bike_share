@@ -1,7 +1,17 @@
-<% if current_admin? %>
-<br>
-  <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-danger"%></p>
-<% end %>
+<section class="hero is-danger">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+      BikeShop
+      </h1>
+      <h2 class='sub-title'>
+        <% if current_admin? %>
+        <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-warning"%></p>
+        <% end %>
+      </h2>
+    </div>
+  </div>
+</section>
 
 <% @accessories.each do |accessory| %>
 <div id='accessory-<%= accessory.id %>'>
