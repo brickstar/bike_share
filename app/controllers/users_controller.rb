@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    render file: '/public/404' unless current_user.id.to_s == params[:id]
     @user = current_user
   end
 

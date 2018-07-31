@@ -36,9 +36,11 @@ class Admin::TripsController < Admin::BaseController
   end
 
   private
+  
   def initial_trip_params
     params.require(:trip).permit(:duration, :start_date, :start_station_name, :end_date, :end_station_name, :bike_id, :subscription_type, :zip_code)
   end
+
   def trip_params
     data_set = initial_trip_params
     data_set[:start_station_id] = Station.find_by_name(initial_trip_params[:start_station_name]).id.to_s
