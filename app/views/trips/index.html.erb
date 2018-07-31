@@ -18,7 +18,7 @@
       <table class="table is-hoverable is-centered">
         <thead>
           <tr>
-            <th>Trip #</th>
+            <th>Trip ID</th>
             <th>Duration</th>
             <th>Start Date</th>
             <th>Start Station</th>
@@ -34,9 +34,9 @@
           </tr>
         </thead>
         <tbody>
-          <% @trips.each_with_index do |trip, index| %>
+          <% @trips.each do |trip| %>
             <tr>
-              <td><%= link_to index + 1, trip_path(trip) %></td>
+              <td><%= link_to trip.id, trip_path(trip) %></td>
               <td><%= trip.duration %></td>
               <td><%= trip.start_date.to_date%></td>
               <td><%= trip.start_station_name.truncate(35) %></td>
