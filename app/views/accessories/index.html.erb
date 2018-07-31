@@ -17,19 +17,17 @@
 <br>
   <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-danger"%></p>
 <% end %>
-
-<ul>
-  <% @accessories.each do |accessory| %>
-    <div id="accessory_<%= accessory.id %>">
-      <li><%= image_tag accessory.image_url, id: 'accessory-index-image' %></li>
-      <li><%= link_to accessory.title, accessory_path(accessory)%></li>
-      <% if accessory.active? %>
-        <li><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id) %></li>
-      <% else %>
-        <li>Accessory Retired</li>
-      <% end %>
-    </div>
-  <% end %>
-</ul>
-
+  <ul>
+    <% @accessories.each do |accessory| %>
+      <div id="accessory_<%= accessory.id %>">
+        <li><%= image_tag accessory.image_url, id: 'accessory-index-image' %></li>
+        <li><%= link_to accessory.title, accessory_path(accessory)%></li>
+        <% if accessory.active? %>
+          <li><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id) %></li>
+        <% else %>
+          <li>Accessory Retired</li>
+        <% end %>
+      </div>
+    <% end %>
+  </ul>
 <%= paginate @accessories %>
