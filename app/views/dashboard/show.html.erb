@@ -1,49 +1,57 @@
-<div class="tile is-ancestor">
-  <div class="tile is-vertical is-8">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification is-white">
-        </article>
-      </div>
+<section class='hero has-background-grey-light'>
+  <div class='hero-body'>
+    <div class='container'>
+      <h1 class='title'>
+      <p class="title has-text-weight-heavy"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> Profile</p>
+      </h1>
     </div>
   </div>
-</div>
-<div class="tile is-ancestor">
-  <div class="tile is-vertical is-8">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification is-white">
-          <p class="title">My Profile</p>
-          <p class="sub-title">
-            First Name: <%= current_user.first_name.capitalize %></br>
-            Last Name: <%= current_user.last_name.capitalize %></br>
-            Street: <%= current_user.street %></br>
-            City: <%= current_user.city.capitalize %></br>
-            State: <%= current_user.state %></br>
-            Zip Code: <%= current_user.zip_code %></br>
-            Email: <%= current_user.email %></br>
-              <%= button_to 'Edit Account', edit_user_path(current_user), method: 'get' %>
-          </p>
-        </article>
+</section>
+<body>
+  <section class="section centered">
+    <div class="container centered">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8 centered">
+            <div class="tile is-parent is-vertical">
+                  <article class="tile is-child notification is-info">
+                  <p class="title has-text-weight-light">Profile</p>
+                  <hr>
+                  <p class="sub-title">
+                    First Name: <%= current_user.first_name.capitalize %></br>
+                    Last Name: <%= current_user.last_name.capitalize %></br>
+                    Street: <%= current_user.street %></br>
+                    City: <%= current_user.city.capitalize %></br>
+                    State: <%= current_user.state %></br>
+                    Zip Code: <%= current_user.zip_code %></br>
+                    Email: <%= current_user.email %></br>
+                    <br>
+                    <p class="control"><%= button_to 'Edit Account', edit_user_path(current_user), method: :get, class: "button is-small is-danger"%></p>
+                  </p>
+                </p>
+            </article>
+          </div>
+        </div>
+      </div>
+        <div class="tile is-ancestor">
+          <div class="tile is-vertical is-8 centered">
+            <div class="tile">
+              <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-primary">
+                  <p class="title has-text-weight-light">My Orders</p>
+                  <hr>
+                  <p class="sub-title">
+                  <% if @orders %>
+                    <% @orders.each do |order| %>
+                      <%= link_to order.created_at.to_date, order_path(order), class: "order_#{order.id}"%><br>
+                    <% end %>
+                  <% end %>
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="tile is-ancestor">
-  <div class="tile is-vertical is-8">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification is-white">
-          <p class="title">My Orders</p>
-          <p class="sub-title">
-          <% if @orders %>
-            <% @orders.each do |order| %>
-              <%= link_to order.created_at.to_date, order_path(order), class: "order_#{order.id}"%><br>
-            <% end %>
-          <% end %>
-          </p>
-        </article>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
+</body>

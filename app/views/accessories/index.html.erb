@@ -14,18 +14,41 @@
     </div>
   </div>
 </section>
-<h1>Bike Shop</h1>
-<ul>
-  <% @accessories.each do |accessory| %>
-    <div id="accessory_<%= accessory.id %>">
-      <li><%= image_tag accessory.image_url, id: 'accessory-index-image' %></li>
-      <li><%= link_to accessory.title, accessory_path(accessory)%></li>
-      <% if accessory.active? %>
-        <li><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id) %></li>
-      <% else %>
-        <li>Accessory Retired</li>
-      <% end %>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Add To Cart</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @accessories.each do |accessory| %>
+            <div id="accessory_<%= accessory.id %>">
+            <tr>
+              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
+              <td><%= link_to accessory.title, accessory_path(accessory)%></td>
+              <td><%= accessory.description %></td>
+              <td><%= number_to_currency(accessory.price) %></td>
+              <td><%= accessory.status %></td>
+              <% if accessory.active? %>
+                <td><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id), method: :get, class: "button is-outlined is-small is-success"%></td>
+              <% else %>
+                <td>Accessory Retired</td>
+              <% end %>
+            <% end %>
+            </tr>
+          </div>
+        </tbody>
+      </table>
     </div>
-  <% end %>
-</ul>
+  </div>
+</section>
+
 <%= paginate @accessories %>
