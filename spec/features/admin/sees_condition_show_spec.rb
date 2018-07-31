@@ -32,8 +32,7 @@ describe 'admin user visits conditions show' do
     click_button('Delete')
 
     expect(current_path).to eq(conditions_path)
-    expect(page).to_not have_content(@condition.date)
     expect(page).to_not have_content(@condition.precipitation)
-    expect(page).to have_content("Successfully deleted condition ##{@condition.id}")
+    expect(page).to have_content("Successfully deleted condition #{@condition.date}")
   end
 end

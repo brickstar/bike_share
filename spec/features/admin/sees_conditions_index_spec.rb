@@ -51,8 +51,10 @@ describe 'admin user visits conditions index' do
     end
 
     expect(current_path).to eq(conditions_path)
-    expect(page).to_not have_content(@condition_2.date)
+    within('.columns') do
+      expect(page).to_not have_content(@condition_2.date)
+    end
     expect(page).to_not have_content(@condition_2.precipitation)
-    expect(page).to have_content("Successfully deleted condition ##{@condition_2.id}")
+    expect(page).to have_content("Successfully deleted condition #{@condition_2.date}")
   end
 end

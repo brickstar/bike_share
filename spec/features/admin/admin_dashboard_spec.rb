@@ -166,11 +166,11 @@ describe 'admin user visits /admin/dashboard' do
 
       visit admin_accessories_path
 
-      within("#accessory-#{@accessory1.id}") do
+      within(".accessory-#{@accessory2.id}") do
         click_button('Edit')
       end
 
-      expect(current_path).to eq(edit_admin_accessory_path(@accessory1))
+      expect(current_path).to eq(edit_admin_accessory_path(@accessory2))
 
       fill_in 'accessory[title]', with: title
       fill_in 'accessory[price]', with: price
@@ -184,11 +184,11 @@ describe 'admin user visits /admin/dashboard' do
       expect(page).to have_content(title)
       expect(page).to have_content(description)
 
-      within("#accessory-#{@accessory1.id}") do
-        expect(page).to have_content("Price: #{price}")
+      within(".accessory-#{@accessory2.id}") do
+        expect(page).to have_content("#{price}")
       end
 
-      expect(Accessory.first.status).to eq('retired')
+      expect(Accessory.last.status).to eq('retired')
       expect(page).to have_content("Accessory #{title} updated.")
     end
   end

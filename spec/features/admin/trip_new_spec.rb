@@ -14,7 +14,7 @@ describe 'admin user visits trip new' do
       end_date            = Date.parse('12 March, 2018')
       end_station_name    = 'San Jose City Hall'
       bike_id             = 12
-      subscription_type   = 'subscriber'
+      subscription_type   = 'Subscriber'
       zip_code            = '32165'
 
       visit new_admin_trip_path
