@@ -70,7 +70,7 @@ describe 'login workflow' do
 
     click_on 'Login'
 
-    expect(current_path).to eq('/login')
+    expect(current_path).to eq("/login")
     expect(page).to_not have_content('Logged in as: Jeff')
     expect(page).to_not have_content('Logout')
   end

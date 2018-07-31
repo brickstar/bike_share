@@ -72,9 +72,9 @@ describe 'registration workflow' do
     fill_in :user_password, with: password
 
     click_on 'Create Account'
-    expect(current_path).to eq('/login')
+    expect(current_path).to eq(users_path)
     expect(page).to_not have_content('Logged in as: Jeff')
     expect(page).to_not have_content('Logout')
-    expect(page).to_not have_content('Login')
+    expect(page).to have_content('Login')
   end
 end

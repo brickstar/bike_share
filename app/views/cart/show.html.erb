@@ -16,7 +16,8 @@
             <th>Accessory</th>
             <th>Title</th>
             <th>Price</th>
-            <th>Quantity</th>
+            <th>QTY</th>
+            <th>Sub-Total</th>
             <th>Add One</th>
             <th>Remove One</th>
             <th>Delete</th>
@@ -29,8 +30,9 @@
               <td><%= link_to accessory.title, accessory_path(accessory) %></td>
               <td><%= number_to_currency(accessory.price) %></td>
               <td><%= quantity %></td>
-              <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
-              <td><%= button_to 'Decrease Quantity', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
+              <td><%= number_to_currency(accessory.price * quantity) %></td>
+              <td><%= button_to 'Increase QTY', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>
+              <td><%= button_to 'Decrease QTY', cart_path(accessory_id: accessory.id, quantity: 'one'), method: 'delete' %></td>
               <td><%= button_to 'Remove Accessory', cart_path(accessory_id: accessory.id), method: 'delete' %></td>
             </tr>
           <% end %>
@@ -51,6 +53,6 @@
     <p>You will need to add an item to your cart in order to checkout.</p>
     <%= link_to 'Go Shopping', '/bike-shop' %>
   <% else %>
-    <%= link_to 'Checkout', login_path %>
+    <%= button_to 'Checkout', login_path %>
   <% end %>
 </div>

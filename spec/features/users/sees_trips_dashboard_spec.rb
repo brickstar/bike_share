@@ -18,17 +18,17 @@ describe 'visits trips dashboard' do
 
   it 'sees the average duration of a trip' do
     expected_seconds = (@trip1.duration + @trip2.duration + @trip3.duration + @trip4.duration) / 4
-    expected = Time.at(expected_seconds).utc.strftime("%H:%M:%S")
+    expected = Time.at(expected_seconds).utc.strftime("%Hh %Mm %Ss")
     expect(page).to have_content("Average Duration: #{expected}")
   end
 
   it 'sees the longest trip' do
-    expected = Time.at(@trip4.duration).utc.strftime("%H:%M:%S")
+    expected = Time.at(@trip4.duration).utc.strftime("%Hh %Mm %Ss")
     expect(page).to have_content("Longest Duration: #{expected}")
   end
 
   it 'sees the shortest trip' do
-    expected = Time.at(@trip1.duration).utc.strftime("%H:%M:%S")
+    expected = Time.at(@trip1.duration).utc.strftime("%Hh %Mm %Ss")
     expect(page).to have_content("Shortest Duration: #{expected}")
   end
 

@@ -20,9 +20,9 @@
         <article class="tile is-child box">
           <p>Total Number of Stations: <%= @stations_total_count %><p>
           <p>Average Bikes Available per Station: <%= @stations_average_bikes.round %><p>
-          <p>Inventory Level (Low): <%= @stations_lowest_bike_total %></p>
         </article>
         <article class="tile is-child box">
+          <p>Inventory Level (Low): <%= @stations_lowest_bike_total %></p>
           <p>Stations with Lowest Inventory: <% @stations_with_lowest_inventory.each do |station| %>
           <p><%= station.name %></p>
           <% end %>

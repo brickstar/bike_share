@@ -18,7 +18,7 @@ describe 'station show page analysis' do
     @t_5 = Trip.create(duration: 160, start_date: '12/12/2015 12:12', start_station_name: 'Market Street', start_station_id: 3, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 6, subscription_type: 'subscriber', zip_code: '77777')
     @t_8 = Trip.create(duration: 190, start_date: '12/12/2015 12:12', start_station_name: 'Market Street', start_station_id: 3, end_date: '12/12/2015 12:42', end_station_name: 'San Fran Park', end_station_id: 2, bike_id: 6, subscription_type: 'customer', zip_code: '77777')
 
-    visit station_path(@station_1)
+    visit "/#{@station_1.slug}"
   end
 
   it 'does not have access to admin edit and delete functionality' do

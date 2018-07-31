@@ -47,7 +47,7 @@ describe 'admin user visits dashboard' do
       expect(page).to_not have_link(@order_2.id)
     end
 
-    xit 'can see links to transition between statuses' do
+    it 'can see links to transition between statuses' do
       click_link 'Ordered'
       expect(page).to_not have_link(@order_1.id)
       expect(page).to have_link(@order_2.id)

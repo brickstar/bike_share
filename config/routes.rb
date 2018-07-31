@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :accessories, only: [:index, :show], path: 'bike-shop'
   resources :users, only: [:new, :create, :edit, :update]
-  resources :stations, only: [:index, :show]
+  resources :stations, only: [:index]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :orders, only: [:show, :create]
