@@ -7,6 +7,8 @@
       <h2 class='sub-title'>
         <% if current_admin? %>
         <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-small is-warning"%></p>
+        <br>
+        <p class="control"><%= button_to 'Administrator BikeShop', admin_accessories_path, method: :get, class: "button is-small is-info"%></p>
         <% end %>
       </h2>
     </div>

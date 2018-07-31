@@ -1,5 +1,5 @@
 class Condition < ApplicationRecord
-  has_many :trips
+  has_many :trips, dependent: :destroy
   validates_presence_of :date,
                         :max_temp,
                         :mean_temp,
@@ -8,9 +8,10 @@ class Condition < ApplicationRecord
                         :mean_visibility,
                         :mean_wind_speed,
                         :precipitation
+
   validates :date, uniqueness: true
   paginates_per 30
-  
+
   def self.most_rides
     find_by(date: Trip.max_min_rides.first.date_mod)
   end
