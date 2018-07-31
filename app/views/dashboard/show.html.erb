@@ -32,26 +32,24 @@
           </div>
         </div>
       </div>
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-8 centered">
-            <div class="tile">
-              <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-primary">
-                  <p class="title has-text-weight-light">My Orders</p>
-                  <hr>
-                  <p class="sub-title">
-                  <% if @orders %>
-                    <% @orders.each do |order| %>
-                      <%= link_to order.created_at.to_date, order_path(order), class: "order_#{order.id}"%><br>
-                    <% end %>
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8 centered">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-primary">
+                <p class="title has-text-weight-light">My Orders</p>
+                <hr>
+                <p class="sub-title">
+                <% if @orders %>
+                  <% @orders.each do |order| %>
+                    <%= link_to order.created_at.to_date, order_path(order), class: "order_#{order.id}"%><br>
                   <% end %>
-                  </p>
-                </article>
-              </div>
+                <% end %>
+                </p>
+              </article>
             </div>
           </div>
         </div>
       </div>
-    </div>
-</section>
+    </section>
 </body>
