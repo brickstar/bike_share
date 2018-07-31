@@ -14,17 +14,19 @@
         <thead>
           <tr>
             <th>Accessory</th>
+            <th>Title</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>+1</th>
-            <th>-1</th>
+            <th>Add One</th>
+            <th>Remove One</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <% @cart.unpack_contents.each do |accessory, quantity| %>
             <tr>
-              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %><%= link_to accessory.title, accessory_path(accessory) %></td>
+              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
+              <td><%= link_to accessory.title, accessory_path(accessory) %></td>
               <td><%= number_to_currency(accessory.price) %></td>
               <td><%= quantity %></td>
               <td><%= button_to 'Increase Quantity', cart_path(accessory_id: accessory.id, quantity: 'one') %></td>

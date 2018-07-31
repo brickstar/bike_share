@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-      Trip Analytics
+      Trips Dashboard
       </h1>
       <h2 class='sub-title'>
         <% if current_admin? %>
@@ -38,7 +38,7 @@
           <p>Station with Most Ending Trips: <%= @station_most_ends %></p>
         </article>
         <article class="tile is-child box">
-          <p>Conditions on the Day with the Most Trips: (<%= @condition_most_rides.date.to_date %>)
+          <p>Conditions on the Day with the Most Rides: (<%= @condition_most_rides.date.to_date %>)
           <p>Max Temp(F): <%= @condition_most_rides.max_temp %></p>
           <p>Mean Temp(F): <%= @condition_most_rides.mean_temp %></p>
           <p>Min Temp(F): <%= @condition_most_rides.min_temp %></p>
@@ -46,7 +46,9 @@
           <p>Mean Visibility(mi): <%= @condition_most_rides.mean_visibility %></p>
           <p>Mean Wind Speed(mph): <%= @condition_most_rides.mean_wind_speed %></p>
           <p>Precipitation(in): <%= @condition_most_rides.precipitation %></p>
-          <p>Conditions on the Day with the Least Trips: (<%= @condition_least_rides.date.to_date %>)
+          <br>
+          <br>
+          <p>Conditions on the Day with the Least Rides: (<%= @condition_least_rides.date.to_date %>)
           <p>Max Temp(F): <%= @condition_least_rides.max_temp %></p>
           <p>Mean Temp(F): <%= @condition_least_rides.mean_temp %></p>
           <p>Min Temp(F): <%= @condition_least_rides.min_temp %></p>
