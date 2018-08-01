@@ -30,21 +30,19 @@
         </thead>
         <tbody>
           <% @accessories.each do |accessory| %>
-            <div id="accessory_<%= accessory.id %>">
-            <tr>
+            <tr id="accessory_<%= accessory.id %>">
               <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
               <td><%= link_to accessory.title, accessory_path(accessory)%></td>
               <td><%= accessory.description %></td>
               <td><%= number_to_currency(accessory.price) %></td>
               <td><%= accessory.status %></td>
               <% if accessory.active? %>
-                <td><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id), method: :get, class: "button is-outlined is-small is-success"%></td>
+                <td><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id), method: :post, class: "button is-outlined is-small is-success"%></td>
               <% else %>
                 <td>Accessory Retired</td>
               <% end %>
             <% end %>
             </tr>
-          </div>
         </tbody>
       </table>
     </div>
