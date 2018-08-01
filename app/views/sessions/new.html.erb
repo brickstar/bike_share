@@ -1,12 +1,19 @@
-<%= form_tag login_path do%>
+<section class="hero is-fullheight has-bg-img">
+  <div class="hero-body">
+    <div class="container">
+      <div id='existing-user-login'>
+        <%= form_tag login_path do %>
 
-  <%= label_tag :email%>
-  <%= text_field_tag :email%>
+          <p><%= label_tag :email%></p>
+          <p><%= text_field_tag :email%></p>
 
-  <%= label_tag :password%>
-  <%= password_field_tag :password%>
+          <p><%= label_tag :password%></p>
+          <p><%= password_field_tag :password%></p>
 
-  <%= submit_tag 'Login' %>
-<% end %>
-
-<p><%= link_to 'Create Account', new_user_path %> </p>
+          <p><%= submit_tag 'Login' %></p>
+        <% end %>
+      <p><%= link_to 'Create Account', new_user_path %> </p>
+      </div>
+    </div>
+  </div>
+</section>

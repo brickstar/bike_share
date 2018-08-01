@@ -1,0 +1,61 @@
+<section class="hero is-white is-small">
+  <div class="hero-body">
+    <div class="container">
+      <%= form_for [:admin, @trip] do |f| %>
+      <div class="field">
+        <div class="control">
+          <%= f.label :duration %>
+          <%= f.number_field :duration, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :start_date %>
+          <%= f.date_field :start_date, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.label :start_station_name %>
+          <%= f.collection_select :start_station_name, Station.order(:name), :name, :name, include_blank: true %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+        <%= f.label :end_date %>
+        <%= f.date_field :end_date, class: "input is-medium is-grey" %>
+        </div>
+      </div>
+        <div class="field">
+          <div class="control">
+          <%= f.label :end_station_name %>
+          <%= f.collection_select :end_station_name, Station.order(:name), :name, :name, include_blank: true %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+          <%= f.label :bike_id %>
+          <%= f.number_field :bike_id, class: "input is-medium is-grey" %>
+          </div>
+        </div>
+          <div class="field">
+            <div class="control">
+            <%= f.label :subscription_type %>
+            <%= f.select :subscription_type, ['Subscriber', 'Customer'], include_blank: true %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+            <%= f.label :zip_code %>
+            <%= f.text_field :zip_code, class: "input is-medium is-grey" %>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control"><%= f.submit 'Submit', class: "button is-primary is-outlined"%></p>
+          </div>
+          <% end %>
+          <br>
+          <p class="control"><%= button_to 'Back', :back, method: :get, class: "button is-outlined is-small is-link"%></p>
+        </div>
+      </div>
+</section>

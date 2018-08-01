@@ -1,0 +1,101 @@
+<section class="hero has-background-grey-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Administrator Dashboard
+      </h1>
+    </div>
+  </div>
+</section>
+  <section class="section centered">
+    <div class="container centered">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8 centered">
+            <div class="tile is-parent is-vertical">
+                  <article class="tile is-child notification is-info">
+                  <p class="title has-text-weight-light"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>'s Profile</p>
+                  <hr>
+                  <p class="sub-title">
+                    First Name: <%= current_user.first_name.capitalize %></br>
+                    Last Name: <%= current_user.last_name.capitalize %></br>
+                    Street: <%= current_user.street %></br>
+                    City: <%= current_user.city.capitalize %></br>
+                    State: <%= current_user.state %></br>
+                    Zip Code: <%= current_user.zip_code %></br>
+                    Email: <%= current_user.email %></br>
+                    <br>
+                    <p class="control"><%= button_to 'Edit Account', edit_user_path(current_user), method: :get, class: "button is-small is-danger"%></p>
+                  </p>
+                </p>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-white">
+                  <p><%= link_to 'View All Accessories', admin_accessories_path %></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="title">Order Details</p>
+          <p class="sub-title">
+          <p>
+          <%= link_to 'Ordered', '/admin/dashboard?status=ordered' %>: <%= @ordered_status %> |
+          <%= link_to 'Paid', '/admin/dashboard?status=paid' %>: <%= @paid_status %> |
+          <%= link_to 'Completed', '/admin/dashboard?status=completed' %>: <%= @completed_status %> |
+          <%= link_to 'Cancelled', '/admin/dashboard?status=cancelled' %>: <%= @cancelled_status %> |
+          <%= link_to 'All', '/admin/dashboard' %>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="section">
+  <div class="columns is-left">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Order Created</th>
+            <th>Order Updated</th>
+            <th>Status</th>
+            <th>Status Action</th>
+            <th>Cancel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.created_at.strftime('%b %d, %Y at %I:%M%p') %></td>
+          <td><%= order.updated_at.strftime('%b %d, %Y at %I:%M%p') %></td>
+          <td><%= order.status %> </td>
+            <% if order.status == 'ordered' %>
+              <td class='control'><%= button_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :patch, class: "button is-link is-outlined is-small", data: {confirm: 'Are you sure you want to update this order?'} %></td>
+              <td class='control'><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch, class: "button is-danger is-outlined is-small", data: {confirm: 'Are you sure you want to cancel this order?'} %></td>
+            <% elsif order.status == 'paid' %>
+              <td class='control'><%= button_to 'Mark as Completed', admin_order_path(order, status: 'completed'), method: :patch, class: "button is-link is-outlined is-small", data: {confirm: 'Are you sure you want to update this order?'} %></td>
+              <td class='control'><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch, class: "button is-danger is-outlined is-small", data: {confirm: 'Are you sure you want to cancel this order?'} %></td>
+            <% elsif order.status == 'completed' || order.status == 'cancelled' %>
+              <td>-</td>
+              <td>-</td>
+            <% end %>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

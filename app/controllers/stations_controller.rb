@@ -1,10 +1,10 @@
 class StationsController < ApplicationController
 
   def index
-    @stations = Station.all
+    @stations = Station.order(:city, :name).page params[:page]
   end
 
   def show
-    @station = Station.friendly.find(params[:station_name])
+    @station = Station.friendly.find(params[:id])
   end
 end

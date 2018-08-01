@@ -1,18 +1,46 @@
-<h1>Trip ID: <%= @trip.id %></h1>
-
-<ul>
-  <li>Duration: <%= @trip.duration %>s</li>
-  <li>Start Date: <%= @trip.start_date %></li>
-  <li>Start Station: <%= @trip.start_station_name %></li>
-  <li>Start Station ID: <%= @trip.start_station_id %></li>
-  <li>End Date: <%= @trip.end_date %></li>
-  <li>End Station: <%= @trip.end_station_name %></li>
-  <li>End Station ID: <%= @trip.end_station_id %></li>
-  <li>Bike ID: <%= @trip.bike_id %></li>
-  <li>Subscription Type: <%= @trip.subscription_type %></li>
-  <li>Zip Code: <%= @trip.zip_code %></li>
-  <% if current_admin? %>
-    <%= button_to "Edit", edit_admin_trip_path(@trip) %>
-    <%= button_to "Delete", admin_trip_path(@trip), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
-  <% end %>
-</ul>
+  <section class="hero is-info">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Trip Info
+        </h1>
+      </div>
+    </div>
+  </section>
+<div class="tile is-ancestor is-centered">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <div class="sub-title trip-show-attributes">
+            Duration: <%= @trip.duration %></p>
+            Start Date: <%= @trip.start_date.to_date %></p>
+            Start Station: <%= @trip.start_station_name %></p>
+            Start Station ID: <%= @trip.start_station_id %></p>
+            End Date: <%= @trip.end_date.to_date %></p>
+            End Station: <%= @trip.end_station_name %></p>
+            Bike ID: <%= @trip.bike_id %></p>
+            Subscription Type: <%= @trip.subscription_type %></p>
+            Zip Code: <%= @trip.zip_code %>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <div class="container is-fluid">
+        <div class='field is-grouped'>
+          <% if current_admin? %>
+          <a class="control"><%= button_to 'Edit', edit_admin_trip_path(@trip), method: 'get', class: "button is-outlined is-medium is-primary" %></a>
+          <a class="control"><%= button_to 'Delete', admin_trip_path(@trip), method: "delete",  class: "button is-outlined is-medium is-danger", data: {confirm: 'Are you sure you want to delete this station?'} %></a>
+          <% end %>
+          <a class="control"><%= button_to 'Back', trips_path, method: :get, class: "button is-outlined is-medium is-link"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

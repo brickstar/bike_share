@@ -13,6 +13,10 @@ describe User, type: :model do
     it { should validate_presence_of(:password) }
   end
 
+  describe 'relationships' do
+    it { should have_many(:orders) }
+  end
+
   describe 'roles' do
     it 'can be created as an admin' do
 
@@ -25,7 +29,6 @@ describe User, type: :model do
                          email: 'pearl@pearl.com',
                          password: 'lovelove',
                          role: 1)
-
 
       expect(user.role).to eq('admin')
       expect(user.admin?).to eq(true)

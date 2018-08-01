@@ -1,4 +1,6 @@
 class Trip < ApplicationRecord
+  # belongs_to :condition, class_name: 'Condition', foreign_key: :zip_code
+  belongs_to :condition, optional: true
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,
@@ -54,5 +56,40 @@ class Trip < ApplicationRecord
 
   def self.bike_id_table
     select('trips.bike_id, count(trips.bike_id) AS number_of_rides').group(:bike_id).order('number_of_rides desc')
+  end
+
+  def self.subscribers_total
+    where(subscription_type: 'Subscriber').count
+  end
+
+  def self.customers_total
+    where(subscription_type: 'Customer').count
+  end
+
+  def self.subscribers_percentage
+    where(subscription_type: 'Subscriber').count / Trip.count.to_f * 100
+  end
+
+  def self.customers_percentage
+    where(subscription_type: 'Customer').count / Trip.count.to_f * 100
+  end
+
+  def self.max_min_rides
+    select('CAST(trips.start_date AS DATE) AS date_mod, count(CAST(trips.start_date AS DATE)) AS date_count').group('CAST(trips.start_date AS DATE)').order('date_count desc')
+  end
+
+  def self.trip_calculator(range)
+    values = joins(:condition).where(range)
+    .group(:condition_id)
+    .count
+    .values
+    min = values.min
+    max = values.max
+    if values.length == 0
+      avg = 0
+    else
+      avg = values.sum.to_f / values.length
+    end
+    {min: min, max: max, avg: avg}
   end
 end

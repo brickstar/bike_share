@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BikeShare</title>
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+<head>
+  <title>BikeShare</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Rubik" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+<body>
 
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <div id="admin-nav">
-        <% if current_admin? %>
-          Logged in as Admin User: <%= current_user.first_name %>
-        <% elsif current_user %>
-          Logged in as <%= current_user.first_name %>
-        <% end %>
-      </div>
-    </div>
-    <p>Cart: <%= @cart.total_count %></p>
-    <%= link_to 'View Cart', cart_path %>
-  </nav>
+  <%= render partial: '/partials/nav' %>
 
-  <body>
+  <div class="centered">
     <% flash.each do |type, message| %>
-      <%= content_tag :div, message.html_safe, class: type %>
-    <% end %>
-    <%= yield %>
-  </body>
+    <%= content_tag :div, message.html_safe, class: type %>
+  <% end %>
+  </div>
+
+  <%= yield %>
+</body>
 </html>

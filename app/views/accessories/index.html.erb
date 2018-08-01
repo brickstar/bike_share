@@ -1,17 +1,52 @@
-<h1>Bike Shop</h1>
-
-<ul>
-  <% @accessories.each do |accessory| %>
-    <div id="accessory_<%= accessory.id %>">
-      <li>Image tag placeholder</li>
-      <li><%= accessory.title %></li>
-      <% if accessory.active? %>
-        <li><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id) %></li>
-      <% else %>
-        <li>Accessory Retired</li>
-      <% end %>
+<section class="hero is-danger">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+      BikeShop
+      </h1>
+      <h2 class='sub-title'>
+        <% if current_admin? %>
+        <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-small is-warning"%></p>
+        <br>
+        <p class="control"><%= button_to 'Administrator BikeShop', admin_accessories_path, method: :get, class: "button is-small is-info"%></p>
+        <% end %>
+      </h2>
     </div>
-  <% end %>
-</ul>
+  </div>
+</section>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Add To Cart</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @accessories.each do |accessory| %>
+            <tr id="accessory_<%= accessory.id %>">
+              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
+              <td><%= link_to accessory.title, accessory_path(accessory)%></td>
+              <td><%= accessory.description %></td>
+              <td><%= number_to_currency(accessory.price) %></td>
+              <td><%= accessory.status %></td>
+              <% if accessory.active? %>
+                <td><%= button_to 'Add to Cart', cart_path(accessory_id: accessory.id), method: :post, class: "button is-outlined is-small is-success"%></td>
+              <% else %>
+                <td>Accessory Retired</td>
+              <% end %>
+            <% end %>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <%= paginate @accessories %>

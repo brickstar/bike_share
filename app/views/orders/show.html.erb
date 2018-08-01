@@ -1,0 +1,59 @@
+<section class="hero is-success">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title ">
+          Order Info
+        </h1>
+      </div>
+    </div>
+</section>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-white">
+          <p class="sub-title">
+          <% if current_admin? %>
+          <p class="title has-text-weight-light">Customer Information:</p>
+            <p>Name: <%= @order.user.first_name.capitalize %> <%= @order.user.last_name.capitalize %></p>
+            <p>Address: <%= @order.user.street %> <%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="section">
+    <p class="title has-text-weight-light">Order No. <%= @order.id %><br></p>
+      <table class="table is-hoverable">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub-Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <% @order.unpack_contents.each do |accessory, quantity| %>
+            <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
+            <td><%= link_to accessory.title, accessory_path(accessory) %></td>
+            <td><%= number_to_currency(accessory.price) %></td>
+            <td><%= quantity %></td>
+            <td><%= number_to_currency(accessory.price * quantity) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class='total'>
+          <p>Total: <%= number_to_currency(@order.total) %></p>
+          <p>Status: <%= @order.status %></p>
+          <p>Status Changed: <%= @order.updated_at.strftime('%m/%d/%y at %l:%M %p') %></p>
+          <p>Submitted: <%= @order.created_at.strftime('%m/%d/%y at %l:%M %p') %></p><br>
+          <p class="control"><%= button_to 'Back', dashboard_path, method: :get, class: "button is-outlined is-small is-link"%></p>
+      </div>
+    </div>
+  </div>
+</section>
