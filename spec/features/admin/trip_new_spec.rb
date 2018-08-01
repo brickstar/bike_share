@@ -8,7 +8,7 @@ describe 'admin user visits trip new' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      duration            = 234
+      duration            = 3600
       start_date          = Date.parse('12 March, 2018')
       start_station_name  = 'San Jose City Hall'
       end_date            = Date.parse('12 March, 2018')
@@ -31,7 +31,7 @@ describe 'admin user visits trip new' do
       click_on 'Submit'
 
       expect(current_path).to eq(trip_path(Trip.last))
-      expect(page).to have_content(duration)
+      expect(page).to have_content('01h 00m 00s')
       expect(page).to have_content(start_date)
       expect(page).to have_content(start_station_name)
       expect(page).to have_content(end_date)

@@ -7,7 +7,6 @@ describe 'visiting the trip show page' do
     visit trip_path(trip)
 
     expect(page).to have_content(trip.id)
-    expect(page).to have_content(trip.duration)
     expect(page).to have_content(trip.start_date.to_date)
     expect(page).to have_content(trip.start_station_name)
     expect(page).to have_content(trip.end_date.to_date)
