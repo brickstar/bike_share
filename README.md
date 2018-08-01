@@ -2,7 +2,7 @@
 <img width="1440" alt="readme-splash" src="https://user-images.githubusercontent.com/33355897/43535327-e3623b4c-9576-11e8-9b41-48c3e419373b.png">
 
 #### Application
-Bikeshare is a web application build with Ruby, Rails and Activerecord. It’s purpose is analyze bike share usage in San Francisco and allows users to purchase bike accessories via the online store. The application collects data directly from the browser through web forms, as well as by consuming CSV files containing historical anonymized bike trip data from the SF Bay Area Bike Share.  
+Bikeshare is a web application build with Ruby, Rails and Activerecord. It’s purpose is analyze bike share usage in San Francisco and allows users to purchase bike accessories via the online store. The application collects data directly from the browser through web forms, as well as by consuming CSV files containing historical anonymized bike trip data from the SF Bay Area Bike Share. Access the application via <https://jem-bikeshare.herokuapp.com>
 
 ---
 #### Setup
