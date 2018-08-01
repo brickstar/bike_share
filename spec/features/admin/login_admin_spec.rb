@@ -36,9 +36,8 @@ describe 'an admin user' do
     end
 
     expect(page).to have_content(admin.first_name)
-    expect(page).to have_content(admin.last_name)
     expect(page).to have_content(admin.street)
-    expect(page).to have_content(admin.city)
+    expect(page).to have_content(admin.city.capitalize)
     expect(page).to have_content(admin.state)
     expect(page).to have_content(admin.zip_code)
     expect(page).to have_content(admin.email)
