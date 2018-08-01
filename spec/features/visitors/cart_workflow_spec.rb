@@ -27,7 +27,11 @@ describe 'a visitor accessing the bike shop' do
   end
 
   it 'can click a button to remove an item from the cart' do
-    accessory = Accessory.create(image_url: 'https://robohash.org/1', title: 'test1', description: 'this is a test', price: 4)
+    accessory = Accessory.create( image_url: 'https://robohash.org/1',
+                                  title: 'test1',
+                                  description: 'this is a test',
+                                  price: 4
+                                )
 
     visit accessories_path
 
@@ -36,6 +40,7 @@ describe 'a visitor accessing the bike shop' do
     visit cart_path
 
     expect(page).to have_button('Remove Accessory')
+
     within('nav') do
       expect(page).to have_content('1')
     end
@@ -44,7 +49,9 @@ describe 'a visitor accessing the bike shop' do
 
     within('nav') do
       expect(page).to have_content('0')
+
     end
+
     expect(page).to_not have_content(accessory.price)
     expect(page).to have_content("Successfully removed #{accessory.title} from your cart.")
 

@@ -15,7 +15,7 @@
 <section class="section">
   <div class="columns">
     <div class="column is-narrow">
-      <table class="table is-hoverable">
+      <table class="table is-hoverable is-bordered is-striped">
         <p class='conditions-headers'>High Temperatures</p>
         <thead>
           <tr>
@@ -39,7 +39,7 @@
                 <td><%= @temp_data[50][:avg].round(2) %></td>
               </tr>
               <tr id='60'>
-                <th id='60'>60-70°</th>
+                <th>60-70°</th>
                 <td><%= @temp_data[60][:max] %></td>
                 <td><%= @temp_data[60][:min] %></td>
                 <td><%= @temp_data[60][:avg].round(2) %></td>
@@ -67,7 +67,7 @@
 <section class="section">
   <div class="columns">
     <div class="column is-narrow">
-      <table class="table is-hoverable">
+      <table class="table is-hoverable is-bordered is-striped">
         <p class='conditions-headers'>Precipitation</p>
         <thead>
           <tr>
@@ -104,7 +104,7 @@
     <section class="section">
       <div class="columns">
         <div class="column is-narrow">
-          <table class="table is-hoverable">
+          <table class="table is-hoverable is-bordered is-striped">
             <p class='conditions-headers'>Visibility</p>
             <thead>
               <tr>
@@ -134,7 +134,7 @@
       <section class="section">
         <div class="columns">
           <div class="column is-narrow">
-            <table class="table is-hoverable">
+            <table class="table is-hoverable is-bordered is-striped">
               <p class='conditions-headers'>Wind Data</p>
               <thead>
                 <tr>
