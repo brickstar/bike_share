@@ -13,7 +13,7 @@
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-white">
           <div class="sub-title trip-show-attributes">
-            Duration: <%= @trip.duration %></p>
+            Duration: <%= format_time(@trip.duration) %></p>
             Start Date: <%= @trip.start_date.to_date %></p>
             Start Station: <%= @trip.start_station_name %></p>
             Start Station ID: <%= @trip.start_station_id %></p>

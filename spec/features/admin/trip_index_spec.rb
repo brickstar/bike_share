@@ -13,7 +13,7 @@ describe 'visiting trip index page can see all trips with attributes' do
   it 'can see edit and delete buttons alongside each trip' do
     visit trips_path
 
-    expect(page).to have_content(@trip1.duration)
+    expect(page).to have_content('00h 02m 00s')
     expect(page).to have_content(@trip1.start_date.to_date)
     expect(page).to have_content(@trip1.start_station_name)
     expect(page).to have_content(@trip1.start_station_id)

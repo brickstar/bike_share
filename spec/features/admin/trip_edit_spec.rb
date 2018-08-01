@@ -13,14 +13,14 @@ describe 'admin user visits trip new' do
     it 'should create a trip, land on show and see a flash success' do
       visit edit_admin_trip_path(@trip1)
 
-      duration = 123456789
+      duration = 3600
 
       fill_in 'trip[duration]', with: duration
 
       click_on 'Submit'
 
       expect(current_path).to eq(trip_path(@trip1))
-      expect(page).to have_content(duration)
+      expect(page).to have_content('01h 00m 00s')
     end
   end
 end

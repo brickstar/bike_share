@@ -12,7 +12,7 @@ describe 'visiting trip show page can see all attributes' do
     visit trip_path(@trip1)
 
     expect(page).to have_content(@trip1.id)
-    expect(page).to have_content(@trip1.duration)
+    expect(page).to have_content('00h 02m 00s')
     expect(page).to have_content(@trip1.start_date.to_date)
     expect(page).to have_content(@trip1.start_station_name)
     expect(page).to have_content(@trip1.start_station_id)
