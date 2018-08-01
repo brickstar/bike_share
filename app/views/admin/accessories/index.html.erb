@@ -5,21 +5,45 @@
       BikeShop
       </h1>
       <h2 class='sub-title'>
-        <% if current_admin? %>
-        <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-outlined is-small is-warning"%></p>
-        <% end %>
+        <p class="control"><%= button_to 'Create New Accessory', new_admin_accessory_path, method: :get, class: "button is-small is-link"%></p>
       </h2>
     </div>
   </div>
 </section>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-narrow">
+      <table class="table is-hoverable is-centered">
+        <thead>
+          <tr>
+            <th>Image</th>
 
-<% @accessories.each do |accessory| %>
-<div id='accessory-<%= accessory.id %>'>
-  <%= link_to accessory.title, accessory_path(accessory)%>
-  Price: <%= accessory.price %>
-  <%= accessory.description %>
-  <%= accessory.status %>
-  <%= image_tag accessory.image_url, id: 'accessory-thumbnail' %>
-    <p class="control"><%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get, class: "button is-outlined is-small is-primary"%></p>
-</div>
-<% end %>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @accessories.each do |accessory| %>
+            <tr class="accessory-<%= accessory.id %>">
+              <td><%= image_tag accessory.image_url, id: 'accessory-thumbnail' %></td>
+              <td><%= link_to accessory.title, accessory_path(accessory)%></td>
+              <td><%= accessory.description %></td>
+              <td><%= number_to_currency(accessory.price) %></td>
+              <td><%= accessory.status %></td>
+              <td>  <% if accessory.retired? %>
+                      <div class="control"><%= button_to 'Activate', admin_accessory_path(accessory, status: 'active'), method: :patch, class: "button is-outlined is-small is-danger"%></p>
+                    <% else %>
+                      <div class="control"><%= button_to 'Retire', admin_accessory_path(accessory, status: 'retired'), method: :patch, class: "button is-outlined is-small is-danger"%></p>
+                    <% end %></td>
+              <td><%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get, class: "button is-outlined is-small is-primary"%></td>
+              <% end %>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

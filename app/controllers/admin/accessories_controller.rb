@@ -1,7 +1,7 @@
 class Admin::AccessoriesController < Admin::BaseController
 
   def index
-    @accessories = Accessory.all
+    @accessories = Accessory.order(:price)
   end
 
   def new
@@ -25,7 +25,11 @@ class Admin::AccessoriesController < Admin::BaseController
 
   def update
     @accessory = Accessory.find(params[:id])
-    @accessory.update(accessory_params)
+    if params[:status]
+      @accessory.update(status: params[:status])
+    else
+      @accessory.update(accessory_params)
+    end
     if @accessory.save
       flash[:success] = "Accessory #{@accessory.title} updated."
       redirect_to admin_accessories_path
@@ -36,7 +40,17 @@ class Admin::AccessoriesController < Admin::BaseController
 
   private
 
-  def accessory_params
+  def initial_accessory_params
     params.require(:accessory).permit(:title, :description, :price, :status, :image_url)
+  end
+
+  def accessory_params
+    if initial_accessory_params[:image_url].empty?
+      data_set = initial_accessory_params
+      data_set[:image_url] = "https://robohash.org/1"
+      data_set
+    else
+      initial_accessory_params
+    end
   end
 end

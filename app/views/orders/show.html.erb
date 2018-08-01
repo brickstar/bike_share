@@ -52,7 +52,7 @@
           <p>Status: <%= @order.status %></p>
           <p>Status Changed: <%= @order.updated_at.strftime('%m/%d/%y at %l:%M %p') %></p>
           <p>Submitted: <%= @order.created_at.strftime('%m/%d/%y at %l:%M %p') %></p><br>
-          <p class="control"><%= button_to 'Back', admin_dashboard_path, method: :get, class: "button is-outlined is-small is-link"%></p>
+          <p class="control"><%= button_to 'Back', dashboard_path, method: :get, class: "button is-outlined is-small is-link"%></p>
       </div>
     </div>
   </div>
