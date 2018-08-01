@@ -23,8 +23,8 @@ describe 'a user accessing the cart show page' do
     expect(page).to have_content(@accessory2.title)
     expect(page).to have_content("\nItem Title Price Quantity Sub-Total")
     expect(page).to have_content("test1 $4.00 2 $8.00 test2 $4.00 3 $12.00\n")
-    expect(page).to have_content("Submitted: #{@order1.created_at.strftime('%m/%d/%y at%l:%M %p')}")
-    expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime('%m/%d/%y at%l:%M %p')}")
+    expect(page).to have_content("Submitted: #{@order1.created_at.strftime('%m/%d/%y at %l:%M %p')}")
+    expect(page).to have_content("Status Changed: #{@order1.updated_at.strftime('%m/%d/%y at %l:%M %p')}")
     expect(page).to have_content("Name: #{@user.first_name.capitalize} #{@user.last_name.capitalize}")
     expect(page).to have_content("Address: #{@user.street} #{@user.city}, #{@user.state} #{@user.zip_code}")
 

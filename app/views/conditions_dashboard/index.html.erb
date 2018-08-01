@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Conditions Dashboard
+        <p>Conditions Dashboard</p>
       </h1>
       <h2 class='sub-title'>
         <% if current_admin? %>
@@ -12,35 +12,177 @@
     </div>
   </div>
 </section>
-<p>Temperature Data</p>
-<ul>
-  <li>40-50: highest rides: <%= @temp_data[40][:max] %> lowest rides: <%= @temp_data[40][:min] %> average rides: <%= @temp_data[40][:avg].round(2) %></li>
-  <li>50-60: highest rides: <%= @temp_data[50][:max] %> lowest rides: <%= @temp_data[50][:min] %> average rides: <%= @temp_data[50][:avg].round(2) %></li>
-  <li>60-70: highest rides: <%= @temp_data[60][:max] %> lowest rides: <%= @temp_data[60][:min] %> average rides: <%= @temp_data[60][:avg].round(2) %></li>
-  <li>70-80: highest rides: <%= @temp_data[70][:max] %> lowest rides: <%= @temp_data[70][:min] %> average rides: <%= @temp_data[70][:avg].round(2) %></li>
-  <li>80-90: highest rides: <%= @temp_data[80][:max] %> lowest rides: <%= @temp_data[80][:min] %> average rides: <%= @temp_data[80][:avg].round(2) %></li>
-  <li>90-100: highest rides: <%= @temp_data[90][:max] %> lowest rides: <%= @temp_data[90][:min] %> average rides: <%= @temp_data[90][:avg].round(2) %></li>
-</ul></br>
-
-<p>Precipitation Data</p>
-<ul>
-<li>0.0-0.5: highest rides: <%= @precipitation_data[0.0][:max] %> lowest rides: <%= @precipitation_data[0.0][:min] %> average rides: <%= @precipitation_data[0.0][:avg].round(2) %></li>
-<li>0.5-1.0: highest rides: <%= @precipitation_data[0.5][:max] %> lowest rides: <%= @precipitation_data[0.5][:min] %> average rides: <%= @precipitation_data[0.5][:avg].round(2) %></li>
-<li>1.0-1.5: highest rides: <%= @precipitation_data[1.0][:max] %> lowest rides: <%= @precipitation_data[1.0][:min] %> average rides: <%= @precipitation_data[1.0][:avg].round(2) %></li>
-</ul></br>
-
-<p>Visibility Data</p>
-<ul>
-  <li>4-8: highest rides: <%= @visibility_data[4][:max] %> lowest rides: <%= @visibility_data[4][:min] %> average rides: <%= @visibility_data[4][:avg].round(2) %></li>
-  <li>8-12: highest rides: <%= @visibility_data[8][:max] %> lowest rides: <%= @visibility_data[8][:min] %> average rides: <%= @visibility_data[8][:avg].round(2) %></li>
-</ul></br>
-
-<p>Wind Data</p>
-<ul>
-  <li>0-4: highest rides: <%= @wind_data[0][:max] %> lowest rides: <%= @wind_data[0][:min] %> average rides: <%= @wind_data[0][:avg].round(2) %></li>
-  <li>4-8: highest rides: <%= @wind_data[4][:max] %> lowest rides: <%= @wind_data[4][:min] %> average rides: <%= @wind_data[4][:avg].round(2) %></li>
-  <li>8-12: highest rides: <%= @wind_data[8][:max] %> lowest rides: <%= @wind_data[8][:min] %> average rides: <%= @wind_data[8][:avg].round(2) %></li>
-  <li>12-16: highest rides: <%= @wind_data[12][:max] %> lowest rides: <%= @wind_data[12][:min] %> average rides: <%= @wind_data[12][:avg].round(2) %></li>
-  <li>16-20: highest rides: <%= @wind_data[16][:max] %> lowest rides: <%= @wind_data[16][:min] %> average rides: <%= @wind_data[16][:avg].round(2) %></li>
-  <li>20-24: highest rides: <%= @wind_data[20][:max] %> lowest rides: <%= @wind_data[20][:min] %> average rides: <%= @wind_data[20][:avg].round(2) %></li>
-</ul></br>
+<section class="section">
+  <div class="columns">
+    <div class="column is-narrow">
+      <table class="table is-hoverable">
+        <p class='conditions-headers'>High Temperatures</p>
+        <thead>
+          <tr>
+            <th>Farenheit</th>
+            <th>Most Rides</th>
+            <th>Least Rides</th>
+            <th>Average Rides</th>
+          </tr>
+          <thead>
+            <tbody>
+              <tr>
+                <th>40-50°</th>
+                <td><%= @temp_data[40][:max] %></td>
+                <td><%= @temp_data[40][:min] %></td>
+                <td><%= @temp_data[40][:avg].round(2) %></td>
+              </tr>
+              <tr id='50'>
+                <th>50-60°</th>
+                <td><%= @temp_data[50][:max] %></td>
+                <td><%= @temp_data[50][:min] %></td>
+                <td><%= @temp_data[50][:avg].round(2) %></td>
+              </tr>
+              <tr id='60'>
+                <th id='60'>60-70°</th>
+                <td><%= @temp_data[60][:max] %></td>
+                <td><%= @temp_data[60][:min] %></td>
+                <td><%= @temp_data[60][:avg].round(2) %></td>
+              </tr>
+              <th>70-80°</th>
+              <td><%= @temp_data[70][:max] %></td>
+              <td><%= @temp_data[70][:min] %></td>
+              <td><%= @temp_data[70][:avg].round(2) %></td>
+            </tr>
+            <th>80-90°</th>
+            <td><%= @temp_data[80][:max] %></td>
+            <td><%= @temp_data[80][:min] %></td>
+            <td><%= @temp_data[80][:avg].round(2) %></td>
+          </tr>
+          <th>90-100°</th>
+          <td><%= @temp_data[90][:max] %></td>
+          <td><%= @temp_data[90][:min] %></td>
+          <td><%= @temp_data[90][:avg].round(2) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+<section class="section">
+  <div class="columns">
+    <div class="column is-narrow">
+      <table class="table is-hoverable">
+        <p class='conditions-headers'>Precipitation</p>
+        <thead>
+          <tr>
+            <th>Inches</th>
+            <th>Most Rides</th>
+            <th>Least Rides</th>
+            <th>Average Rides</th>
+          </tr>
+          <thead>
+            <tbody>
+              <tr>
+                <th>0.0-0.5</th>
+                <td><%= @precipitation_data[0.0][:max] %></td>
+                <td><%= @precipitation_data[0.0][:min] %></td>
+                <td><%= @precipitation_data[0.0][:avg].round(2) %></td>
+              </tr>
+              <tr>
+                <th>0.5-1.0</th>
+                <td><%= @precipitation_data[0.5][:max] %></td>
+                <td><%= @precipitation_data[0.5][:min] %></td>
+                <td><%= @precipitation_data[0.5][:avg].round(2) %></td>
+              </tr>
+              <tr>
+                <th>1.0-1.5</th>
+                <td><%= @precipitation_data[1.0][:max] %></td>
+                <td><%= @precipitation_data[1.0][:min] %></td>
+                <td><%= @precipitation_data[1.0][:avg].round(2) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="columns">
+        <div class="column is-narrow">
+          <table class="table is-hoverable">
+            <p class='conditions-headers'>Visibility</p>
+            <thead>
+              <tr>
+                <th>Miles</th>
+                <th>Most Rides</th>
+                <th>Least Rides</th>
+                <th>Average Rides</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4-8</td>
+                <td><%= @visibility_data[4][:max] %></td>
+                <td><%= @visibility_data[4][:min] %></td>
+                <td><%= @visibility_data[4][:avg].round(2) %></td>
+                <tr>
+                  <td>8-12</td>
+                  <td><%= @visibility_data[8][:max] %></td>
+                  <td><%= @visibility_data[8][:min] %></td>
+                  <td><%= @visibility_data[8][:avg].round(2) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="columns">
+          <div class="column is-narrow">
+            <table class="table is-hoverable">
+              <p class='conditions-headers'>Wind Data</p>
+              <thead>
+                <tr>
+                  <th>Mph</th>
+                  <th>Most Rides</th>
+                  <th>Least Rides</th>
+                  <th>Average Rides</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>0-4</th>
+                  <td><%= @wind_data[0][:max] %></td>
+                  <td><%= @wind_data[0][:min] %></td>
+                  <td><%= @wind_data[0][:avg].round(2) %></td>
+                </tr>
+                <tr>
+                  <th>4-8</th>
+                  <td><%= @wind_data[4][:max] %></td>
+                  <td><%= @wind_data[4][:min] %></td>
+                  <td><%= @wind_data[4][:avg].round(2) %></td>
+                </tr>
+                <tr>
+                  <th>8-12</th>
+                  <td><%= @wind_data[8][:max] %></td>
+                  <td><%= @wind_data[8][:min] %></td>
+                  <td><%= @wind_data[8][:avg].round(2) %></td>
+                </tr>
+                <tr>
+                  <th>12-16</th>
+                  <td><%= @wind_data[12][:max] %></td>
+                  <td><%= @wind_data[12][:min] %></td>
+                  <td><%= @wind_data[12][:avg].round(2) %></td>
+                </tr>
+                <tr>
+                  <th>16-20</th>
+                  <td><%= @wind_data[16][:max] %></td>
+                  <td><%= @wind_data[16][:min] %></td>
+                  <td><%= @wind_data[16][:avg].round(2) %></td>
+                </tr>
+                <tr>
+                  <th>20-24</th>
+                  <td><%= @wind_data[20][:max] %></td>
+                  <td><%= @wind_data[20][:min] %></td>
+                  <td><%= @wind_data[20][:avg].round(2) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>

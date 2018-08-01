@@ -12,16 +12,17 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-white">
-          <p class="sub-title">
-            &nbsp &nbsp &nbsp &nbsp Duration: <%= @trip.duration %></p>
-            &nbsp &nbsp &nbsp &nbsp Start Date: <%= @trip.start_date.to_date %></p>
-            &nbsp &nbsp &nbsp &nbsp Start Station: <%= @trip.start_station_name %></p>
-            &nbsp &nbsp &nbsp &nbsp Start Station ID: <%= @trip.start_station_id %></p>
-            &nbsp &nbsp &nbsp &nbsp End Date: <%= @trip.end_date.to_date %></p>
-            &nbsp &nbsp &nbsp &nbsp End Station: <%= @trip.end_station_name %></p>
-            &nbsp &nbsp &nbsp &nbsp Bike ID: <%= @trip.bike_id %></p>
-            &nbsp &nbsp &nbsp &nbsp Subscription Type: <%= @trip.subscription_type %></p>
-            &nbsp &nbsp &nbsp &nbsp Zip Code: <%= @trip.zip_code %></p>
+          <div class="sub-title trip-show-attributes">
+            Duration: <%= @trip.duration %></p>
+            Start Date: <%= @trip.start_date.to_date %></p>
+            Start Station: <%= @trip.start_station_name %></p>
+            Start Station ID: <%= @trip.start_station_id %></p>
+            End Date: <%= @trip.end_date.to_date %></p>
+            End Station: <%= @trip.end_station_name %></p>
+            Bike ID: <%= @trip.bike_id %></p>
+            Subscription Type: <%= @trip.subscription_type %></p>
+            Zip Code: <%= @trip.zip_code %>
+          </div>
         </article>
       </div>
     </div>
